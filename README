@@ -1,4 +1,21 @@
-This is your new Play application
-=================================
 
-This file will be packaged with your application, when using `activator dist`.
+PROTOCOLE :
+
+1-Cloner le projet git "play-java" sur la machine
+
+2-Lancer Activator
+
+3-Depuis l'interface d'Activator importer le projet ("Open existing app" qui est à droite)
+
+4-Quand l'activator a fini l'importation 
+  aller sur "Code view & Open in IDE" puis faire "create Eclipse projet"
+  
+5-Lancer Eclipse puis faire import Existing projet
+
+6-Choisir le projet "play-java"
+
+7-Ecplise reconnaît automatiquement que c'est un projet java et Git
+
+PAR CONTRE LE GITIGNORE PEUT DECONNER ALORS 
+VERIFIER BIEN QUE VOUS PUSHER DES ELEMENTS 
+DE CODE ET PAS DES FICHIERS DE LOG OU CONFIG
