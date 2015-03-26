@@ -8,9 +8,9 @@ PROTOCOLE :
 3-Depuis l'interface d'Activator importer le projet ("Open existing app" qui est à droite)
 
 4-Quand l'activator a fini l'importation 
-  aller sur "Code view & Open in IDE" puis faire "create Éclipse projet"
+  aller sur "Code view & Open in IDE" puis faire "create Eclipse projet"
   
-5-Lancer Éclipse puis faire import Existing projet
+5-Lancer Eclipse puis faire import Existing projet
 
 6-Choisir le projet "play-java"
 
