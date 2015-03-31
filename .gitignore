@@ -23,11 +23,9 @@ target
 # Play
 logs
 RUNNING_PID
-.sbtserver/connections/master.log
-.sbtserver/connections/master.log
+.sbtserver/*
 *.log
-.sbtserver/connections/master.log
 build.sbt
-*.sbtserver
+.sbtserver/*
 project/play-fork-run.sbt
 *.sbt
