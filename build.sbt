@@ -12,6 +12,3 @@ libraryDependencies ++= Seq(
   cache,
   javaWs
 )
-
-
-fork in run := true
