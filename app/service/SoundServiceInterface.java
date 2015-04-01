@@ -24,7 +24,7 @@ public interface SoundServiceInterface {
 	 * Supprime la musique en base
 	 * @param idProfil l'id du Profil qui supprime cette musique
 	 * @param idMusic l'id de la musique a supprimer
-	 * @return vrai si l'op�ration s'est bien passee
+	 * @return vrai si l'operation s'est bien passee
 	 */
 	public boolean deleteMusic(Integer idProfil, Integer idMusic);
 	

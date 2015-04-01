@@ -15,7 +15,7 @@ public class Recherche {
 	}
 	
 	/**
-	 * Affiche tous les r�sultats (Artistes, Albums, Tracks) de la recherche
+	 * Affiche tous les resultats (Artistes, Albums, Tracks) de la recherche
 	 * @param chaine
 	 */
 	@SuppressWarnings("unchecked")
@@ -115,7 +115,7 @@ public class Recherche {
 			String str_temp;
 			for(List<String> one_liste : listes){
 				
-				// inutile d'enlever des doublons si une liste ne contient que 0 ou 1 seul �l�ment, ou est null.
+				// inutile d'enlever des doublons si une liste ne contient que 0 ou 1 seul element, ou est null.
 				if(one_liste!=null && one_liste.size()>1){
 					
 						for(int i=0; i<one_liste.size(); i++){
@@ -126,7 +126,7 @@ public class Recherche {
 								one_liste.remove(str_temp);
 							}
 							
-							// remet l'�lement � sa position d'origine
+							// remet l'element a sa position d'origine
 							one_liste.add(i,str_temp);
 							
 						}
