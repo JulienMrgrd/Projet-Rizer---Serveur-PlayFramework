@@ -273,7 +273,7 @@ public class GracenoteWebAPI
         Document xml = null;
         try{
         	xml = this._checkResponse(response);
-        } catch (Exception ge){
+        } catch (GracenoteException ge){
         	xml = null;
         	throw ge;
         }
