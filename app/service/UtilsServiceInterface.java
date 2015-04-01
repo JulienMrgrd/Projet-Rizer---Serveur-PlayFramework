@@ -8,6 +8,7 @@ import models.Music;
 
 public interface UtilsServiceInterface {
 
+	
 	/**
 	 * Recherche un artiste dans la base et dans la base de Gracenote
 	 * @param research La chaine de caractere

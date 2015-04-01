@@ -19,7 +19,7 @@ public interface SocialActivityServiceInterface {
 	public boolean unfollowArtist(Integer idProfil, Integer idArtist);
 	
 	/**
-	 * Permet a un profil de suivre rizer un "FuturArtist".
+	 * Permet a un profil de suivre rizer un FuturArtist.
 	 * @param idProfil l'identifiant du profil qui rize
 	 * @param idFuturArtist l'identifiant du FuturArtiste qui se fait rizer
 	 * @return vrai si l'operation s'est bien passee

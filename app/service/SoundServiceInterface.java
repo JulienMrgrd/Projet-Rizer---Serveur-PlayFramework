@@ -4,6 +4,7 @@ import models.Music;
 
 public interface SoundServiceInterface {
 
+	
 	/**
 	 * Ajoute une musique en base
 	 * @param idProfil l'id du Profil (Artist ou FuturArtist) qui rajoute cette musique
