@@ -13,7 +13,6 @@ public class PlaylistService {
 	public static void createPlayList(Integer idProfil, String name,
 			List<Integer> tracks) {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
