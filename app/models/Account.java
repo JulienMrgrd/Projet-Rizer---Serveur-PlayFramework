@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public abstract class Profil {
+public abstract class Account {
 
 	private Integer id;
     private String photo;
@@ -28,7 +28,7 @@ public abstract class Profil {
 	 * @param follow : List of Artist id
 	 * @param historical : List of Music id already listen
 	 */
-	public Profil(Integer id, String photo, String surname, String forename,
+	public Account(Integer id, String photo, String surname, String forename,
 			String email, String pseudonym, List<Integer> playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
@@ -43,6 +43,8 @@ public abstract class Profil {
 		this.follow = follow;
 		this.historical = historical;
 	}
+	
+	public Account(){ }
 	
 	public Integer getId() {
 		return id;

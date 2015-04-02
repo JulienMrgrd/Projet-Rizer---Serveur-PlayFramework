@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class Artist extends Profil{
+public class Artist extends Account{
 
     private List<Integer> library;//id album
     private List<Integer> followers;//id profil
@@ -36,6 +36,10 @@ public class Artist extends Profil{
 		this.followers = followers;
 		this.news = news;
 		this.biography = biography;
+	}
+	
+	public Artist(){
+		super();
 	}
 	
 	public List<Integer> getLibrary() {

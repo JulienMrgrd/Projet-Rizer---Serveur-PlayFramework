@@ -3,7 +3,7 @@ package service;
 import java.util.List;
 
 import models.Artist;
-import models.Profil;
+import models.Account;
 
 public class ProfilService {
 
@@ -14,7 +14,7 @@ public class ProfilService {
 	 * @param password de l'utilisateur
 	 * @return un Profil correspondant
 	 */
-	public Profil connection(String email, String password) {
+	public Account connection(String email, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -82,7 +82,7 @@ public class ProfilService {
 	 * Permet de modifier son profil
 	 * @param profil Le profil qu'on recupere pour le changer en base
 	 */
-	public static void modifyProfil(Integer idProfil, Profil profil) {
+	public static void modifyProfil(Integer idProfil, Account profil) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class User extends Profil{
+public class User extends Account{
 
     private boolean futurArtist;
     private List<Integer> rizeGet;
