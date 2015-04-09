@@ -179,7 +179,7 @@ public class UtilsService{
 		Artist art_tmp;
 		for(String str : resultats_Artiste){
 			art_tmp = new Artist();
-			art_tmp.setPseudonym(str);
+			art_tmp.setLogin(str);
 			artistes.add(art_tmp);
 		}
 		return artistes;

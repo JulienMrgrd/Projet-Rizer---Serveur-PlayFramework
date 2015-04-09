@@ -12,7 +12,7 @@ public class Album {
 	/**
 	 * @param id 
 	 * @param title
-	 * @param tracks : List of tracks id
+	 * @param tracks : Liste d'ID de music
 	 * @param artist
 	 */
 	public Album(Integer id, String title, List<Integer> tracks, Artist artist) {

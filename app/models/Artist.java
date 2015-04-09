@@ -4,33 +4,34 @@ import java.util.List;
 
 public class Artist extends Account{
 
-    private List<Integer> library;//id album
-    private List<Integer> followers;//id profil
+    private List<Integer> library; //id album
+    private List<Integer> followers; //id compte
     private List<String> news;
     private String biography;
     
 	/**
-	 * @param id
+	 * @param id 
 	 * @param photo
-	 * @param surname
-	 * @param forename
+	 * @param nom
+	 * @param prenom
 	 * @param email
-	 * @param pseudonym
-	 * @param playlists : List of Music id
-	 * @param rises : List of Profil id
-	 * @param follow : List of Artist id
-	 * @param historical : List of Music id already listen
-	 * @param library : List of his Album id
-	 * @param followers : List of Profil id
-	 * @param news : List of artist news
+	 * @param login
+	 * @param description : description du compte
+	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
+	 * @param rises : Liste d'ID de compte
+	 * @param follow : Liste d'ID d'artiste que le compte follow
+	 * @param historical : Liste de music id déjà écoutée
+	 * @param library : List d'ID d'albums
+	 * @param followers : List d'ID de compte
+	 * @param news : List de news d'artiste
 	 * @param biography
 	 */
 	public Artist(Integer id, String photo, String surname, String forename,
-			String email, String pseudonym, List<Integer> playlists,
-			List<Integer> rises, List<Integer> follow,
-			List<Integer> historical, List<Integer> library,
+			String email, String login, String description, List< List<Integer> > playlists,
+			List<Integer> rises, List<Integer> follow, List<Integer> historical, List<Integer> library,
 			List<Integer> followers, List<String> news, String biography) {
-		super(id, photo, surname, forename, email, pseudonym, playlists, rises,
+		
+		super(id, photo, surname, forename, email, login, description, playlists, rises,
 				follow, historical);
 		this.library = library;
 		this.followers = followers;

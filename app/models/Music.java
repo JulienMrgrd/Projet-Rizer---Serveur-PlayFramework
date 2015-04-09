@@ -20,11 +20,11 @@ public class Music {
 	/**
 	 * @param id
 	 * @param name
-	 * @param file
-	 * @param like : List of Profil id
-	 * @param comment : HashTag <pseudonym,comment>
+	 * @param file : URL
+	 * @param like : List d'ID profil
+	 * @param comment : HashTag <Login,comment>
 	 * @param tags
-	 * @param duration : Time to become artist
+	 * @param duration : Duree de la musique
 	 * @param album 
 	 */
 	public Music(Integer id, String name, String file, List<Integer> like,

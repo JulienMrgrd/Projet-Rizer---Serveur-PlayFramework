@@ -9,8 +9,9 @@ public abstract class Account {
     private String surname;
     private String forename;
     private String email;
-    private String pseudonym;
-    private List<Integer> playlists;
+    private String login;
+    private String description;
+    private List< List<Integer> > playlists;
     private List<Integer> rises;
     private List<Integer> follow;
     private List<Integer> historical;
@@ -19,17 +20,18 @@ public abstract class Account {
 	/**
 	 * @param id 
 	 * @param photo
-	 * @param surname
-	 * @param forename
+	 * @param nom
+	 * @param prenom
 	 * @param email
-	 * @param pseudonym
-	 * @param playlists : List of Music id
-	 * @param rises : List of Profil id
-	 * @param follow : List of Artist id
-	 * @param historical : List of Music id already listen
+	 * @param login
+	 * @param description : description du compte
+	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
+	 * @param rises : Liste d'ID de compte
+	 * @param follow : Liste d'ID d'artiste que le compte follow
+	 * @param historical : Liste de music id déjà écoutée
 	 */
 	public Account(Integer id, String photo, String surname, String forename,
-			String email, String pseudonym, List<Integer> playlists,
+			String email, String login, String description, List< List<Integer> > playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
 		this.id = id;
@@ -37,7 +39,8 @@ public abstract class Account {
 		this.surname = surname;
 		this.forename = forename;
 		this.email = email;
-		this.pseudonym = pseudonym;
+		this.login = login;
+		this.description = description;
 		this.playlists = playlists;
 		this.rises = rises;
 		this.follow = follow;
@@ -76,16 +79,22 @@ public abstract class Account {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPseudonym() {
-		return pseudonym;
+	public String getLogin() {
+		return login;
 	}
-	public void setPseudonym(String pseudonym) {
-		this.pseudonym = pseudonym;
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	public List<Integer> getPlaylists() {
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List< List<Integer> > getPlaylists() {
 		return playlists;
 	}
-	public void setPlaylists(List<Integer> playlists) {
+	public void setPlaylists(List< List<Integer> > playlists) {
 		this.playlists = playlists;
 	}
 	public List<Integer> getRises() {

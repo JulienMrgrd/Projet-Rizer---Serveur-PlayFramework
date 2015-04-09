@@ -8,25 +8,25 @@ public class User extends Account{
     private List<Integer> rizeGet;
     
 	/**
-	 * @param id
+	 * @param id 
 	 * @param photo
-	 * @param surname
-	 * @param forename
+	 * @param nom
+	 * @param prenom
 	 * @param email
-	 * @param pseudonym
-	 * @param playlists : List of Music id
-	 * @param rises : List of Profil id
-	 * @param follow : List of Artist id
-	 * @param historical : List of Music id already listen
-	 * @param futurArtist : To check if he want to become artist
-	 * @param rizeGet : Number of rize he gets during 
+	 * @param login
+	 * @param description : description du compte
+	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
+	 * @param rises : Liste d'ID de compte
+	 * @param follow : Liste d'ID d'artiste que le compte follow
+	 * @param historical : Liste de music id déjà écoutée
+	 * @param futurArtist : Pour vérifier si une demande a été effectuée
+	 * @param rizeGet : Nombre de rize obtenus
 	 */
-	public User(Integer id, String photo, String surname, String forename,
-			String email, String pseudonym, List<Integer> playlists,
-			List<Integer> rises, List<Integer> follow,
-			List<Integer> historical, boolean futurArtist,
-			List<Integer> rizeGet) {
-		super(id, photo, surname, forename, email, pseudonym, playlists, rises,
+	public User(Integer id, String photo, String surname, String forename, String email, 
+			String login, String description, List< List<Integer> > playlists, List<Integer> rises, 
+			List<Integer> follow,	List<Integer> historical, boolean futurArtist,	List<Integer> rizeGet) {
+		
+		super(id, photo, surname, forename, email, login, description, playlists, rises,
 				follow, historical);
 		this.futurArtist = futurArtist;
 		this.rizeGet = rizeGet;
