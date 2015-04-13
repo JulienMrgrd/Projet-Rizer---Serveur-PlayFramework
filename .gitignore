@@ -26,6 +26,7 @@ RUNNING_PID
 .sbtserver/*
 *.log
 build.sbt
-.sbtserver/*
+.sbtserver
 project/play-fork-run.sbt
+project/.sbtserver.lock
 *.sbt
