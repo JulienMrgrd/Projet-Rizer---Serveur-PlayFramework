@@ -27,7 +27,7 @@ public class Artist extends Account{
 	 * @param biography
 	 */
 	public Artist(Integer id, String photo, String surname, String forename,
-			String email, String login, String description, List< List<Integer> > playlists,
+			String email, String login, String description, List< Playlist > playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical, List<Integer> library,
 			List<Integer> followers, List<String> news, String biography) {
 		

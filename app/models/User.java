@@ -23,7 +23,7 @@ public class User extends Account{
 	 * @param rizeGet : Nombre de rize obtenus
 	 */
 	public User(Integer id, String photo, String surname, String forename, String email, 
-			String login, String description, List< List<Integer> > playlists, List<Integer> rises, 
+			String login, String description, List< Playlist > playlists, List<Integer> rises, 
 			List<Integer> follow,	List<Integer> historical, boolean futurArtist,	List<Integer> rizeGet) {
 		
 		super(id, photo, surname, forename, email, login, description, playlists, rises,

@@ -11,7 +11,7 @@ public abstract class Account {
     private String email;
     private String login;
     private String description;
-    private List< List<Integer> > playlists;
+    private List< Playlist > playlists;
     private List<Integer> rises;
     private List<Integer> follow;
     private List<Integer> historical;
@@ -31,7 +31,7 @@ public abstract class Account {
 	 * @param historical : Liste de music id déjà écoutée
 	 */
 	public Account(Integer id, String photo, String surname, String forename,
-			String email, String login, String description, List< List<Integer> > playlists,
+			String email, String login, String description, List< Playlist > playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
 		this.id = id;
@@ -91,10 +91,10 @@ public abstract class Account {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List< List<Integer> > getPlaylists() {
+	public List< Playlist > getPlaylists() {
 		return playlists;
 	}
-	public void setPlaylists(List< List<Integer> > playlists) {
+	public void setPlaylists(List< Playlist > playlists) {
 		this.playlists = playlists;
 	}
 	public List<Integer> getRises() {
