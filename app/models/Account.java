@@ -2,9 +2,14 @@ package models;
 
 import java.util.List;
 
+import org.jongo.marshall.jackson.oid.Id;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public abstract class Account {
 
-	private Integer id;
+	@JsonProperty("_id")
+	public String _id;
     private String photo;
     private String surname;
     private String forename;
@@ -30,11 +35,11 @@ public abstract class Account {
 	 * @param follow : Liste d'ID d'artiste que le compte follow
 	 * @param historical : Liste de music id déjà écoutée
 	 */
-	public Account(Integer id, String photo, String surname, String forename,
+	public Account(String id, String photo, String surname, String forename,
 			String email, String password, String description, List< Playlist > playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.photo = photo;
 		this.surname = surname;
 		this.forename = forename;
@@ -49,12 +54,10 @@ public abstract class Account {
 	
 	public Account(){ }
 	
-	public Integer getId() {
-		return id;
+	public String getId() {
+		return _id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public String getPhoto() {
 		return photo;
 	}
