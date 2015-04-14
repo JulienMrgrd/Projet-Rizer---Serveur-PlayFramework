@@ -9,7 +9,7 @@ public abstract class Account {
     private String surname;
     private String forename;
     private String email;
-    private String login;
+    private String password;
     private String description;
     private List< Playlist > playlists;
     private List<Integer> rises;
@@ -31,7 +31,7 @@ public abstract class Account {
 	 * @param historical : Liste de music id déjà écoutée
 	 */
 	public Account(Integer id, String photo, String surname, String forename,
-			String email, String login, String description, List< Playlist > playlists,
+			String email, String password, String description, List< Playlist > playlists,
 			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
 		this.id = id;
@@ -39,7 +39,7 @@ public abstract class Account {
 		this.surname = surname;
 		this.forename = forename;
 		this.email = email;
-		this.login = login;
+		this.password = password;
 		this.description = description;
 		this.playlists = playlists;
 		this.rises = rises;
@@ -79,12 +79,7 @@ public abstract class Account {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
+
 	public String getDescription() {
 		return description;
 	}
