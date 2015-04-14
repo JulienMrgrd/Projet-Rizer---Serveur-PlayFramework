@@ -11,10 +11,10 @@ public abstract class Account {
 	@JsonProperty("_id")
 	public String _id;
     private String photo;
-    private String surname;
-    private String forename;
-    private String email;
+    private String login;
     private String password;
+    private String pseudo;
+    private String email;
     private String description;
     private List< Playlist > playlists;
     private List<Integer> rises;
@@ -24,27 +24,26 @@ public abstract class Account {
     
 	/**
 	 * @param id 
-	 * @param photo
-	 * @param nom
-	 * @param prenom
+	 * @param photo : url
+	 * @param login : pour la connexion
+	 * @param password
+	 * @param pseudo : le pseudo visible par tout le monde
 	 * @param email
-	 * @param login
 	 * @param description : description du compte
 	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
 	 * @param rises : Liste d'ID de compte
 	 * @param follow : Liste d'ID d'artiste que le compte follow
 	 * @param historical : Liste de music id déjà écoutée
 	 */
-	public Account(String id, String photo, String surname, String forename,
-			String email, String password, String description, List< Playlist > playlists,
-			List<Integer> rises, List<Integer> follow, List<Integer> historical) {
+	public Account(String id, String photo, String login, String password, String pseudo, String email, String description, 
+			List< Playlist > playlists,	List<Integer> rises, List<Integer> follow, List<Integer> historical) {
 		super();
 		this._id = id;
 		this.photo = photo;
-		this.surname = surname;
-		this.forename = forename;
-		this.email = email;
+		this.login = login;
 		this.password = password;
+		this.pseudo = pseudo;
+		this.email = email;
 		this.description = description;
 		this.playlists = playlists;
 		this.rises = rises;
@@ -53,32 +52,51 @@ public abstract class Account {
 	}
 	
 	public Account(){ }
-	
-	public String getId() {
+
+	public String get_id() {
 		return _id;
 	}
-	
+
+	public void set_id(String _id) {
+		this._id = _id;
+	}
+
 	public String getPhoto() {
 		return photo;
 	}
+
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getSurname() {
-		return surname;
+
+	public String getLogin() {
+		return login;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	public String getForename() {
-		return forename;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setForename(String forename) {
-		this.forename = forename;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -86,33 +104,42 @@ public abstract class Account {
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List< Playlist > getPlaylists() {
+
+	public List<Playlist> getPlaylists() {
 		return playlists;
 	}
-	public void setPlaylists(List< Playlist > playlists) {
+
+	public void setPlaylists(List<Playlist> playlists) {
 		this.playlists = playlists;
 	}
+
 	public List<Integer> getRises() {
 		return rises;
 	}
+
 	public void setRises(List<Integer> rises) {
 		this.rises = rises;
 	}
+
 	public List<Integer> getFollow() {
 		return follow;
 	}
+
 	public void setFollow(List<Integer> follow) {
 		this.follow = follow;
 	}
+
 	public List<Integer> getHistorical() {
 		return historical;
 	}
+
 	public void setHistorical(List<Integer> historical) {
 		this.historical = historical;
 	}
-    
+	
  
 }

@@ -49,7 +49,7 @@ public class UtilsService{
 				if(str!=null) System.out.println("\t"+str);
 			}
 		} else {
-			System.out.println("\tAucun rsultat");
+			System.out.println("\tAucun resultat");
 		}
 		
 		System.out.println("\n===========\t============\t============");
@@ -179,7 +179,7 @@ public class UtilsService{
 		Artist art_tmp;
 		for(String str : resultats_Artiste){
 			art_tmp = new Artist();
-			art_tmp.setLogin(str);
+			art_tmp.setPseudo(str);
 			artistes.add(art_tmp);
 		}
 		return artistes;

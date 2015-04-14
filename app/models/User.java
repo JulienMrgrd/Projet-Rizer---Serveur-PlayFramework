@@ -8,12 +8,12 @@ public class User extends Account{
     private List<Integer> rizeGet;
     
 	/**
-	 * @param id 
-	 * @param photo
-	 * @param nom
-	 * @param prenom
+ 	 * @param id 
+	 * @param photo : url
+	 * @param login : pour la connexion
+	 * @param password
+	 * @param pseudo : le pseudo visible par tout le monde
 	 * @param email
-	 * @param login
 	 * @param description : description du compte
 	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
 	 * @param rises : Liste d'ID de compte
@@ -22,12 +22,10 @@ public class User extends Account{
 	 * @param futurArtist : Pour vérifier si une demande a été effectuée
 	 * @param rizeGet : Nombre de rize obtenus
 	 */
-	public User(Integer id, String photo, String surname, String forename, String email, 
-			String login, String description, List< Playlist > playlists, List<Integer> rises, 
-			List<Integer> follow,	List<Integer> historical, boolean futurArtist,	List<Integer> rizeGet) {
+	public User(String id, String photo, String login, String password, String pseudo, String email, String description, 
+			List< Playlist > playlists,	List<Integer> rises, List<Integer> follow, List<Integer> historical, boolean futurArtist,	List<Integer> rizeGet) {
 		
-		super(id, photo, surname, forename, email, login, description, playlists, rises,
-				follow, historical);
+		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
 		this.futurArtist = futurArtist;
 		this.rizeGet = rizeGet;
 	}
