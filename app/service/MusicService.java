@@ -2,7 +2,7 @@ package service;
 
 import models.Music;
 
-public class SoundService{
+public class MusicService{
 
 	/**
 	 * Ajoute une musique en base
@@ -21,7 +21,7 @@ public class SoundService{
 	 * @param music la musique a remplacer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean modifyInfoSound(Integer idProfil, Music music) {
+	public static boolean modifyInfoMusic(Integer idProfil, Music music) {
 		// TODO Auto-generated method stub
 		return false;
 	}
