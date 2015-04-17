@@ -4,17 +4,25 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+import org.joda.time.DateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Token {
 	
-	private String _id;
-	private static DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+	@JsonProperty("_id")
+	public String _id;
+	private String accountId;
+	private String dateMaj;
+	public static DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
-	Token(){
-		
-		UUID uId= UUID.randomUUID();
-		String dateMaj= dateFormat.format(Calendar.getInstance().getTime());
-		this._id=uId+dateMaj;
+	public Token(String account){
+	
+		this._id=UUID.randomUUID().toString();
+		this.accountId=account;
+		this.dateMaj=new DateTime().toString();
 	}
 
 	@Override
@@ -25,6 +33,27 @@ public class Token {
 	public String get_id() {
 		return _id;
 	}
+
+	public String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
+	
+
+	public void setDateMaj() {
+		this.dateMaj = new DateTime().toString();
+	}
+	
+	public long getDiffDay(){
+		long diff= new DateTime().getMillis() - new DateTime(this.dateMaj).getMillis();
+		return TimeUnit.MILLISECONDS.toDays(diff);
+	}
+	
+	
 
 
 	
