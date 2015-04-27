@@ -19,3 +19,16 @@ PROTOCOLE :
 PAR CONTRE LE GITIGNORE PEUT DECONNER ALORS 
 VERIFIER BIEN QUE VOUS PUSHER DES ELEMENTS 
 DE CODE ET PAS DES FICHIERS DE LOG OU CONFIG
+
+Pour ceux qui ont des erreurs dans le code depuis la modification des dependances :
+
+1-Lancer l'Activator projet
+
+2-Recompiler le projet
+
+3-Refaire un "create Eclipse projet" 
+
+
+
+ 
+
