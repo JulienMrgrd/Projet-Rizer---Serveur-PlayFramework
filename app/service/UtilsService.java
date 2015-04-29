@@ -89,31 +89,31 @@ public class UtilsService{
 	}
 
 	/**
-	 * Retourne la liste des artistes recommandes pour ce profil
-	 * @param idProfil l'id du profil
+	 * Retourne la liste des artistes recommandes pour ce compte
+	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Artist> recommendArtist(Integer idProfil) {
+	public static List<Artist> recommendArtist(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
-	 * Retourne la liste des albums recommandes pour ce profil
-	 * @param idProfil l'id du profil
+	 * Retourne la liste des albums recommandes pour ce compte
+	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Album> recommendAlbum(Integer idProfil) {
+	public static List<Album> recommendAlbum(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
-	 * Retourne la liste des musiques recommandees pour ce profil
-	 * @param idProfil l'id du profil
+	 * Retourne la liste des musiques recommandees pour ce compte
+	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Music> recommendMusic(Integer idProfil) {
+	public static List<Music> recommendMusic(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}

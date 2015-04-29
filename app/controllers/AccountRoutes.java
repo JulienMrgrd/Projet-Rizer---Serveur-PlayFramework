@@ -6,24 +6,50 @@ import utils.RizerUtils;
 
 public class AccountRoutes extends Controller {
 	
-    public static Result inscription(String login, String mdp, String mail) {
-    	//TODO: appeler AccountService.subscribeUser(...)
-        return ok("inscription:"
-    			+ "\nlogin = "+login+"\nmdp = "+mdp+"\nmail = "+mail);
-    }
-    
-    public static Result connexion(String login, String mdp){
-    	//TODO: appeler AccountService.connection(...)
+    /**
+	 * connecte un utilisateur
+	 * @param login
+	 * @param mdp
+	 * @return l'id du compte
+	 */
+    public static Result connexion(String login, String pass){
+    	//TODO: appeler TokenService.connection(...)
     	return ok("connexion:"
-    			+ "\nlogin = "+login+"\nmdp = "+mdp);
+    			+ "\nlogin = "+login+"\npass = "+pass);
     }
 
+    /**
+     * Verifie le token d'un utilisateur
+     * @param UUID
+     * @return true si OK, false sinon
+     */
     public static Result checkToken(String UUID){
     	//TODO: appeler TokenService.checkToken(...)
     	return ok("checkToken:"
     			+ "\nToken = "+UUID);
     }
-
+	
+	/**
+	 * Inscris un utilisateur
+	 * @param login
+	 * @param pass
+	 * @param mail
+	 * @param pseudo
+	 * @return l'id du Account crée, ou null si existant
+	 */
+    public static Result inscription(String login, String pass, String mail, String pseudo) {
+    	//TODO: appeler AccountService.subscribeAccount(...)
+        return ok("inscription:"
+    			+ "\nlogin = "+login+"\npass = "+pass+"\nmail = "+mail+"\npseudo = "+pseudo);
+    }
+    
+    /**
+     * Modifie en base les informations non nulles passées en parametre, et met à jour le compte
+     * @param UUID
+     * @param keys (les attributs de Account)
+     * @param values (les nouvelles valeurs)
+     * @return true si OK, false sinon
+     */
     public static Result modifyAccountInformations(String UUID, String keys, String values){
     	//TODO: construire un objet Account et appeler AccountService.modifyAccount(...)
     	String[] keysArray = keys.split(RizerUtils.URL_SPLITTER);
@@ -32,18 +58,44 @@ public class AccountRoutes extends Controller {
     			+ "\nUUID = "+UUID+"\nnombre de clés = "+keysArray.length+"\nnombre de valeurs = "+valuesArray.length);
     }
 
-    public static Result visualizeAccountInformations(String UUID, Integer idAccount){
-    	//TODO: appeler AccountService.seeAccount(...)
+    /**
+     * Retourne certaines informations du compte
+     * @param UUID
+     * @return un Account
+     */
+    public static Result visualizeAccountInformations(String UUID){
+    	//TODO: appeler AccountService.visualizeAccount(...)
     	return ok("visualizeAccountInformations:"
-    			+ "\nUUID = "+UUID+"\nIdAccount = "+idAccount);
+    			+ "\nUUID = "+UUID);
+    }
+    
+    /**
+     * Retourne TOUTES (excepté pass) les informations du compte
+     * @param UUID
+     * @return un Account
+     */
+    public static Result visualizeMyAccountInformations(String UUID){
+    	//TODO: appeler AccountService.visualizeAccount(...)
+    	return ok("visualizeMyAccountInformations:"
+    			+ "\nUUID = "+UUID);
     }
 
+    /**
+	 * Permet de se desinscrire
+	 * @param UUID
+	 * @return true si Ok, false sinon
+	 */
     public static Result deleteAccount(String UUID) {
-    	//TODO: appeler AccountService.unsubscribe(...)
+    	//TODO: appeler AccountService.deleteAccount(...)
     	return ok("deleteAccount:"
     			+ "\nUUID = "+UUID);
     }
 
+    /**
+	 * Permet d'entrer dans la phase pour devenir artist
+	 * @param UUID
+	 * @return true si Ok, false sinon
+	 */
     public static Result sendDemandBecomeArtist(String UUID) {
     	//TODO: appeler AccountService.becomeArtist(...)
     	return ok("sendDemandBecomeArtist:"

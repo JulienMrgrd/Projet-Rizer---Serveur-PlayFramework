@@ -6,10 +6,11 @@
 
 
 # Account
-GET     /inscr/:login/:pass/:mail   	controllers.AccountRoutes.inscription(login:String,pass:String,mail:String)
-GET     /connex/:login/:pass	    	controllers.AccountRoutes.connexion(login:String,pass:String)
-GET     /check/:uuid			    	controllers.AccountRoutes.checkToken(uuid:String)
-GET     /modifAcc/:uuid/:keys/:values controllers.AccountRoutes.modifyAccountInformations(uuid:String,keys:String,values:String)
-GET     /visuaAcc/:uuid/:idAcc    		controllers.AccountRoutes.visualizeAccountInformations(uuid:String,idAcc:Integer)
-GET     /deleteAcc/:uuid			    controllers.AccountRoutes.deleteAccount(uuid:String)
-GET     /becomeArt/:uuid   				controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
+GET     /connex/:login/:pass	    	   controllers.AccountRoutes.connexion(login:String,pass:String)
+GET     /check/:uuid			    	   controllers.AccountRoutes.checkToken(uuid:String)
+GET     /inscr/:login/:pass/:mail/:pseudo  controllers.AccountRoutes.inscription(login:String,pass:String,mail:String,pseudo:String)
+GET     /modifAcc/:uuid/:keys/:values      controllers.AccountRoutes.modifyAccountInformations(uuid:String,keys:String,values:String)
+GET     /visuaAcc/:uuid		    		   controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
+GET     /visuaMyAcc/:uuid	  		  	   controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
+GET     /deleteAcc/:uuid			       controllers.AccountRoutes.deleteAccount(uuid:String)
+GET     /becomeArt/:uuid   				   controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)

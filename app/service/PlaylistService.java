@@ -1,63 +1,87 @@
 package service;
 
-import java.util.List;
+import models.Playlist;
+
 
 public class PlaylistService {
 
 	/**
 	 * creer une playlist
-	 * @param idProfil id de l'utilisateur
+	 * @param idAccount id de l'utilisateur
 	 * @param name nom de la playlist
-	 * @param tracks la liste des music
+	 * @return idPlaylist si OK, null sinon
 	 */
-	public static void createPlayList(Integer idProfil, String name,
-			List<Integer> tracks) {
+	public static Integer createPlayList(Integer idAccount, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * Interroge la base pour savoir si un utilisateur a une playlist
+	 * @param idAccount id de l'utilisateur
+	 * @return idPlaylist si OK, null sinon
+	 */
+	public static void hasAPlayList(Integer idAccount) {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * Modifie les infos d'une playlist
-	 * @param idProfil id de l'utilisateur
-	 * @param information les infos qu'on veut ajouter
+	 * Permet de modifier sa playlist
+	 * @param idAccount id de l'utilisateur
+	 * @param playlist L'objet Playlist contenant les nouvelles informations
+	 * @return true si Ok, false sinon
 	 */
-	public static void modifyPlaylist(Integer idProfil, String information) {
+	public static void modifyPlaylist(Integer idAccount, Playlist playlist) {
 		// TODO Auto-generated method stub
 
 	}
 
 	/**
-	 * supprime une playlist
-	 * @param idProfil id de l'utilisateur
+	 * Supprime une playlist
+	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
+	 * @return true si Ok, false sinon
 	 */
-	public static void deletePlaylist(Integer idProfil, Integer idPlaylist) {
+	public static boolean deletePlaylist(Integer idAccount, Integer idPlaylist) {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 
 	/**
-	 * ajoute une music a une playlist
-	 * @param idProfil id de l'utilisateur
+	 * Ajoute une music a une playlist
+	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
-	 * @param idMusic id de la music
+	 * @param idMusic id de la music (préalablement uploadé sur serveur)
+	 * @return true si Ok, false sinon
 	 */
-	public static void addMusicPlaylist(Integer idProfil, Integer idPlaylist,
+	public static boolean addMusicToPlaylist(Integer idAccount, Integer idPlaylist,
 			Integer idMusic) {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 
 	/**
-	 * enleve une music a une playlist
-	 * @param idProfil id de l'utilisateur
+	 * Enleve une music d'une playlist
+	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 * @param idMusic id de la music
-	 * 	 
+	 * @return true si Ok, false sinon
 	 */
-	public static void removeMusicPlaylist(Integer idProfil, Integer idPlaylist,
+	public static boolean removeMusicInPlaylist(Integer idAccount, Integer idPlaylist,
 			Integer idMusic) {
 		// TODO Auto-generated method stub
-
+		return false;
+	}
+	
+	/**
+	 * Visualise une playlist
+	 * @param idAccount id de l'utilisateur
+	 * @param idPlaylist id de la playlist
+	 * @return la Playlist, null sinon	 
+	 */
+	public static Playlist visualizePlaylist(Integer idAccount, Integer idPlaylist) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
