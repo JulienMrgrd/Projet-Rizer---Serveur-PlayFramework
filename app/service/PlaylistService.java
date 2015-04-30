@@ -11,9 +11,9 @@ public class PlaylistService {
 	 * @param name nom de la playlist
 	 * @return idPlaylist si OK, null sinon
 	 */
-	public static Integer createPlayList(Integer idAccount, String name) {
+	public static int createPlayList(int idAccount, String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return -1;
 	}
 	
 	/**
@@ -21,7 +21,7 @@ public class PlaylistService {
 	 * @param idAccount id de l'utilisateur
 	 * @return idPlaylist si OK, null sinon
 	 */
-	public static void hasAPlayList(Integer idAccount) {
+	public static void hasAPlayList(int idAccount) {
 		// TODO Auto-generated method stub
 	}
 
@@ -31,7 +31,7 @@ public class PlaylistService {
 	 * @param playlist L'objet Playlist contenant les nouvelles informations
 	 * @return true si Ok, false sinon
 	 */
-	public static void modifyPlaylist(Integer idAccount, Playlist playlist) {
+	public static void modifyPlaylist(int idAccount, Playlist playlist) {
 		// TODO Auto-generated method stub
 
 	}
@@ -42,7 +42,7 @@ public class PlaylistService {
 	 * @param idPlaylist id de la playlist
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean deletePlaylist(Integer idAccount, Integer idPlaylist) {
+	public static boolean deletePlaylist(int idAccount, int idPlaylist) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -54,8 +54,8 @@ public class PlaylistService {
 	 * @param idMusic id de la music (préalablement uploadé sur serveur)
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean addMusicToPlaylist(Integer idAccount, Integer idPlaylist,
-			Integer idMusic) {
+	public static boolean addMusicToPlaylist(int idAccount, int idPlaylist,
+			int idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -67,8 +67,8 @@ public class PlaylistService {
 	 * @param idMusic id de la music
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean removeMusicInPlaylist(Integer idAccount, Integer idPlaylist,
-			Integer idMusic) {
+	public static boolean removeMusicInPlaylist(int idAccount, int idPlaylist,
+			int idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -79,7 +79,7 @@ public class PlaylistService {
 	 * @param idPlaylist id de la playlist
 	 * @return la Playlist, null sinon	 
 	 */
-	public static Playlist visualizePlaylist(Integer idAccount, Integer idPlaylist) {
+	public static Playlist visualizePlaylist(int idAccount, int idPlaylist) {
 		// TODO Auto-generated method stub
 		return null;
 	}
