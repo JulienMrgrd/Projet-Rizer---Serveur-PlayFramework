@@ -20,9 +20,9 @@ GET     /createPlist/:uuid/:name	        	     controllers.PlaylistRoutes.create
 GET     /hasAPlist/:uuid			        	     controllers.PlaylistRoutes.hasAPlaylist(uuid:String)
 POST    /modifPlist/:uuid/:idPlist   			     controllers.PlaylistRoutes.modifyInfosOnePlaylist(uuid:String,idPlist:Int)
 GET     /deletePlist/:uuid/:idPlist  			     controllers.PlaylistRoutes.deleteOnePlaylist(uuid:String,idPlist:Int)
-GET     /addMusicToPlist/:uuid/:idPList/:musicId     controllers.PlaylistRoutes.addMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
-GET     /deleteMusicToPlist/:uuid/:idPList/:musicId	 controllers.PlaylistRoutes.removeMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
-GET     /visualizeOnePlist/:uuid/:idPList		     controllers.PlaylistRoutes.visualizeOnePlaylist(uuid:String,idPlist:Int)
+GET     /addMusicToPlist/:uuid/:idPlist/:musicId     controllers.PlaylistRoutes.addMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
+GET     /deleteMusicToPlist/:uuid/:idPlist/:musicId	 controllers.PlaylistRoutes.removeMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
+GET     /visualizeOnePlist/:uuid/:idPlist		     controllers.PlaylistRoutes.visualizeOnePlaylist(uuid:String,idPlist:Int)
 
 # Music
 POST 	/uploadMusic/:uuid							 controllers.MusicRoutes.uploadMusic(uuid:String)
@@ -33,6 +33,6 @@ GET		/commentMusic/:uuid/:musicId/:comment		 controllers.MusicRoutes.commentMusi
 POST	/listenMusic/:uuid/:musicId					 controllers.MusicRoutes.listenMusic(uuid:String,musicId:Int)
 
 # SocialActivity
-GET		/followArtist/:uuid/:artistId				 controllers.SocialActivityRoutes.followArtist(uuid:String,userId:Int)
-GET		/unfollowArtist/:uuid/:artistId				 	 controllers.SocialActivityRoutes.unfollowArtist(uuid:String,userId:Int)
-GET		/rizerArtist/:uuid/:artistId		 		 controllers.SocialActivityRoutes.rizerArtist(uuid:String,userId:Int)
+GET		/followArtist/:uuid/:artistId				 controllers.SocialActivityRoutes.followArtist(uuid:String,artistId:Int)
+GET		/unfollowArtist/:uuid/:artistId				 	 controllers.SocialActivityRoutes.unfollowArtist(uuid:String,artistId:Int)
+GET		/rizerFuturArtist/:uuid/:userId		 		 controllers.SocialActivityRoutes.rizerFuturArtist(uuid:String,userId:Int)
