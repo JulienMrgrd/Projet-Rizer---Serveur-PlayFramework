@@ -17,8 +17,11 @@ libraryDependencies ++= Seq(
   "com.fasterxml.jackson.core" % "jackson-core" % "2.1.0" force(),
   "org.mongodb" % "mongo-java-driver" % "2.11.3",
   "org.jongo" % "jongo" % "1.0",
-  "uk.co.panaxiom" %% "play-jongo" % "0.7.0-jongo1.0"
+  "uk.co.panaxiom" %% "play-jongo" % "0.7.0-jongo1.0",
+  "org.apache.mahout" % "mahout-core" % "0.9"
 )
 
+
+fork in run := true
 
 fork in run := true
