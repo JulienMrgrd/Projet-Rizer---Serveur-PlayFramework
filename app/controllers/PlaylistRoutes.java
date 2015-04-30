@@ -1,15 +1,13 @@
 package controllers;
 
-import models.Playlist;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import com.fasterxml.jackson.databind.JsonNode;
+import utils.RizerUtils;
 
 public class PlaylistRoutes extends Controller{
 	
 	/**
-	 * Creer une playlist
+	 * creer une playlist
 	 * @param UUID
 	 * @param name nom de la playlist
 	 * @return idPlaylist si OK, null sinon
@@ -21,7 +19,7 @@ public class PlaylistRoutes extends Controller{
     }
     
     /**
-	 * Verifie si l'utilisateur possède une playlist
+	 * verifie si l'utilisateur possède une playlist
 	 * @param UUID
 	 * @return idPlaylist si OK, null sinon
 	 */
@@ -31,27 +29,19 @@ public class PlaylistRoutes extends Controller{
     }
     
     /**
-     * Modifie en base la Playlist passée en parametre (en JSon), et met ses attributs non nuls à jour en base
+     * Modifie en base les informations non nulles passées en parametre, et met à jour la playlist
      * @param UUID
      * @param idPlaylist
+     * @param keys (les attributs de playlist)
+     * @param values (les nouvelles valeurs)
      * @return true si OK, false sinon
      */
-    public static Result modifyInfosOnePlaylist(String UUID, int idPlaylist){
-    	//TODO : Ios envoie l'objet Playlist dans la requete POST, en transformant playlist en Json: 
-    	//TODO : JsonNode playlistJson = Json.toJson(playlist);
-    	//TODO : Voir https://www.playframework.com/documentation/2.4.x/JavaJsonActions
-    	JsonNode json = request().body().asJson();
-        if(json == null) {
-            return badRequest("Expecting Json data");
-        } 
-
-        Playlist playlist = play.libs.Json.fromJson(json, Playlist.class);
-        if(playlist == null) {
-             return badRequest("Not a Playlist object");
-        }
+    public static Result modifyInfosOnePlaylist(String UUID, int idPlaylist, String keys, String values){
     	//TODO: construire un objet PlayList et appeler PlaylistService.modifyPlaylist(...)
+    	String[] keysArray = keys.split(RizerUtils.URL_SPLITTER);
+    	String[] valuesArray = values.split(RizerUtils.URL_SPLITTER);
     	return ok("modifyInfosOnePlaylist:"
-    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nplaylist = "+playlist.getName());
+    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nnombre de clés = "+keysArray.length+"\nnombre de valeurs = "+valuesArray.length);
     }
     
     /**

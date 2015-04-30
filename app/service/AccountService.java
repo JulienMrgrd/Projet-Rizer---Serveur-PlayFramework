@@ -14,9 +14,9 @@ public class AccountService {
 	 * @param pseudonym pseudo de l'utilisateur
 	 * @return Id du user cree ou null sinon
 	 */
-	public static int subscribeAccount(String login, String password, String email, String pseudo) {
+	public static Integer subscribeAccount(String login, String password, String email, String pseudo) {
 		// TODO Auto-generated method stub
-		return -1;
+		return null;
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class AccountService {
 	 * @param account L'objet Account contenant les nouvelles informations
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean modifyAccount(int idAccount, Account account) {
+	public static boolean modifyAccount(Integer idAccount, Account account) {
 		// TODO les champs null de "account" ne provoqueront aucun changement en base, les autres oui.
 		return false;
 	}
@@ -33,7 +33,7 @@ public class AccountService {
 	 * Permet de voir un Account (tous les attributs ne seront pas renseignés)
 	 * @param idAccount id du Account à voir
 	 */
-	public static Account visualizeAccount(int idAccount) {
+	public static Account visualizeAccount(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,7 +42,7 @@ public class AccountService {
 	 * Permet de voir son Account
 	 * @param idAccount id du Account à voir
 	 */
-	public static Account visualizeMyAccount(int idAccount) {
+	public static Account visualizeMyAccount(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,7 +52,7 @@ public class AccountService {
 	 * @param idAccount id du Account a supprimer
 	 * @return true si Ok, false sinon
 	 */
-	public static void deleteAccount(int idAccount) {
+	public static void deleteAccount(Integer idAccount) {
 		// TODO Auto-generated method stub
 	}
 
@@ -61,7 +61,7 @@ public class AccountService {
 	 * @param user id du Account a promouvoir
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean becomeArtist(int idAccount) {
+	public static boolean becomeArtist(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -70,7 +70,7 @@ public class AccountService {
 	 * Transforme un User en Artist (le client n'appelle pas cette méthode, c'est un daemon
 	 * qui le fait)
 	 */
-	private static Artist transformToArtist(int idUser) {
+	private static Artist transformToArtist(Integer idUser) {
 		// TODO Auto-generated method stub
 		return null;
 	}

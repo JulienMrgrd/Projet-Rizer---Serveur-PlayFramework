@@ -6,33 +6,11 @@
 
 
 # Account
-GET     /connex/:login/:pass	    	   			 controllers.AccountRoutes.connexion(login:String,pass:String)
-GET     /check/:uuid			    	   			 controllers.AccountRoutes.checkToken(uuid:String)
-GET     /inscr/:login/:pass/:mail/:pseudo  			 controllers.AccountRoutes.inscription(login:String,pass:String,mail:String,pseudo:String)
-POST    /modifAcc/:uuid 			       			 controllers.AccountRoutes.modifyAccountInformations(uuid:String)
-GET     /visuaAcc/:uuid		    		   			 controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
-GET     /visuaMyAcc/:uuid	  		  	   		     controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
-GET     /deleteAcc/:uuid			       			 controllers.AccountRoutes.deleteAccount(uuid:String)
-GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
-
-# Playlist
-GET     /createPlist/:uuid/:name	        	     controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String)
-GET     /hasAPlist/:uuid			        	     controllers.PlaylistRoutes.hasAPlaylist(uuid:String)
-POST    /modifPlist/:uuid/:idPlist   			     controllers.PlaylistRoutes.modifyInfosOnePlaylist(uuid:String,idPlist:Int)
-GET     /deletePlist/:uuid/:idPlist  			     controllers.PlaylistRoutes.deleteOnePlaylist(uuid:String,idPlist:Int)
-GET     /addMusicToPlist/:uuid/:idPList/:musicId     controllers.PlaylistRoutes.addMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
-GET     /deleteMusicToPlist/:uuid/:idPList/:musicId	 controllers.PlaylistRoutes.removeMusicToPlaylist(uuid:String,idPlist:Int,musicId:Int)
-GET     /visualizeOnePlist/:uuid/:idPList		     controllers.PlaylistRoutes.visualizeOnePlaylist(uuid:String,idPlist:Int)
-
-# Music
-POST 	/uploadMusic/:uuid							 controllers.MusicRoutes.uploadMusic(uuid:String)
-POST 	/modifyInfosMusic/:uuid						 controllers.MusicRoutes.modifyInfosMusic(uuid:String)
-GET		/deleteMusic/:uuid/:musicId					 controllers.MusicRoutes.deleteMusic(uuid:String,musicId:Int)
-GET		/likeMusic/:uuid/:musicId					 controllers.MusicRoutes.likeMusic(uuid:String,musicId:Int)
-GET		/commentMusic/:uuid/:musicId/:comment		 controllers.MusicRoutes.commentMusic(uuid:String,musicId:Int,comment:String)
-POST	/listenMusic/:uuid/:musicId					 controllers.MusicRoutes.listenMusic(uuid:String,musicId:Int)
-
-# SocialActivity
-GET		/followArtist/:uuid/:artistId				 controllers.SocialActivityRoutes.followArtist(uuid:String,userId:Int)
-GET		/likeMusic/:uuid/:artistId				 	 controllers.SocialActivityRoutes.unfollowArtist(uuid:String,userId:Int)
-GET		/commentMusic/:uuid/:artistId		 		 controllers.SocialActivityRoutes.rizerArtist(uuid:String,userId:Int)
+GET     /connex/:login/:pass	    	   controllers.AccountRoutes.connexion(login:String,pass:String)
+GET     /check/:uuid			    	   controllers.AccountRoutes.checkToken(uuid:String)
+GET     /inscr/:login/:pass/:mail/:pseudo  controllers.AccountRoutes.inscription(login:String,pass:String,mail:String,pseudo:String)
+GET     /modifAcc/:uuid/:keys/:values      controllers.AccountRoutes.modifyAccountInformations(uuid:String,keys:String,values:String)
+GET     /visuaAcc/:uuid		    		   controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
+GET     /visuaMyAcc/:uuid	  		  	   controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
+GET     /deleteAcc/:uuid			       controllers.AccountRoutes.deleteAccount(uuid:String)
+GET     /becomeArt/:uuid   				   controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)

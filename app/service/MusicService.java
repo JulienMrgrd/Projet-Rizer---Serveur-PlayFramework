@@ -10,7 +10,7 @@ public class MusicService{
 	 * @param music le fichier a uploader
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean addMusic(int idAccount, Music music) {
+	public static boolean addMusic(Integer idAccount, Music music) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -21,7 +21,7 @@ public class MusicService{
 	 * @param music la musique a remplacer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean modifyInfoMusic(int idAccount, Music music) {
+	public static boolean modifyInfoMusic(Integer idAccount, Music music) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -32,7 +32,7 @@ public class MusicService{
 	 * @param idMusic l'id de la musique a supprimer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean deleteMusic(int idAccount, int idMusic) {
+	public static boolean deleteMusic(Integer idAccount, Integer idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -43,7 +43,7 @@ public class MusicService{
 	 * @param idMusic l'id de la musique like
 	 * @return vrai si l'operation s'est bien passee.
 	 */
-	public static boolean likerMusic(int idAccount, int idMusic) {
+	public static boolean likerMusic(Integer idAccount, Integer idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -55,19 +55,8 @@ public class MusicService{
 	 * @param comment le commentaire
 	 * @return
 	 */
-	public static boolean commentMusic(int idAccount, int idMusic,
+	public static boolean commentMusic(Integer idAccount, Integer idMusic,
 			String comment) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	/**
-	 * Permet à l'utilisateur d'écouter une musique
-	 * @param idAccount l'id du compte qui commente
-	 * @param idMusic l'id de la musique qui est commentee
-	 * @return
-	 */
-	public static boolean listenMusic(int idAccount, int idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}

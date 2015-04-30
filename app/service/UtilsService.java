@@ -93,7 +93,7 @@ public class UtilsService{
 	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Artist> recommendArtist(int idAccount) {
+	public static List<Artist> recommendArtist(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -103,7 +103,7 @@ public class UtilsService{
 	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Album> recommendAlbum(int idAccount) {
+	public static List<Album> recommendAlbum(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -113,7 +113,7 @@ public class UtilsService{
 	 * @param idAccount l'id du compte
 	 * @return la liste des resultats
 	 */
-	public static List<Music> recommendMusic(int idAccount) {
+	public static List<Music> recommendMusic(Integer idAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -29,10 +29,6 @@ Pour ceux qui ont des erreurs dans le code depuis la modification des dependance
 3-Refaire un "create Eclipse projet" 
 
 
-///////////////////////////// JSON //////////////////////////
-Pour le passage d'objet, on envoie sur le réseau l'objet en Json, dans une requête POST
-Play reçoit le Json, et le transforme en objet.
-=> Voir modifyAccountInformations dans AccountRoutes
-=> et https://www.playframework.com/documentation/2.4.x/JavaJsonActions
+
  
 
