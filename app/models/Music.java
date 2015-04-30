@@ -8,7 +8,7 @@ public class Music {
     
 	private Integer id;
     private String name;
-    private String file;
+    private String fileId;
     private List<Integer> like;
     private HashMap<String,String> comment;//pseudo+commentaire
     private List<Tag> tags;
@@ -33,7 +33,7 @@ public class Music {
 		super();
 		this.id = id;
 		this.name = name;
-		this.file = file;
+		this.fileId = file;
 		this.like = like;
 		this.comment = comment;
 		this.tags = tags;
@@ -53,11 +53,11 @@ public class Music {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getFile() {
-		return file;
+	public String getFileId() {
+		return fileId;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setFileId(String file) {
+		this.fileId = file;
 	}
 	public List<Integer> getLike() {
 		return like;
