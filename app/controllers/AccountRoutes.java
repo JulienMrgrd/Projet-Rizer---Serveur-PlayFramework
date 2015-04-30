@@ -1,8 +1,10 @@
 package controllers;
 
+import models.Account;
 import play.mvc.Controller;
 import play.mvc.Result;
-import utils.RizerUtils;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class AccountRoutes extends Controller {
 	
@@ -44,18 +46,26 @@ public class AccountRoutes extends Controller {
     }
     
     /**
-     * Modifie en base les informations non nulles passées en parametre, et met à jour le compte
+     * Modifie en base l'Account passé en parametre(en JSon), et met ses attributs non nuls à jour en base
      * @param UUID
-     * @param keys (les attributs de Account)
-     * @param values (les nouvelles valeurs)
      * @return true si OK, false sinon
      */
-    public static Result modifyAccountInformations(String UUID, String keys, String values){
+    public static Result modifyAccountInformations(String UUID){
+    	//TODO : Ios envoie l'objet Account dans la requete POST, en transformant Account en Json: 
+    	//TODO : JsonNode accountJson = Json.toJson(account);
+    	//TODO : Voir https://www.playframework.com/documentation/2.4.x/JavaJsonActions
+    	JsonNode json = request().body().asJson();
+        if(json == null) {
+            return badRequest("Expecting Json data");
+        } 
+
+        Account account = play.libs.Json.fromJson(json, Account.class);
+        if(account == null) {
+             return badRequest("Not an Account object");
+        }
     	//TODO: construire un objet Account et appeler AccountService.modifyAccount(...)
-    	String[] keysArray = keys.split(RizerUtils.URL_SPLITTER);
-    	String[] valuesArray = values.split(RizerUtils.URL_SPLITTER);
     	return ok("modifyAccountInformations:"
-    			+ "\nUUID = "+UUID+"\nnombre de clés = "+keysArray.length+"\nnombre de valeurs = "+valuesArray.length);
+    			+ "\nUUID = "+UUID+"\naccount_pseudo = "+account.getPseudo());
     }
 
     /**

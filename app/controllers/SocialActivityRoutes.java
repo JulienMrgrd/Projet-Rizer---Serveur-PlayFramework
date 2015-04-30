@@ -5,16 +5,37 @@ import play.mvc.Result;
 
 public class SocialActivityRoutes extends Controller{
 	
-    public static Result followArtist(String UUID, Integer idArtist) {
-		return ok("Your new application is ready."); 
-	}
+    /**
+	 * Follow un artist
+	 * @param UUID
+	 * @param idArtist l'artiste à follow
+	 */
+	public static Result followArtist (String UUID, int artistId){ 
+		//TODO: appeller SocialActivityService.followArtist(...)
+		return ok("followArtist:"
+				+ "\nUUID = "+UUID+"\nartistId = "+artistId);
+    }
     
-    public static Result unfollowArtist(String UUID, Integer idArtist){
-		return ok("Your new application is ready."); 
-	}
+	/**
+	 * Unfollow un artist
+	 * @param UUID
+	 * @param idArtist l'artiste à unfollow
+	 */
+	public static Result unfollowArtist (String UUID, int artistId){ 
+		//TODO: appeller SocialActivityService.unfollowArtist(...)
+		return ok("unfollowArtist:"
+				+ "\nUUID = "+UUID+"\nartistId = "+artistId);
+    }
 
-    public static Result rizerFuturArtist(String UUID){
-		return ok("Your new application is ready."); 
-	}
+	/**
+	 * Follow un artist
+	 * @param UUID
+	 * @param idUser le user à rizer (si une demande est en cours)
+	 */
+	public static Result rizerFuturArtist (String UUID, int userId){ 
+		//TODO: appeller SocialActivityService.rizeFuturArtist(...)
+		return ok("rizerFuturArtist:"
+				+ "\nUUID = "+UUID+"\nuserId = "+userId);
+    }
 
 }
