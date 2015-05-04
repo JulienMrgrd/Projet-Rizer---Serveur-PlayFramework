@@ -2,11 +2,14 @@ package models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Album {
 
-	private Integer id;
+	@JsonProperty("_id")
+	private String _id;
 	private String title;
-    private List<Integer> tracks;
+    private List<String> tracks;
     private Artist artist;
     
 	/**
@@ -15,20 +18,20 @@ public class Album {
 	 * @param tracks : Liste d'ID de music
 	 * @param artist
 	 */
-	public Album(Integer id, String title, List<Integer> tracks, Artist artist) {
+	public Album(String id, String title, List<String> tracks, Artist artist) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.title = title;
 		this.tracks = tracks;
 		this.artist = artist;
 	}
     
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(String id) {
+		this._id = id;
 	}
-	public Integer getId() {
-		return id;
+	public String getId() {
+		return _id;
 	}
 	public String getTitle() {
 		return title;
@@ -36,10 +39,10 @@ public class Album {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public List<Integer> getTracks() {
+	public List<String> getTracks() {
 		return tracks;
 	}
-	public void setTracks(List<Integer> tracks) {
+	public void setTracks(List<String> tracks) {
 		this.tracks = tracks;
 	}
 	public Artist getArtist() {

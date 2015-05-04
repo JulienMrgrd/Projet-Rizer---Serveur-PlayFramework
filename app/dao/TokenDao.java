@@ -91,7 +91,7 @@ public class TokenDao {
         JLabel label = new JLabel(new ImageIcon((Image)f));
         frame.add(label);
         frame.setVisible(true);*/
-		//PlayJongo.getCollection("Token").save(new Token("ddddd"));
+		PlayJongo.getCollection("Token").save(new Token("ddddd"));
 		//PlayJongo.getCollection("Token").remove("{ dateMaj: { $lt: # }}", new DateTime("2015-04-17T15:36:14.300+02:00").toString());
 		
 		//System.out.println(new DateTime());

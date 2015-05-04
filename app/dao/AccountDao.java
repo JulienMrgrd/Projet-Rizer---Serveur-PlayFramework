@@ -19,6 +19,7 @@ public class AccountDao {
 	}
 
 	public static void deleteUser(String _id){
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package dao;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import com.mongodb.gridfs.GridFSInputFile;
 
@@ -23,5 +24,14 @@ public class MusicDao {
 		Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
 		PlayJongo.gridfs().remove(musicTmp.getFileId());
 		PlayJongo.getCollection("Music").remove(_id);
+		
+		
 	}
+	
+	public static InputStream getInputStreamMusic(String _id){
+		Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
+		return PlayJongo.gridfs().findOne(musicTmp.getFileId()).getInputStream();
+	}
+	
+	
 }
