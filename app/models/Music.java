@@ -4,9 +4,12 @@ import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Music {
     
-	private Integer id;
+	@JsonProperty("_id")
+	private String _id;
     private String name;
     private String fileId;
     private List<Integer> like;
@@ -27,11 +30,11 @@ public class Music {
 	 * @param duration : Duree de la musique
 	 * @param album 
 	 */
-	public Music(Integer id, String name, String file, List<Integer> like,
+	public Music(String id, String name, String file, List<Integer> like,
 			HashMap<String, String> comment, List<Tag> tags, Time duration,
 			Album album) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.name = name;
 		this.fileId = file;
 		this.like = like;
@@ -41,11 +44,11 @@ public class Music {
 		this.album = album;
 	}
 	
-	public Integer getId() {
-		return id;
+	public String getId() {
+		return _id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(String id) {
+		this._id = id;
 	}
 	public String getName() {
 		return name;
