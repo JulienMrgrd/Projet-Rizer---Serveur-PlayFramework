@@ -1,5 +1,7 @@
 package service;
 
+import dao.TokenDao;
+
 public class TokenService {
 
 	/**
@@ -9,8 +11,8 @@ public class TokenService {
 	 * @return l'id du Account correspondant
 	 */
 	public String connection(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return TokenDao.getNewToken(login, password);
 	}
 
 	/**

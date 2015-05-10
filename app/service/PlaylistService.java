@@ -1,19 +1,38 @@
 package service;
 
+import java.util.ArrayList;
+
+import models.Artist;
 import models.Playlist;
+import models.User;
+import dao.ArtistDao;
+import dao.PlaylistDao;
+import dao.UserDao;
 
 
 public class PlaylistService {
 
 	/**
-	 * creer une playlist
-	 * @param idAccount id de l'utilisateur
-	 * @param name nom de la playlist
-	 * @return idPlaylist si OK, null sinon
+	 * creer une playlist et l'ajoute au compte
+	 * @param idAccount
+	 * @param name
+	 * @param description
+	 * @return la playlist
 	 */
-	public static int createPlayList(int idAccount, String name) {
-		// TODO Auto-generated method stub
-		return -1;
+	public static Playlist createPlayList(String idAccount, String name, String description) {
+		User user = null;
+		Playlist playlist = new Playlist(new ArrayList<String>(), name, description);
+		PlaylistDao.addPlaylist(playlist);
+		user = UserDao.getArtist(idAccount);
+		if(user!=null){
+			user.getPlaylists().add(playlist);
+			UserDao.inscriptionUser(user);
+		}else{
+			Artist artist = ArtistDao.getArtist(idAccount);
+			artist.getPlaylists().add(playlist);
+			ArtistDao.inscriptionArtist(artist);
+		}
+		return playlist;
 	}
 	
 	/**
@@ -31,9 +50,8 @@ public class PlaylistService {
 	 * @param playlist L'objet Playlist contenant les nouvelles informations
 	 * @return true si Ok, false sinon
 	 */
-	public static void modifyPlaylist(int idAccount, Playlist playlist) {
+	public static void modifyPlaylist(String idAccount, Playlist playlist) {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
