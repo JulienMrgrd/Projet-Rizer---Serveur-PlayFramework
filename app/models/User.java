@@ -5,7 +5,7 @@ import java.util.List;
 public class User extends Account{
 
     private boolean futurArtist;
-    private List<Integer> rizeGet;
+    private List<String> rizeGet;
     
 	/**
  	 * @param id 
@@ -23,7 +23,7 @@ public class User extends Account{
 	 * @param rizeGet : Nombre de rize obtenus
 	 */
 	public User(String id, String photo, String login, String password, String pseudo, String email, String description, 
-			List< Playlist > playlists,	List<Integer> rises, List<Integer> follow, List<Integer> historical, boolean futurArtist,	List<Integer> rizeGet) {
+			List< Playlist > playlists,	List<String> rises, List<String> follow, List<String> historical, boolean futurArtist,	List<String> rizeGet) {
 		
 		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
 		this.futurArtist = futurArtist;
@@ -36,10 +36,10 @@ public class User extends Account{
 	public void setfuturArtist(boolean futurArtist) {
 		this.futurArtist = futurArtist;
 	}
-	public List<Integer> getRizeGet() {
+	public List<String> getRizeGet() {
 		return rizeGet;
 	}
-	public void setRizeGet(List<Integer> rizeGet) {
+	public void setRizeGet(List<String> rizeGet) {
 		this.rizeGet = rizeGet;
 	}
 }

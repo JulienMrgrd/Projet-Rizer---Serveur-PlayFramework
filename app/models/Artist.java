@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Artist extends Account{
 
-    private List<Integer> library; //id album
-    private List<Integer> followers; //id compte
+    private List<String> library; //id album
+    private List<String> followers; //id compte
     private List<String> news;
     private String biography;
     
@@ -27,8 +27,8 @@ public class Artist extends Account{
 	 * @param biography
 	 */
 	public Artist(String id, String photo, String login, String password, String pseudo, String email, String description, 
-			List< Playlist > playlists,	List<Integer> rises, List<Integer> follow, List<Integer> historical, List<Integer> library,
-			List<Integer> followers, List<String> news, String biography) {
+			List< Playlist > playlists,	List<String> rises, List<String> follow, List<String> historical, List<String> library,
+			List<String> followers, List<String> news, String biography) {
 		
 		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
 		this.library = library;
@@ -41,16 +41,16 @@ public class Artist extends Account{
 		super();
 	}
 	
-	public List<Integer> getLibrary() {
+	public List<String> getLibrary() {
 		return library;
 	}
-	public void setLibrary(List<Integer> library) {
+	public void setLibrary(List<String> library) {
 		this.library = library;
 	}
-	public List<Integer> getFollowers() {
+	public List<String> getFollowers() {
 		return followers;
 	}
-	public void setFollowers(List<Integer> followers) {
+	public void setFollowers(List<String> followers) {
 		this.followers = followers;
 	}
 	public List<String> getNews() {

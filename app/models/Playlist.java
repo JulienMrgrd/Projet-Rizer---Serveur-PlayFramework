@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Playlist {
 	
-	private List<Integer> listMusics;
+	private List<String> listMusics;
 	private String name;
 	private String description;
 	
@@ -16,17 +16,17 @@ public class Playlist {
 	 * @param name
 	 * @param description
 	 */
-	public Playlist(List<Integer> listMusics, String name, String description) {
+	public Playlist(List<String> listMusics, String name, String description) {
 		super();
 		this.listMusics = listMusics;
 		this.name = name;
 		this.description = description;
 	}
 	
-	public List<Integer> getListMusics() {
+	public List<String> getListMusics() {
 		return listMusics;
 	}
-	public void setListMusics(List<Integer> listMusics) {
+	public void setListMusics(List<String> listMusics) {
 		this.listMusics = listMusics;
 	}
 	public String getName() {
