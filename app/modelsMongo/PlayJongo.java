@@ -7,14 +7,13 @@ import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 
 import play.Logger;
-import play.Play;
+
 
 import com.mongodb.DB;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
-import com.mongodb.MongoURI;
 import com.mongodb.gridfs.GridFS;
 
 public class PlayJongo {
@@ -25,10 +24,10 @@ public class PlayJongo {
     private Jongo jongo = null;
     private GridFS gridfs = null;
     private MongoClientURI uri =null;
-    private String dataBase = "playjava";
 
     private PlayJongo() throws UnknownHostException, MongoException {
 
+    		//mongodb://localhost:27017/playjava
     		uri  = new MongoClientURI("mongodb://admin:aqwzsx@ds059651.mongolab.com:59651/playjava"); 
             mongo = new MongoClient(uri);
             DB db = mongo.getDB(uri.getDatabase());

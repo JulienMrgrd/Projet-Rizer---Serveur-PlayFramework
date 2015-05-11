@@ -1,20 +1,13 @@
 package dao;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
+import java.io.IOException;
 
 import org.joda.time.DateTime;
 
-import com.mongodb.gridfs.GridFS;
-import com.mongodb.gridfs.GridFSDBFile;
-import com.mongodb.gridfs.GridFSInputFile;
+
+
 
 import models.*;
 import modelsMongo.PlayJongo;
@@ -23,6 +16,12 @@ import modelsMongo.PlayJongo;
 
 public class TokenDao {
 	
+	/**
+	 * Verrifie l'authentification et renvoi id du compte
+	 * @param login
+	 * @param pswd
+	 * @return renvoi null le compte n'existe pas 
+	 */
 	private static String connexion(String login, String pswd){
 		Account comptetmp=PlayJongo.getCollection("Artist").findOne("{login:#, password:#}", login, pswd).as(Artist.class);
 		if(comptetmp==null)
@@ -34,7 +33,12 @@ public class TokenDao {
 	}
 	
 	
-	
+	/**
+	 * Authentification et renvoi un String correspondant au token
+	 * @param login
+	 * @param pswd
+	 * @return
+	 */
 	public static String getNewToken(String login, String pswd){
 		String idAccount=connexion(login,pswd);
 		if(idAccount==null)
@@ -53,7 +57,11 @@ public class TokenDao {
 	
 	
 	
-	
+	/**
+	 * Verifie la validite d'un token
+	 * @param token
+	 * @return
+	 */
 	public static boolean chekToken(String token){
 		Token userToken=PlayJongo.getCollection("Token").findOne("{_id:#}", token).as(Token.class);
 		if(userToken==null)
@@ -67,11 +75,22 @@ public class TokenDao {
 		
 	}
 	
+	/**
+	 * Supprime un token en base _ logout
+	 * @param _id
+	 */
+	public static void deleteToken(String _id){
+		PlayJongo.getCollection("Token").remove(_id);
+	}
 	
 	
+	/**
+	 * Supprime les token expirer
+	 */
 	public static void cleanToken(){
 		PlayJongo.getCollection("Token").remove("{ dateMaj: { $lt: # }}", new DateTime().minusDays(2).toString());
 	}
+	
 	
 	
 	

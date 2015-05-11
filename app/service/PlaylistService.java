@@ -21,9 +21,9 @@ public class PlaylistService {
 	 */
 	public static Playlist createPlayList(String idAccount, String name, String description) {
 		User user = null;
-		Playlist playlist = new Playlist(new ArrayList<String>(), name, description);
+		Playlist playlist = new Playlist(idAccount, new ArrayList<String>(), name, description);
 		PlaylistDao.addPlaylist(playlist);
-		user = UserDao.getArtist(idAccount);
+		user = UserDao.getUser(idAccount);
 		if(user!=null){
 			user.getPlaylists().add(playlist);
 			UserDao.inscriptionUser(user);

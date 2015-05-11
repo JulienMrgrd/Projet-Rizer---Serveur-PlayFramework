@@ -1,8 +1,6 @@
 package dao;
 
-import java.io.File;
 
-import org.joda.time.DateTime;
 
 import models.*;
 import modelsMongo.PlayJongo;
@@ -25,8 +23,11 @@ public class UserDao {
 		PlayJongo.getCollection("User").remove("{ _id:#}", _id);
 	}
 	
-	public static User getArtist(String _id){
+	public static User getUser(String _id){
 		return PlayJongo.getCollection("User").findOne("{ _id:#}", _id).as(User.class);
 	}
-
+	
+	public static void updateUser(User compte){
+		PlayJongo.getCollection("User").save(compte);
+	}
 }

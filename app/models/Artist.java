@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Artist extends Account{
@@ -35,6 +36,27 @@ public class Artist extends Account{
 		this.followers = followers;
 		this.news = news;
 		this.biography = biography;
+	}
+	
+	public Artist(User userBecomeArtist){
+		
+		this._id = userBecomeArtist.get_id();
+		this.setPhoto(userBecomeArtist.getPhoto());
+		this.setLogin(userBecomeArtist.getLogin());
+		this.setPassword(userBecomeArtist.getPassword());
+		this.setPseudo(userBecomeArtist.getPseudo());
+		this.setEmail(userBecomeArtist.getEmail());
+		this.setDescription(userBecomeArtist.getDescription());
+		this.setPlaylists(userBecomeArtist.getPlaylists());
+		this.setRises(userBecomeArtist.getRises());
+		this.setFollow(userBecomeArtist.getFollow());
+		this.setHistorical(userBecomeArtist.getHistorical());
+		this.setLibrary(userBecomeArtist.getMusicRize());
+		this.setFollowers(userBecomeArtist.getRizeGet());
+		this.news = new ArrayList<String>();
+		this.biography = null;
+		
+		
 	}
 	
 	public Artist(){

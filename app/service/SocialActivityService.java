@@ -16,15 +16,15 @@ public class SocialActivityService{
 	public static boolean followArtist(String idAccount, String idArtist) {
 		boolean follow = false;
 		User user = null;
-		user = UserDao.getArtist(idAccount);
+		user = UserDao.getUser(idAccount);
 		if(user!=null){
 			user.getFollow().add(idArtist);
-			UserDao.inscriptionUser(user);
+			UserDao.updateUser(user);
 			follow = true;
 		}else{
 			Artist artist = ArtistDao.getArtist(idAccount);
 			artist.getFollow().add(idArtist);
-			ArtistDao.inscriptionArtist(artist);
+			ArtistDao.updateArtist(artist);
 			follow = true;
 		}
 		return follow;
@@ -39,7 +39,7 @@ public class SocialActivityService{
 	public static boolean unfollowArtist(String idAccount, String idArtist) {
 		boolean remove = false;
 		User user = null;
-		user = UserDao.getArtist(idAccount);
+		user = UserDao.getUser(idAccount);
 		if(user!=null){
 			for(int i = 0; i<user.getFollow().size() && remove!=true; i++){
 				if(user.getFollow().get(i).equals(idArtist)){
@@ -47,7 +47,7 @@ public class SocialActivityService{
 					remove = true;
 				}
 			}
-			UserDao.inscriptionUser(user);
+			UserDao.updateUser(user);
 		}else{
 			Artist artist = ArtistDao.getArtist(idAccount);
 			for(int i = 0; i<artist.getFollow().size() && remove!=true; i++){
@@ -56,7 +56,7 @@ public class SocialActivityService{
 					remove = true;
 				}
 			}
-			ArtistDao.inscriptionArtist(artist);
+			ArtistDao.updateArtist(artist);
 		}
 		return remove;
 	}
@@ -70,20 +70,20 @@ public class SocialActivityService{
 	public static boolean rizeFuturArtist(String idAccount, String idUser) {
 		boolean rize = false;
 		User user = null;
-		user = UserDao.getArtist(idAccount);
-		User rizer = UserDao.getArtist(idUser);
+		user = UserDao.getUser(idAccount);
+		User rizer = UserDao.getUser(idUser);
 		if(user!=null){
 			user.getRises().add(idUser);
-			UserDao.inscriptionUser(user);
+			UserDao.updateUser(user);
 			rizer.getRizeGet().add(idAccount);
-			UserDao.inscriptionUser(rizer);
+			UserDao.updateUser(rizer);
 			rize = true;
 		}else{
 			Artist artist = ArtistDao.getArtist(idAccount);
 			artist.getRises().add(idUser);
-			ArtistDao.inscriptionArtist(artist);
+			ArtistDao.updateArtist(artist);
 			rizer.getRizeGet().add(idAccount);
-			UserDao.inscriptionUser(rizer);
+			UserDao.updateUser(rizer);
 			rize = true;
 		}
 		return rize;

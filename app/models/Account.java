@@ -2,7 +2,6 @@ package models;
 
 import java.util.List;
 
-import org.jongo.marshall.jackson.oid.Id;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -12,7 +12,7 @@ public class Music {
 	private String _id;
     private String name;
     private String fileId;
-    private List<Integer> like;
+    private List<String> like;
     private HashMap<String,String> comment;//pseudo+commentaire
     private List<Tag> tags;
     private Time duration;
@@ -30,7 +30,7 @@ public class Music {
 	 * @param duration : Duree de la musique
 	 * @param album 
 	 */
-	public Music(String id, String name, String file, List<Integer> like,
+	public Music(String id, String name, String file, List<String> like,
 			HashMap<String, String> comment, List<Tag> tags, Time duration,
 			Album album) {
 		super();
@@ -62,10 +62,10 @@ public class Music {
 	public void setFileId(String file) {
 		this.fileId = file;
 	}
-	public List<Integer> getLike() {
+	public List<String> getLike() {
 		return like;
 	}
-	public void setLike(List<Integer> like) {
+	public void setLike(List<String> like) {
 		this.like = like;
 	}
 	public HashMap<String, String> getComment() {

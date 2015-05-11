@@ -30,3 +30,4 @@ build.sbt
 project/play-fork-run.sbt
 project/.sbtserver.lock
 *.sbt
+*.html

@@ -2,8 +2,13 @@ package models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Playlist {
 	
+	@JsonProperty("_id")
+	public String _id;
+	private String accountId; 
 	private List<String> listMusics;
 	private String name;
 	private String description;
@@ -16,13 +21,22 @@ public class Playlist {
 	 * @param name
 	 * @param description
 	 */
-	public Playlist(List<String> listMusics, String name, String description) {
+	public Playlist(String account, List<String> listMusics, String name, String description) {
 		super();
+		this.accountId=account;
 		this.listMusics = listMusics;
 		this.name = name;
 		this.description = description;
 	}
 	
+	public String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
 	public List<String> getListMusics() {
 		return listMusics;
 	}

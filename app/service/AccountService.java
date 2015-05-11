@@ -44,7 +44,7 @@ public class AccountService {
 	 * @throws IOException
 	 */
 	public static String subscribeAccountArtist(String accountId, String biography, File photo) throws IOException {
-		User user = UserDao.getArtist(accountId);
+		User user = UserDao.getUser(accountId);
 		Account account = new Artist(user.get_id(), user.getPhoto(), user.getLogin(), user.getPassword(), user.getPassword(),
 				user.getEmail(), user.getDescription(), user.getPlaylists(), user.getRises(), user.getFollow(), 
 				user.getHistorical(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), biography);
@@ -81,7 +81,7 @@ public class AccountService {
 	 */
 	public static void modifyAccount(String idAccount, Account account) {
 		User user = null;
-		user = UserDao.getArtist(idAccount);
+		user = UserDao.getUser(idAccount);
 		if(user!=null){
 			if(account.get_id()!=null){
 				user.set_id(account.get_id());
@@ -116,7 +116,7 @@ public class AccountService {
 			if(account.getHistorical()!=null){
 				user.setHistorical(account.getHistorical());
 			}
-			UserDao.inscriptionUser(user);
+			UserDao.updateUser(user);
 		}else{
 			Artist artist = ArtistDao.getArtist(idAccount);
 			if(account.get_id()!=null){
@@ -152,7 +152,7 @@ public class AccountService {
 			if(account.getHistorical()!=null){
 				artist.setHistorical(account.getHistorical());
 			}
-			ArtistDao.inscriptionArtist(artist);
+			ArtistDao.updateArtist(artist);
 		}
 	}
 
@@ -164,7 +164,7 @@ public class AccountService {
 	 */
 	public static Account visualizeAccount(String idAccount) {
 		User user = null;
-		user = UserDao.getArtist(idAccount);
+		user = UserDao.getUser(idAccount);
 		if(user!=null){
 			return user;
 		}else{
@@ -190,12 +190,12 @@ public class AccountService {
 	 * @return true si Ok, false sinon
 	 */
 	public static boolean becomeArtist(String idAccount) {
-		User user = UserDao.getArtist(idAccount);
+		User user = UserDao.getUser(idAccount);
 		if(user.isfuturArtist()){
 			return false;
 		}else{
 			user.setfuturArtist(true);
-			UserDao.inscriptionUser(user);
+			UserDao.updateUser(user);
 			return true;
 		}
 	}
@@ -204,13 +204,11 @@ public class AccountService {
 	 * Transforme un User en Artist (le client n'appelle pas cette méthode, c'est un daemon
 	 * qui le fait)
 	 */
-	private static Artist transformToArtist(String idUser) {
-		User user = UserDao.getArtist(idUser);
-		Artist artist = new Artist(user.get_id(), user.getPhoto(), user.getLogin(), user.getPassword(), user.getPassword(),
-				user.getEmail(), user.getDescription(), user.getPlaylists(), user.getRises(), user.getFollow(), 
-				user.getHistorical(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), null);
+	public static Artist transformToArtist(String idUser) {
+		User user = UserDao.getUser(idUser);
+		Artist artist = new Artist(user);
 		UserDao.deleteUser(idUser);
-		ArtistDao.inscriptionArtist(artist);
+		ArtistDao.updateArtist(artist);
 		return artist;
 	}
 

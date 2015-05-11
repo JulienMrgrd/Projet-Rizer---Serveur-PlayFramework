@@ -5,7 +5,8 @@ import java.util.List;
 public class User extends Account{
 
     private boolean futurArtist;
-    private List<String> rizeGet;
+    private List<String> musicRize;
+	private List<String> rizeGet;
     
 	/**
  	 * @param id 
@@ -28,6 +29,14 @@ public class User extends Account{
 		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
 		this.futurArtist = futurArtist;
 		this.rizeGet = rizeGet;
+	}
+
+	public List<String> getMusicRize() {
+		return musicRize;
+	}
+
+	public void setMusicRize(List<String> musicRize) {
+		this.musicRize = musicRize;
 	}
 	
 	public boolean isfuturArtist() {

@@ -1,7 +1,6 @@
 package modelsMongo;
 
 import play.Application;
-import play.Play;
 import play.Plugin;
 
 public class JongoPlugin extends Plugin {
