@@ -15,7 +15,7 @@ public abstract class Account {
     private String pseudo;
     private String email;
     private String description;
-    private List< Playlist > playlists;
+    private List<String> playlists;
     private List<String> rises;
     private List<String> follow;
     private List<String> historical;
@@ -23,7 +23,7 @@ public abstract class Account {
     
 	/**
 	 * @param id 
-	 * @param photo : url
+	 * @param photo : id
 	 * @param login : pour la connexion
 	 * @param password
 	 * @param pseudo : le pseudo visible par tout le monde
@@ -35,7 +35,7 @@ public abstract class Account {
 	 * @param historical : Liste de music id déjà écoutée
 	 */
 	public Account(String id, String photo, String login, String password, String pseudo, String email, String description, 
-			List< Playlist > playlists,	List<String> rises, List<String> follow, List<String> historical) {
+			List< String > playlists,	List<String> rises, List<String> follow, List<String> historical) {
 		super();
 		this._id = id;
 		this.photo = photo;
@@ -108,11 +108,11 @@ public abstract class Account {
 		this.description = description;
 	}
 
-	public List<Playlist> getPlaylists() {
+	public List<String> getPlaylists() {
 		return playlists;
 	}
 
-	public void setPlaylists(List<Playlist> playlists) {
+	public void setPlaylists(List<String> playlists) {
 		this.playlists = playlists;
 	}
 

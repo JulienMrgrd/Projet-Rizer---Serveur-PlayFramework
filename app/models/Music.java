@@ -3,6 +3,7 @@ package models;
 import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,7 +14,7 @@ public class Music {
     private String name;
     private String fileId;
     private List<String> like;
-    private HashMap<String,String> comment;//pseudo+commentaire
+    private Map<String,String> comment;//pseudo+commentaire
     private List<Tag> tags;
     private Time duration;
     private Album album;
@@ -68,10 +69,10 @@ public class Music {
 	public void setLike(List<String> like) {
 		this.like = like;
 	}
-	public HashMap<String, String> getComment() {
+	public Map<String, String> getComment() {
 		return comment;
 	}
-	public void setComment(HashMap<String, String> comment) {
+	public void setComment(Map<String, String> comment) {
 		this.comment = comment;
 	}
 	public List<Tag> getTags() {

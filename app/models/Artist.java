@@ -12,13 +12,13 @@ public class Artist extends Account{
     
 	/**
 	 * @param id 
-	 * @param photo : url
+	 * @param photo : id
 	 * @param login : pour la connexion
 	 * @param password
 	 * @param pseudo : le pseudo visible par tout le monde
 	 * @param email
 	 * @param description : description du compte
-	 * @param playlists : List de playlists (une playlist contient une liste d'ID de music)
+	 * @param playlists : List d'ID playlists (une playlist contient une liste d'ID de music)
 	 * @param rises : Liste d'ID de compte
 	 * @param follow : Liste d'ID d'artiste que le compte follow
 	 * @param historical : Liste de music id déjà écoutée
@@ -28,7 +28,7 @@ public class Artist extends Account{
 	 * @param biography
 	 */
 	public Artist(String id, String photo, String login, String password, String pseudo, String email, String description, 
-			List< Playlist > playlists,	List<String> rises, List<String> follow, List<String> historical, List<String> library,
+			List< String > playlists,	List<String> rises, List<String> follow, List<String> historical, List<String> library,
 			List<String> followers, List<String> news, String biography) {
 		
 		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
