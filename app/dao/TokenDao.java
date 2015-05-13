@@ -62,16 +62,16 @@ public class TokenDao {
 	 * @param token
 	 * @return
 	 */
-	public static boolean chekToken(String token){
+	public static String checkToken(String token){
 		Token userToken=PlayJongo.getCollection("Token").findOne("{_id:#}", token).as(Token.class);
 		if(userToken==null)
-			return false;
+			return null;
 		
 		if(userToken.getDiffDay() > 2){
 			userToken.setDateMaj();
 			PlayJongo.getCollection("Token").save(userToken);
 		}
-		return true;
+		return userToken.getAccountId();
 		
 	}
 	
