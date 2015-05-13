@@ -6,19 +6,13 @@ import java.net.UnknownHostException;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 
-import play.Logger;
-
-
 import com.mongodb.DB;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoException;
 import com.mongodb.gridfs.GridFS;
 
 public class PlayJongo {
-
-    
 
     private MongoClient mongo = null;
     private Jongo jongo = null;
@@ -27,17 +21,17 @@ public class PlayJongo {
 
     private PlayJongo() {
 
-    		//mongodb://localhost:27017/playjava
-    		uri  = new MongoClientURI("mongodb://admin:aqwzsx@ds059651.mongolab.com:59651/playjava"); 
-            try {
-				mongo = new MongoClient(uri);
-			} catch (UnknownHostException e) {
-				System.out.println("Erreur MongoClientURI incorrect");
-				e.printStackTrace();
-			}
-            DB db = mongo.getDB(uri.getDatabase());
-            jongo = new Jongo(db);
-            gridfs = new GridFS(jongo.getDatabase());
+		//mongodb://localhost:27017/playjava
+		uri  = new MongoClientURI("mongodb://admin:aqwzsx@ds059651.mongolab.com:59651/playjava"); 
+        try {
+			mongo = new MongoClient(uri);
+		} catch (UnknownHostException e) {
+			System.out.println("Erreur MongoClientURI incorrect");
+			e.printStackTrace();
+		}
+        DB db = mongo.getDB(uri.getDatabase());
+        jongo = new Jongo(db);
+        gridfs = new GridFS(jongo.getDatabase());
     }
     
     private static class Holder {
