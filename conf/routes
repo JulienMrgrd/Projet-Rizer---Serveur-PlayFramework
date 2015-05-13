@@ -18,7 +18,7 @@ GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecome
 # Playlist
 GET     /createPlist/:uuid/:name	        	     controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String)
 GET     /hasAPlist/:uuid			        	     controllers.PlaylistRoutes.hasAPlaylist(uuid:String)
-POST    /modifPlist/:uuid/:idPlist   			     controllers.PlaylistRoutes.modifyInfosOnePlaylist(uuid:String,idPlist:String)
+GET     /modifPlist/:uuid/:idPlist/:name/:desc       controllers.PlaylistRoutes.modifyInfosOnePlaylist(uuid:String,idPlist:String,name:String,desc:String)
 GET     /deletePlist/:uuid/:idPlist  			     controllers.PlaylistRoutes.deleteOnePlaylist(uuid:String,idPlist:String)
 GET     /addMusicToPlist/:uuid/:idPlist/:musicId     controllers.PlaylistRoutes.addMusicToPlaylist(uuid:String,idPlist:String,musicId:String)
 GET     /deleteMusicToPlist/:uuid/:idPlist/:musicId	 controllers.PlaylistRoutes.removeMusicToPlaylist(uuid:String,idPlist:String,musicId:String)

@@ -2,9 +2,9 @@ package service;
 
 import dao.TokenDao;
 
-public class CopyOfTokenService {
+public class TokenService {
 
-	public CopyOfTokenService(){
+	public TokenService(){
 		
 	}
 	
@@ -16,7 +16,7 @@ public class CopyOfTokenService {
 	 */
 	public String connection(String login, String password) {
 		
-		return TokenDao.getNewToken(login, password);
+		return new TokenDao().getNewToken(login, password);
 	}
 
 	/**
@@ -32,8 +32,8 @@ public class CopyOfTokenService {
 	 * @param token
 	 * @return
 	 */
-	public static String checkToken(String UUID){
-		return TokenDao.checkToken(UUID);
+	public String checkToken(String UUID){
+		return new TokenDao().checkToken(UUID);
 	}
 	
 }
