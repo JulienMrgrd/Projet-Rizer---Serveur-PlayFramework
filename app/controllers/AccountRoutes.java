@@ -44,7 +44,7 @@ public class AccountRoutes extends Controller {
      * @return true si OK, false sinon
      */
     public static Result modifyAccountInformations(String UUID){
-    	String idAccount = TokenService.checkToken(UUID);
+    	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
     	//TODO : Ios envoie l'objet Account dans la requete POST, en transformant Account en Json: 
@@ -59,7 +59,7 @@ public class AccountRoutes extends Controller {
         if(account == null) {
              return badRequest("Not an Account object");
         }
-    	AccountService.modifyAccount(idAccount, account);
+    	new AccountService().modifyAccount(idAccount, account);
     	return ok("modifyAccountInformations:"
     			+ "\nUUID = "+UUID+"\naccount_pseudo = "+account.getPseudo());
     }
@@ -70,9 +70,9 @@ public class AccountRoutes extends Controller {
      * @return un Account
      */
     public static Result visualizeAccountInformations(String UUID, String idAccount){
-    	if(TokenService.checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	AccountService.visualizeAccount(idAccount);
+    	new AccountService().visualizeAccount(idAccount);
     	return ok("visualizeAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -83,10 +83,10 @@ public class AccountRoutes extends Controller {
      * @return un Account
      */
     public static Result visualizeMyAccountInformations(String UUID){
-    	String idAccount = TokenService.checkToken(UUID);
+    	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	AccountService.visualizeMyAccount(idAccount);
+    	new AccountService().visualizeMyAccount(idAccount);
     	return ok("visualizeMyAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -97,10 +97,10 @@ public class AccountRoutes extends Controller {
 	 * @return true si Ok, false sinon
 	 */
     public static Result deleteAccount(String UUID) {
-    	String idAccount = TokenService.checkToken(UUID);
+    	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	AccountService.deleteAccount(idAccount);
+    	new AccountService().deleteAccount(idAccount);
     	return ok("deleteAccount:"
     			+ "\nUUID = "+UUID);
     }
@@ -111,10 +111,10 @@ public class AccountRoutes extends Controller {
 	 * @return true si Ok, false sinon
 	 */
     public static Result sendDemandBecomeArtist(String UUID) {
-    	String idAccount = TokenService.checkToken(UUID);
+    	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	AccountService.becomeArtist(idAccount);
+    	new AccountService().becomeArtist(idAccount);
     	return ok("sendDemandBecomeArtist:"
     			+ "\nUUID = "+UUID);
     }

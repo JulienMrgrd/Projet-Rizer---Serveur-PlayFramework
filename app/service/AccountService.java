@@ -176,6 +176,22 @@ public class AccountService {
 			return artist;
 		}
 	}
+	
+	/**
+	 * Permet de voir son Account (tous les attributs seront renseignés)
+	 * @param idAccount id du Account à voir
+	 * @return User ou Artist
+	 */
+	public Account visualizeMyAccount(String idAccount) {
+		User user = null;
+		user = UserDao.getUser(idAccount);
+		if(user!=null){
+			return user;
+		}else{
+			Artist artist = ArtistDao.getArtist(idAccount);
+			return artist;
+		}
+	}
 
 
 	/**
