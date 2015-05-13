@@ -7,7 +7,7 @@ import java.io.InputStream;
 import com.mongodb.gridfs.GridFSInputFile;
 
 import models.*;
-import modelsMongo.PlayJongo;
+import modelsmongo.PlayJongo;
 
 public class AccountDao {
 

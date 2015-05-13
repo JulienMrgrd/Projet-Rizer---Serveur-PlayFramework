@@ -7,8 +7,7 @@ import java.io.InputStream;
 import com.mongodb.gridfs.GridFSInputFile;
 
 import models.Music;
-
-import modelsMongo.PlayJongo;
+import modelsmongo.PlayJongo;
 
 public class MusicDao {
 	

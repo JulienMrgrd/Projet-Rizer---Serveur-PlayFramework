@@ -3,8 +3,7 @@ package dao;
 
 
 import models.Artist;
-
-import modelsMongo.PlayJongo;
+import modelsmongo.PlayJongo;
 
 public class ArtistDao {
 /**
