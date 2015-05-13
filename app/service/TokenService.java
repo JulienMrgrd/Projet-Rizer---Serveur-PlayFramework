@@ -2,8 +2,12 @@ package service;
 
 import dao.TokenDao;
 
-public class TokenService {
+public class CopyOfTokenService {
 
+	public CopyOfTokenService(){
+		
+	}
+	
 	/**
 	 * Permet de se connecter
 	 * @param login de l'utilisateur
@@ -18,7 +22,7 @@ public class TokenService {
 	/**
 	 * Permet de se deconnecter
 	 */
-	public static void logOut(String UUID) {
+	public void logOut(String UUID) {
 		// TODO Auto-generated method stub
 		
 	}

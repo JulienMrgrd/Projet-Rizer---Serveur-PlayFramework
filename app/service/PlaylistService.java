@@ -12,6 +12,10 @@ import dao.UserDao;
 
 public class PlaylistService {
 
+	public PlaylistService(){
+		
+	}
+	
 	/**
 	 * creer une playlist et l'ajoute au compte
 	 * @param idAccount
@@ -19,7 +23,7 @@ public class PlaylistService {
 	 * @param description
 	 * @return la playlist
 	 */
-	public static Playlist createPlayList(String idAccount, String name, String description) {
+	public Playlist createPlayList(String idAccount, String name, String description) {
 		User user = null;
 		Playlist playlist = new Playlist(idAccount, new ArrayList<String>(), name, description);
 		PlaylistDao.addPlaylist(playlist);
@@ -40,7 +44,7 @@ public class PlaylistService {
 	 * @param idAccount id de l'utilisateur
 	 * @return idPlaylist si OK, null sinon
 	 */
-	public static void hasAPlayList(int idAccount) {
+	public void hasAPlayList(String idAccount) {
 		// TODO Auto-generated method stub
 	}
 
@@ -50,19 +54,26 @@ public class PlaylistService {
 	 * @param playlist L'objet Playlist contenant les nouvelles informations
 	 * @return true si Ok, false sinon
 	 */
-	public static void modifyPlaylist(String idAccount, Playlist playlist) {
-		// TODO Auto-generated method stub
+	public void modifyPlaylist(String idPlaylist, String name, String description) {
+		PlaylistDao playlistDao = new PlaylistDao();
+		Playlist playlistBase = playlistDao.getPlaylist(idPlaylist);
+		if(name!=null){
+			playlistBase.setName(name);
+		}
+		if(description!=null){
+			playlistBase.setDescription(description);
+		}
+		playlistDao.updatePlaylist(p);
 	}
 
 	/**
 	 * Supprime une playlist
 	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
-	 * @return true si Ok, false sinon
 	 */
-	public static boolean deletePlaylist(int idAccount, int idPlaylist) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deletePlaylist(String idAccount, String idPlaylist) {
+		PlaylistDao playlistDao = new PlaylistDao();
+		playlistDao.deletePlaylist(idPlaylist);
 	}
 
 	/**
@@ -70,12 +81,14 @@ public class PlaylistService {
 	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 * @param idMusic id de la music (préalablement uploadé sur serveur)
-	 * @return true si Ok, false sinon
+
 	 */
-	public static boolean addMusicToPlaylist(int idAccount, int idPlaylist,
-			int idMusic) {
-		// TODO Auto-generated method stub
-		return false;
+	public void addMusicToPlaylist(String idAccount, String idPlaylist,
+			String idMusic) {
+		PlaylistDao playlistDao = new PlaylistDao();
+		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
+		playlist.getListMusics().add(idMusic);
+		playlistDao.updatePlaylist(playlist);
 	}
 
 	/**
@@ -85,11 +98,14 @@ public class PlaylistService {
 	 * @param idMusic id de la music
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean removeMusicInPlaylist(int idAccount, int idPlaylist,
-			int idMusic) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	public boolean removeMusicInPlaylist(String idAccount, String idPlaylist,
+//			String idMusic) {
+//		PlaylistDao playlistDao = new PlaylistDao();
+//		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
+//		for(int i = 0; i<playlist.getListMusics().size() && ; i++){
+//			
+//		}
+//	}
 	
 	/**
 	 * Visualise une playlist
@@ -97,7 +113,7 @@ public class PlaylistService {
 	 * @param idPlaylist id de la playlist
 	 * @return la Playlist, null sinon	 
 	 */
-	public static Playlist visualizePlaylist(int idAccount, int idPlaylist) {
+	public Playlist visualizePlaylist(String idAccount, String idPlaylist) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,13 +4,17 @@ import models.Music;
 
 public class MusicService{
 
+	public MusicService(){
+		
+	}
+	
 	/**
 	 * Ajoute une musique en base
 	 * @param idAccount l'id du compte (Artist ou FuturArtist) qui rajoute cette musique
 	 * @param music le fichier a uploader
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean addMusic(int idAccount, Music music) {
+	public boolean addMusic(String idAccount, Music music) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -21,7 +25,7 @@ public class MusicService{
 	 * @param music la musique a remplacer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean modifyInfoMusic(int idAccount, Music music) {
+	public boolean modifyInfoMusic(String idAccount, Music music) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -32,7 +36,7 @@ public class MusicService{
 	 * @param idMusic l'id de la musique a supprimer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public static boolean deleteMusic(int idAccount, int idMusic) {
+	public boolean deleteMusic(String idAccount, String idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -43,7 +47,7 @@ public class MusicService{
 	 * @param idMusic l'id de la musique like
 	 * @return vrai si l'operation s'est bien passee.
 	 */
-	public static boolean likerMusic(int idAccount, int idMusic) {
+	public boolean likerMusic(String idAccount, String idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -55,7 +59,7 @@ public class MusicService{
 	 * @param comment le commentaire
 	 * @return
 	 */
-	public static boolean commentMusic(int idAccount, int idMusic,
+	public boolean commentMusic(String idAccount, String idMusic,
 			String comment) {
 		// TODO Auto-generated method stub
 		return false;
@@ -67,7 +71,7 @@ public class MusicService{
 	 * @param idMusic l'id de la musique qui est commentee
 	 * @return
 	 */
-	public static boolean listenMusic(int idAccount, int idMusic) {
+	public boolean listenMusic(String idAccount, String idMusic) {
 		// TODO Auto-generated method stub
 		return false;
 	}

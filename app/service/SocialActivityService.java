@@ -7,13 +7,17 @@ import dao.UserDao;
 
 public class SocialActivityService{
 
+	public SocialActivityService(){
+		
+	}
+	
 	/**
 	 * Permet a un compte de suivre un artiste.
 	 * @param idAccount l'identifiant du compte qui follow
 	 * @param idArtist l'identifiant de l'artiste qui est follow
 	 * @return vrai si OK, false sinon
 	 */
-	public static boolean followArtist(String idAccount, String idArtist) {
+	public boolean followArtist(String idAccount, String idArtist) {
 		boolean follow = false;
 		User user = null;
 		user = UserDao.getUser(idAccount);
@@ -36,7 +40,7 @@ public class SocialActivityService{
 	 * @param idArtist l'identifiant de l'artiste qui est unfollow
 	 * @return vrai si OK, false sinon
 	 */
-	public static boolean unfollowArtist(String idAccount, String idArtist) {
+	public boolean unfollowArtist(String idAccount, String idArtist) {
 		boolean remove = false;
 		User user = null;
 		user = UserDao.getUser(idAccount);
@@ -67,7 +71,7 @@ public class SocialActivityService{
 	 * @param idUser l'identifiant du FuturArtiste qui se fait rizer
 	 * @return vrai si OK, false sinon
 	 */
-	public static boolean rizeFuturArtist(String idAccount, String idUser) {
+	public boolean rizeFuturArtist(String idAccount, String idUser) {
 		boolean rize = false;
 		User user = null;
 		user = UserDao.getUser(idAccount);

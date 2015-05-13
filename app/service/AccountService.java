@@ -14,6 +14,10 @@ import dao.UserDao;
 
 public class AccountService {
 
+	public AccountService(){
+		
+	}
+	
 	/**
 	 * Inscrit un nouveau User
 	 * @param namePhoto url de photo
@@ -26,7 +30,7 @@ public class AccountService {
 	 * @return Id du user cree ou null sinon
 	 * @throws IOException
 	 */
-	public static String subscribeAccountUser(String namePhoto, String login, String password, 
+	public String subscribeAccountUser(String namePhoto, String login, String password, 
 			String email,String description, String pseudo, File photo) throws IOException {
 		Account account = new User(null, namePhoto, login, password, pseudo, email, description, new ArrayList<Playlist>(), 
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), false, new ArrayList<String>());
@@ -43,7 +47,7 @@ public class AccountService {
 	 * @return Id du user cree ou null sinon
 	 * @throws IOException
 	 */
-	public static String subscribeAccountArtist(String accountId, String biography, File photo) throws IOException {
+	public String subscribeAccountArtist(String accountId, String biography, File photo) throws IOException {
 		User user = UserDao.getUser(accountId);
 		Account account = new Artist(user.get_id(), user.getPhoto(), user.getLogin(), user.getPassword(), user.getPassword(),
 				user.getEmail(), user.getDescription(), user.getPlaylists(), user.getRises(), user.getFollow(), 
@@ -65,7 +69,7 @@ public class AccountService {
 	 * @return Id du user cree ou null sinon
 	 * @throws IOException
 	 */
-	public static String subscribeAccountArtist(String namePhoto, String login, String password, 
+	public String subscribeAccountArtist(String namePhoto, String login, String password, 
 			String email,String description, String pseudo,String biography, File photo ) throws IOException {
 
 		Account account = new Artist( null,namePhoto, login, password, pseudo, email, description, 
@@ -79,7 +83,7 @@ public class AccountService {
 	 * @param idAccount 
 	 * @param account L'objet Account contenant les nouvelles informations
 	 */
-	public static void modifyAccount(String idAccount, Account account) {
+	public void modifyAccount(String idAccount, Account account) {
 		User user = null;
 		user = UserDao.getUser(idAccount);
 		if(user!=null){
@@ -162,7 +166,7 @@ public class AccountService {
 	 * @param idAccount id du Account à voir
 	 * @return User ou Artist
 	 */
-	public static Account visualizeAccount(String idAccount) {
+	public Account visualizeAccount(String idAccount) {
 		User user = null;
 		user = UserDao.getUser(idAccount);
 		if(user!=null){
@@ -179,7 +183,7 @@ public class AccountService {
 	 * @param idAccount id du Account a supprimer
 	 * @return true si Ok, false sinon
 	 */
-	public static void deleteAccount(String idAccount) {
+	public void deleteAccount(String idAccount) {
 		// TODO finir selon playlist
 		UserDao.deleteUser(idAccount);
 	}
@@ -189,7 +193,7 @@ public class AccountService {
 	 * @param user id du Account a promouvoir
 	 * @return true si Ok, false sinon
 	 */
-	public static boolean becomeArtist(String idAccount) {
+	public boolean becomeArtist(String idAccount) {
 		User user = UserDao.getUser(idAccount);
 		if(user.isfuturArtist()){
 			return false;
@@ -204,7 +208,7 @@ public class AccountService {
 	 * Transforme un User en Artist (le client n'appelle pas cette méthode, c'est un daemon
 	 * qui le fait)
 	 */
-	public static Artist transformToArtist(String idUser) {
+	public Artist transformToArtist(String idUser) {
 		User user = UserDao.getUser(idUser);
 		Artist artist = new Artist(user);
 		UserDao.deleteUser(idUser);
