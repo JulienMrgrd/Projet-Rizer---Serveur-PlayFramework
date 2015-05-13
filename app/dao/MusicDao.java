@@ -18,7 +18,7 @@ public class MusicDao {
 	 * @param m : objet music
 	 * @throws IOException
 	 */
-	public static void addMusic(File f, Music m) throws IOException{
+	public void addMusic(File f, Music m) throws IOException{
 		GridFSInputFile gfsFile = PlayJongo.gridfs().createFile(f);
 		gfsFile.setFilename(m.getName());
 		//Utiliser un ID spécifique
@@ -33,7 +33,7 @@ public class MusicDao {
 	 * Supprime la music d'identifiant _id
 	 * @param _id
 	 */
-	public static void deleteMusic(String _id){
+	public void deleteMusic(String _id){
 		Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
 		PlayJongo.gridfs().remove(musicTmp.getFileId());
 		PlayJongo.getCollection("Music").remove(_id);
@@ -46,7 +46,7 @@ public class MusicDao {
 	 * @param _id
 	 * @return
 	 */
-	public static Music getMusic(String _id){
+	public Music getMusic(String _id){
 		return PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
 	}
 	
@@ -55,7 +55,7 @@ public class MusicDao {
 	 * @param _idMusic : identifiant de la music
 	 * @param _idLiker : identifiant de l'utilisateur ayant faite le like
 	 */
-	public static void addLike(String _idMusic, String _idLiker){
+	public void addLike(String _idMusic, String _idLiker){
 		PlayJongo.getCollection("Music").update("{_id:#}",_idMusic).with("{$push: {like: #}}",_idLiker);
 	}
 	
@@ -65,7 +65,7 @@ public class MusicDao {
 	 * @return
 	 */
 	
-	public static InputStream getInputStreamMusic(String _id){
+	public InputStream getInputStreamMusic(String _id){
 		//Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
 		return PlayJongo.gridfs().findOne(_id).getInputStream();
 	}

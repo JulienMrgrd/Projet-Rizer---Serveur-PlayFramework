@@ -18,16 +18,16 @@ public class AccountDao {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String inscription(Account compte, File f) throws IOException{
+	public  String inscription(Account compte, File f) throws IOException{
 		GridFSInputFile gfsFile = PlayJongo.gridfs().createFile(f);
 		gfsFile.setFilename(compte.getPhoto());
 		gfsFile.save();
 		compte.setPhoto(gfsFile.getId().toString());
-		if(!AccountDao.checkLogin(compte.getLogin()))
+		if(!(new AccountDao()).checkLogin(compte.getLogin()))
 			return null;
 		if(compte instanceof Artist)
-			return ArtistDao.inscriptionArtist((Artist)compte);
-		return UserDao.inscriptionUser((User)compte);
+			return (new ArtistDao()).inscriptionArtist((Artist)compte);
+		return (new UserDao()).inscriptionUser((User)compte);
 
 
 	}
@@ -37,8 +37,8 @@ public class AccountDao {
 	 * @return
 	 */
 
-	public static boolean checkLogin(String login){
-		return ArtistDao.checkLoginArtist(login) && UserDao.checkLoginUser(login);
+	public boolean checkLogin(String login){
+		return (new ArtistDao()).checkLoginArtist(login) && (new UserDao()).checkLoginUser(login);
 
 	}
 
@@ -47,7 +47,7 @@ public class AccountDao {
 	 * @param _id : id de l'image en base
 	 * @return
 	 */
-	public static InputStream getAccountPhoto(String _id){
+	public InputStream getAccountPhoto(String _id){
 		return PlayJongo.gridfs().findOne(_id).getInputStream();
 	}
 
@@ -56,7 +56,7 @@ public class AccountDao {
 	 * Mise jour d'un données d'un utilisateur
 	 * @param compte
 	 */
-	public static void updateAccount(Account compte){
+	public void updateAccount(Account compte){
 		if(compte instanceof Artist){
 			PlayJongo.getCollection("Artist").save(compte);
 		}else{

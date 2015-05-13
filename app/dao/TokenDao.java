@@ -23,7 +23,7 @@ public class TokenDao {
 	 * @param pswd
 	 * @return renvoi null le compte n'existe pas 
 	 */
-	private static String connexion(String login, String pswd){
+	private String connexion(String login, String pswd){
 		Account comptetmp=PlayJongo.getCollection("Artist").findOne("{login:#, password:#}", login, pswd).as(Artist.class);
 		if(comptetmp==null)
 			comptetmp=PlayJongo.getCollection("User").findOne("{login:#, password:#}", login, pswd).as(User.class);
@@ -40,7 +40,7 @@ public class TokenDao {
 	 * @param pswd
 	 * @return
 	 */
-	public static String getNewToken(String login, String pswd){
+	public String getNewToken(String login, String pswd){
 		String idAccount=connexion(login,pswd);
 		if(idAccount==null)
 			return null;
@@ -63,7 +63,7 @@ public class TokenDao {
 	 * @param token
 	 * @return
 	 */
-	public static String checkToken(String token){
+	public String checkToken(String token){
 		Token userToken=PlayJongo.getCollection("Token").findOne("{_id:#}", token).as(Token.class);
 		if(userToken==null)
 			return null;
@@ -80,7 +80,7 @@ public class TokenDao {
 	 * Supprime un token en base _ logout
 	 * @param _id
 	 */
-	public static void deleteToken(String _id){
+	public void deleteToken(String _id){
 		PlayJongo.getCollection("Token").remove(_id);
 	}
 	
@@ -88,7 +88,7 @@ public class TokenDao {
 	/**
 	 * Supprime les token expirer
 	 */
-	public static void cleanToken(){
+	public void cleanToken(){
 		PlayJongo.getCollection("Token").remove("{ dateMaj: { $lt: # }}", new DateTime().minusDays(2).toString());
 	}
 	
