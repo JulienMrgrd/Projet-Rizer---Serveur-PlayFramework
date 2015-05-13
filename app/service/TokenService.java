@@ -23,4 +23,13 @@ public class TokenService {
 		
 	}
 	
+	/**
+	 * Verifie la validite d'un token
+	 * @param token
+	 * @return
+	 */
+	public static String checkToken(String UUID){
+		return TokenDao.checkToken(UUID);
+	}
+	
 }

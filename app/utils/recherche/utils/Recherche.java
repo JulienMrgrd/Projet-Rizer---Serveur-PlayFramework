@@ -2,7 +2,7 @@ package utils.recherche.utils;
 
 import java.util.List;
 
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteWebAPI;
+import utils.recherche.api_gracenote.webapi.GracenoteWebAPI;
 import utils.recherche.threadRecherche.*;
 
 

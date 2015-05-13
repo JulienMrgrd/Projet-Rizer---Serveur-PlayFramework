@@ -1,4 +1,4 @@
-package utils.recherche.apiGracenote.gracenote.webapi;
+package utils.recherche.api_gracenote.webapi;
 
 // A simple class to encapsulate OET data
 

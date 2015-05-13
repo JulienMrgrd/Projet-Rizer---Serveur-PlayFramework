@@ -1,7 +1,8 @@
 package utils.recherche.threadRecherche;
 
 import java.util.List;
-import utils.recherche.apiGracenote.gracenote.webapi.*;
+
+import utils.recherche.api_gracenote.webapi.*;
 
 public class ThreadMusic extends Thread{
 

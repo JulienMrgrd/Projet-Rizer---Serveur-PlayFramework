@@ -1,4 +1,4 @@
-package utils.recherche.apiGracenote.gracenote.webapi;
+package utils.recherche.api_gracenote.webapi;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

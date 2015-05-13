@@ -7,6 +7,10 @@ import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import service.MusicService;
+import service.TokenService;
+import utils.RizerUtils;
+import utils.TokenException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -40,6 +44,9 @@ public class MusicRoutes extends Controller{
 	 * @return
 	 */
 	public static Result modifyInfosMusic (String UUID){ 
+		String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		
 		//TODO : Ios envoie l'objet Music dans la requete POST, en transformant Account en Json: 
     	//TODO : JsonNode musicJson = Json.toJson(account);
     	//TODO : Voir https://www.playframework.com/documentation/2.4.x/JavaJsonActions
@@ -52,9 +59,13 @@ public class MusicRoutes extends Controller{
         if(music == null) {
              return badRequest("Not a Music object");
         }
-    	//TODO: construire un objet Music et appeler MusicService.modifyInfosMusic(...)
-    	return ok("modifyInfosMusic:"
-    			+ "\nUUID = "+UUID+"\nmusic = "+music.getName());
+    	try{
+	        MusicService.modifyInfoMusic(idAccount, music);
+	    	return ok("modifyInfosMusic:"
+	    			+ "\nUUID = "+UUID+"\nmusic = "+music.getName());
+    	} catch (TokenException te){
+	    	return unauthorized(RizerUtils.BAD_TOKEN);
+	    }
     }
 
 	/**
@@ -62,8 +73,11 @@ public class MusicRoutes extends Controller{
 	 * @param UUID
 	 * @param idMusic
 	 */
-	public static Result deleteMusic (String UUID, int musicID){ 
-		//TODO: appeller MusicService.deleteMusic(...)
+	public static Result deleteMusic (String UUID, String musicID){ 
+		String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		
+		MusicService.deleteMusic(idAccount, musicID);
 		return ok("deleteMusic:"
 				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
     }
@@ -73,8 +87,11 @@ public class MusicRoutes extends Controller{
 	 * @param UUID
 	 * @param idMusic
 	 */
-	public static Result likeMusic (String UUID, int musicID){ 
-		//TODO: appeller MusicService.likerMusic(...)
+	public static Result likeMusic (String UUID, String musicID){ 
+		String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		
+    	MusicService.likerMusic(idAccount, musicID);
 		return ok("likeMusic:"
 				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
     }
@@ -84,8 +101,11 @@ public class MusicRoutes extends Controller{
 	 * @param UUID
 	 * @param idMusic
 	 */
-	public static Result commentMusic (String UUID, int musicID, String comment){ 
-		//TODO: appeller MusicService.commentMusic(...)
+	public static Result commentMusic (String UUID, String musicID, String comment){ 
+		String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		
+    	MusicService.commentMusic(idAccount, musicID, comment);
 		return ok("commentMusic:"
 				+ "\nUUID = "+UUID+"\nmusicID = "+musicID+"\ncomment = "+comment);
     }
@@ -96,8 +116,10 @@ public class MusicRoutes extends Controller{
 	 * @param musicID
 	 * @return
 	 */
-	public static Result listenMusic( String UUID, int musicID){ 
-		//TODO: appeller MusicService.listenMusic(...)
+	public static Result listenMusic( String UUID, String musicID){ 
+		String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		MusicService.listenMusic(idAccount, musicID);
 		return ok("listenMusic:"
 				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
     }

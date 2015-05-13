@@ -3,9 +3,9 @@ package utils.recherche.threadRecherche;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteException;
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteMetadata;
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteWebAPI;
+import utils.recherche.api_gracenote.webapi.GracenoteException;
+import utils.recherche.api_gracenote.webapi.GracenoteMetadata;
+import utils.recherche.api_gracenote.webapi.GracenoteWebAPI;
 import utils.recherche.utils.Similarite;
 
 

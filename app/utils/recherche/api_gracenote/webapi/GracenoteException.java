@@ -1,4 +1,4 @@
-package utils.recherche.apiGracenote.gracenote.webapi;
+package utils.recherche.api_gracenote.webapi;
 
 public class GracenoteException extends Exception
 {

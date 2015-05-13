@@ -6,8 +6,8 @@ import java.util.List;
 import models.Album;
 import models.Artist;
 import models.Music;
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteException;
-import utils.recherche.apiGracenote.gracenote.webapi.GracenoteWebAPI;
+import utils.recherche.api_gracenote.webapi.GracenoteException;
+import utils.recherche.api_gracenote.webapi.GracenoteWebAPI;
 import utils.recherche.threadRecherche.MonThreadArtiste;
 import utils.recherche.threadRecherche.ThreadMusic;
 

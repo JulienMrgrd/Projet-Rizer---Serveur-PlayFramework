@@ -3,12 +3,16 @@ package controllers;
 import models.Account;
 import play.mvc.Controller;
 import play.mvc.Result;
+import service.AccountService;
+import service.TokenService;
+import utils.RizerUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class AccountRoutes extends Controller {
 	
-    /**
+
+	/**
 	 * connecte un utilisateur
 	 * @param login
 	 * @param mdp
@@ -20,17 +24,6 @@ public class AccountRoutes extends Controller {
     			+ "\nlogin = "+login+"\npass = "+pass);
     }
 
-    /**
-     * Verifie le token d'un utilisateur
-     * @param UUID
-     * @return true si OK, false sinon
-     */
-    public static Result checkToken(String UUID){
-    	//TODO: appeler TokenService.checkToken(...)
-    	return ok("checkToken:"
-    			+ "\nToken = "+UUID);
-    }
-	
 	/**
 	 * Inscris un utilisateur
 	 * @param login
@@ -40,7 +33,7 @@ public class AccountRoutes extends Controller {
 	 * @return l'id du Account crée, ou null si existant
 	 */
     public static Result inscription(String login, String pass, String mail, String pseudo) {
-    	//TODO: appeler AccountService.subscribeAccount(...)
+    	//AccountService.subscribeAccountUser(namePhoto, login, password, email, description, pseudo, photo);
         return ok("inscription:"
     			+ "\nlogin = "+login+"\npass = "+pass+"\nmail = "+mail+"\npseudo = "+pseudo);
     }
@@ -51,6 +44,9 @@ public class AccountRoutes extends Controller {
      * @return true si OK, false sinon
      */
     public static Result modifyAccountInformations(String UUID){
+    	String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	
     	//TODO : Ios envoie l'objet Account dans la requete POST, en transformant Account en Json: 
     	//TODO : JsonNode accountJson = Json.toJson(account);
     	//TODO : Voir https://www.playframework.com/documentation/2.4.x/JavaJsonActions
@@ -63,7 +59,7 @@ public class AccountRoutes extends Controller {
         if(account == null) {
              return badRequest("Not an Account object");
         }
-    	//TODO: construire un objet Account et appeler AccountService.modifyAccount(...)
+    	AccountService.modifyAccount(idAccount, account);
     	return ok("modifyAccountInformations:"
     			+ "\nUUID = "+UUID+"\naccount_pseudo = "+account.getPseudo());
     }
@@ -73,8 +69,10 @@ public class AccountRoutes extends Controller {
      * @param UUID
      * @return un Account
      */
-    public static Result visualizeAccountInformations(String UUID){
-    	//TODO: appeler AccountService.visualizeAccount(...)
+    public static Result visualizeAccountInformations(String UUID, String idAccount){
+    	if(TokenService.checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	
+    	AccountService.visualizeAccount(idAccount);
     	return ok("visualizeAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -85,7 +83,10 @@ public class AccountRoutes extends Controller {
      * @return un Account
      */
     public static Result visualizeMyAccountInformations(String UUID){
-    	//TODO: appeler AccountService.visualizeAccount(...)
+    	String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	
+    	AccountService.visualizeMyAccount(idAccount);
     	return ok("visualizeMyAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -96,7 +97,10 @@ public class AccountRoutes extends Controller {
 	 * @return true si Ok, false sinon
 	 */
     public static Result deleteAccount(String UUID) {
-    	//TODO: appeler AccountService.deleteAccount(...)
+    	String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	
+    	AccountService.deleteAccount(idAccount);
     	return ok("deleteAccount:"
     			+ "\nUUID = "+UUID);
     }
@@ -107,7 +111,10 @@ public class AccountRoutes extends Controller {
 	 * @return true si Ok, false sinon
 	 */
     public static Result sendDemandBecomeArtist(String UUID) {
-    	//TODO: appeler AccountService.becomeArtist(...)
+    	String idAccount = TokenService.checkToken(UUID);
+    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	
+    	AccountService.becomeArtist(idAccount);
     	return ok("sendDemandBecomeArtist:"
     			+ "\nUUID = "+UUID);
     }
