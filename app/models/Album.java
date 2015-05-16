@@ -10,7 +10,7 @@ public class Album {
 	private String _id;
 	private String title;
     private List<String> tracks;
-    private Artist artist;
+    private String idartist;
     
 	/**
 	 * @param id 
@@ -18,12 +18,12 @@ public class Album {
 	 * @param tracks : Liste d'ID de music
 	 * @param artist
 	 */
-	public Album(String id, String title, List<String> tracks, Artist artist) {
+	public Album(String id, String title, List<String> tracks, String idartist) {
 		super();
 		this._id = id;
 		this.title = title;
 		this.tracks = tracks;
-		this.artist = artist;
+		this.idartist = idartist;
 	}
     
 
@@ -45,11 +45,11 @@ public class Album {
 	public void setTracks(List<String> tracks) {
 		this.tracks = tracks;
 	}
-	public Artist getArtist() {
-		return artist;
+	public String getArtist() {
+		return idartist;
 	}
-	public void setArtist(Artist artist) {
-		this.artist = artist;
+	public void setArtist(String artist) {
+		this.idartist = artist;
 	}
 
 

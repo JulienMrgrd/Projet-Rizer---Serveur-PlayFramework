@@ -70,8 +70,8 @@ public class MusicDao {
 		return PlayJongo.gridfs().findOne(_id).getInputStream();
 	}
 
-	public void updateMusic(Music music) {
-		// TODO Auto-generated method stub
+	public void updateMusic(Music musicTmp) {
+		PlayJongo.getCollection("Album").save(musicTmp);
 		
 	}
 	

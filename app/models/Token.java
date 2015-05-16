@@ -17,6 +17,10 @@ public class Token {
 	private String dateMaj;
 	public static DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
+	private Token(){
+		
+	}
+	
 	public Token(String account){
 	
 		this._id=UUID.randomUUID().toString();

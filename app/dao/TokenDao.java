@@ -115,6 +115,9 @@ public class TokenDao {
 		//PlayJongo.getCollection("Token").remove("{ dateMaj: { $lt: # }}", new DateTime("2015-04-17T15:36:14.300+02:00").toString());
 		
 		//System.out.println(new DateTime());
+		
+		//System.out.println((new TokenDao()).checkToken("3228d9d7-5260-4699-9fbc-5a0ad79073a3"));
+		
 	}
 
 }

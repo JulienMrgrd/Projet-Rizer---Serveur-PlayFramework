@@ -11,9 +11,9 @@ public class PlaylistDao {
 	 * @return vrai si ajout effectué, faux si le nom de la playlist p est deja presente en base
 	 */
 
-	public boolean addPlaylist(Playlist p){
-		if(PlayJongo.getCollection("Playlist").findOne("{name:#}", p.getName()).as(Playlist.class) == null){
-			PlayJongo.getCollection("Playlist").save(p);
+	public boolean addPlaylist(Playlist playlistTmp){
+		if(PlayJongo.getCollection("Playlist").findOne("{name:#, accountId:#}", playlistTmp.getName(), playlistTmp.getAccountId() ).as(Playlist.class) == null){
+			PlayJongo.getCollection("Playlist").save(playlistTmp);
 			return true;
 		}else{
 			return false;
@@ -59,13 +59,11 @@ public class PlaylistDao {
 	}
 
 	public Playlist findPlaylistbyNameAndIdAccount(String name, String idAccount) {
-		// TODO Auto-generated method stub
-		return null;
+		return PlayJongo.getCollection("Playlist").findOne("{name:#, accountId:#}", name, idAccount).as(Playlist.class);
 	}
 
 	public Playlist getPlaylist(String idPlaylist) {
-		// TODO Auto-generated method stub
-		return null;
+		return PlayJongo.getCollection("Playlist").findOne("{_id:#}", idPlaylist).as(Playlist.class);
 	}
 
 
