@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import java.io.InputStream;
 
 import models.Music;
 import play.mvc.Controller;
@@ -111,12 +112,11 @@ public class MusicRoutes extends Controller{
 	 * @param musicID
 	 * @return
 	 */
-	public static Result listenMusic( String UUID, String musicID){ 
-		String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
-		new MusicService().listenMusic(idAccount, musicID);
-		return ok("listenMusic:"
-				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
+	public static Result listenMusic(String UUID, String musicID){ 
+    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		InputStream is = new MusicService().listenMusic(musicID);
+		if(is!=null) return ok(is);
+		else return badRequest(RizerUtils.BAD_ID_MUSIC);
     }
 
 }

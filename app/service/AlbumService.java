@@ -2,9 +2,8 @@ package service;
 
 import java.util.ArrayList;
 
-import dao.AlbumDao;
 import models.Album;
-import models.Artist;
+import dao.AlbumDao;
 
 public class AlbumService {
 

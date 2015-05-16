@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 public class AccountRoutes extends Controller {
 	
-
 	/**
 	 * connecte un utilisateur
 	 * @param login
@@ -19,9 +18,15 @@ public class AccountRoutes extends Controller {
 	 * @return l'id du compte
 	 */
     public static Result connexion(String login, String pass){
-    	//TODO: appeler TokenService.connection(...)
-    	return ok("connexion:"
-    			+ "\nlogin = "+login+"\npass = "+pass);
+    	String UUID = new TokenService().connection(login, pass);
+    	if(UUID==null) return badRequest(RizerUtils.BAD_CONNECTION);
+    	else return ok(UUID);
+    }
+    
+    public static Result checkToken(String uuid){
+    	String idAccount = new TokenService().checkToken(uuid);
+    	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
+    	else return ok(uuid);
     }
 
 	/**
@@ -33,16 +38,11 @@ public class AccountRoutes extends Controller {
 	 * @return l'id du Account crée, ou null si existant
 	 */
     public static Result inscription(String login, String pass, String mail, String pseudo) {
-    	//AccountService.subscribeAccountUser(namePhoto, login, password, email, description, pseudo, photo);
-        return ok("inscription:"
-    			+ "\nlogin = "+login+"\npass = "+pass+"\nmail = "+mail+"\npseudo = "+pseudo);
+    	String uuid = new AccountService().subscribeAccountUser(login, pass, mail ,pseudo);
+    	if(uuid==null) return badRequest(RizerUtils.BAD_INSCRIPTION);
+    	else return ok(uuid);
     }
     
-    public static Result checkToken(String uuid){
-    	new TokenService().checkToken(uuid);
-    	return ok("checkToken:"
-    			+ "\nuuid = "+uuid);
-    }
     
     /**
      * Modifie en base l'Account passé en parametre(en JSon), et met ses attributs non nuls à jour en base
@@ -51,7 +51,7 @@ public class AccountRoutes extends Controller {
      */
     public static Result modifyAccountInformations(String UUID){
     	String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	//TODO : Ios envoie l'objet Account dans la requete POST, en transformant Account en Json: 
     	//TODO : JsonNode accountJson = Json.toJson(account);
@@ -66,8 +66,7 @@ public class AccountRoutes extends Controller {
              return badRequest("Not an Account object");
         }
     	new AccountService().modifyAccount(idAccount, account);
-    	return ok("modifyAccountInformations:"
-    			+ "\nUUID = "+UUID+"\naccount_pseudo = "+account.getPseudo());
+    	return ok();
     }
 
     /**
@@ -76,9 +75,9 @@ public class AccountRoutes extends Controller {
      * @return un Account
      */
     public static Result visualizeAccountInformations(String UUID, String idAccount){
-    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(new TokenService().checkToken(UUID)==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
-    	new AccountService().visualizeAccount(idAccount);
+    	Account account = new AccountService().visualizeAccount(idAccount);
     	return ok("visualizeAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -90,9 +89,9 @@ public class AccountRoutes extends Controller {
      */
     public static Result visualizeMyAccountInformations(String UUID){
     	String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
-    	new AccountService().visualizeMyAccount(idAccount);
+    	Account account = new AccountService().visualizeMyAccount(idAccount);
     	return ok("visualizeMyAccountInformations:"
     			+ "\nUUID = "+UUID);
     }
@@ -104,7 +103,7 @@ public class AccountRoutes extends Controller {
 	 */
     public static Result deleteAccount(String UUID) {
     	String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	new AccountService().deleteAccount(idAccount);
     	return ok("deleteAccount:"
@@ -118,7 +117,7 @@ public class AccountRoutes extends Controller {
 	 */
     public static Result sendDemandBecomeArtist(String UUID) {
     	String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	new AccountService().becomeArtist(idAccount);
     	return ok("sendDemandBecomeArtist:"

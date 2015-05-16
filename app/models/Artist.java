@@ -12,12 +12,12 @@ public class Artist extends Account{
     
 	/**
 	 * @param id 
-	 * @param photo : id
 	 * @param login : pour la connexion
 	 * @param password
 	 * @param pseudo : le pseudo visible par tout le monde
 	 * @param email
 	 * @param description : description du compte
+	 * @param photo : id
 	 * @param playlists : List d'ID playlists (une playlist contient une liste d'ID de music)
 	 * @param rises : Liste d'ID de compte
 	 * @param follow : Liste d'ID d'artiste que le compte follow
@@ -27,15 +27,19 @@ public class Artist extends Account{
 	 * @param news : List de news d'artiste
 	 * @param biography
 	 */
-	public Artist(String id, String photo, String login, String password, String pseudo, String email, String description, 
+	public Artist(String id, String login, String password, String pseudo, String email, String description, String photo, 
 			List< String > playlists,	List<String> rises, List<String> follow, List<String> historical, List<String> library,
 			List<String> followers, List<String> news, String biography) {
 		
-		super(id, photo, login, password, pseudo, email, description, playlists, rises, follow, historical);
+		super(id, login, password, pseudo, email, description, photo, playlists, rises, follow, historical);
 		this.library = library;
 		this.followers = followers;
 		this.news = news;
 		this.biography = biography;
+	}
+	
+	public Artist(String login, String pass, String mail, String pseudo){
+		super(null, login, pass, pseudo, mail, null, null, null, null, null, null);
 	}
 	
 	public Artist(User userBecomeArtist){
@@ -51,12 +55,10 @@ public class Artist extends Account{
 		this.setRises(userBecomeArtist.getRises());
 		this.setFollow(userBecomeArtist.getFollow());
 		this.setHistorical(userBecomeArtist.getHistorical());
-		this.setLibrary(userBecomeArtist.getMusicRize());
 		this.setFollowers(userBecomeArtist.getRizeGet());
-		this.news = new ArrayList<String>();
-		this.biography = null;
 		
-		
+		this.setLibrary(new ArrayList<String>());
+		this.library.add(userBecomeArtist.getMusicRizeAlbum());
 	}
 	
 	public Artist(){
@@ -87,7 +89,6 @@ public class Artist extends Account{
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
-    
 
     
 }

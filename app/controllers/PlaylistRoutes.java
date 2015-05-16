@@ -1,20 +1,17 @@
 package controllers;
 
-import models.Playlist;
 import play.mvc.Controller;
 import play.mvc.Result;
 import service.PlaylistService;
 import service.TokenService;
 import utils.RizerUtils;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 public class PlaylistRoutes extends Controller{
 	
 	/**
 	 * Creer une playlist
 	 * @param UUID
-	 * @param name nom de la playlist
+	 * @param name nom de la pilaylist
 	 * @return idPlaylist si OK, null sinon
 	 */
     public static Result createOnePlaylist(String UUID, String name, String description){

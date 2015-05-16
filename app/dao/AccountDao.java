@@ -14,7 +14,7 @@ public class AccountDao {
 	/**
 	 * Inscription d'un utilisateur (user ou artist)
 	 * @param compte : element à inserer en base
-	 * @return
+	 * @return token
 	 */
 	public String inscription(Account compte){
 		
