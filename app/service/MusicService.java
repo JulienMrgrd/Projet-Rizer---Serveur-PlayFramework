@@ -34,7 +34,7 @@ public class MusicService{
 	 * @param music la musique a remplacer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public boolean modifyInfoMusic(String idMusic, Music music) {
+	public void modifyInfoMusic(String idMusic, Music music) {
 		MusicDao musicDao = new MusicDao();
 		Music musicBase = musicDao.getMusic(idMusic);
 		if(music.getName()!=null){

@@ -28,4 +28,14 @@ public class AlbumDao {
 		
 	}
 
+	public Album getAlbum(String idAlbum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void updateAlbum(Album album) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

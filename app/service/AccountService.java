@@ -226,4 +226,9 @@ public class AccountService {
 		return artist;
 	}
 
+	public void visualizeMyAccount(String idAccount) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

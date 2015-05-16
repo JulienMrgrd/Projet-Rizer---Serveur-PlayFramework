@@ -69,6 +69,11 @@ public class MusicDao {
 		//Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
 		return PlayJongo.gridfs().findOne(_id).getInputStream();
 	}
+
+	public void updateMusic(Music music) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

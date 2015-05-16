@@ -85,7 +85,7 @@ public class AlbumService {
 	 */
 	public void modifyAlbum(String idAlbum, Album album){
 		AlbumDao albumDao = new AlbumDao();
-		Album albumBase = AlbumDao.getAlbum(idAlbum);
+		Album albumBase = albumDao.getAlbum(idAlbum);
 		if(album.getTitle()!=null){
 			albumBase.setTitle(album.getTitle());
 		}

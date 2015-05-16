@@ -72,7 +72,7 @@ public class MusicRoutes extends Controller{
 		String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new MusicService().deleteMusic(idAccount, musicID);
+    	new MusicService().deleteMusic(musicID);
 		return ok("deleteMusic:"
 				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
     }

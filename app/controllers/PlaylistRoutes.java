@@ -44,13 +44,14 @@ public class PlaylistRoutes extends Controller{
      * Modifie en base la Playlist passée en parametre (en JSon), et met ses attributs non nuls à jour en base
      * @param UUID
      * @param idPlaylist
+     * @param name
+     * @param description
      * @return true si OK, false sinon
      */
-    public static Result modifyInfosOnePlaylist(String UUID, String name, String description){
-    	String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+    public static Result modifyInfosOnePlaylist(String UUID, String idPlaylist, String name, String description){
+    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-        new PlaylistService().modifyPlaylist(idAccount, name, description);
+        new PlaylistService().modifyPlaylist(idPlaylist, name, description);
     	return ok("modifyInfosOnePlaylist:"
     			+ "\nUUID = "+UUID+"\nname = "+name+"\ndescription = "+description);
     }
@@ -61,10 +62,9 @@ public class PlaylistRoutes extends Controller{
 	 * @param idPlaylist id de la playlist
 	 */
 	public static Result deleteOnePlaylist(String UUID, String idPlaylist){ 
-		String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	new PlaylistService().deletePlaylist(idAccount, idPlaylist);
+    	new PlaylistService().deletePlaylist(idPlaylist);
 		return ok("deleteOnePlaylist:"
     			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist);
     }
@@ -77,10 +77,9 @@ public class PlaylistRoutes extends Controller{
  	 * @return true si Ok, false sinon
 	 */
 	public static Result addMusicToPlaylist(String UUID, String idPlaylist, String musicID){ 
-		String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
 
-    	new PlaylistService().addMusicToPlaylist(idAccount, idPlaylist, musicID);
+    	new PlaylistService().addMusicToPlaylist(idPlaylist, musicID);
 		return ok("addMusicToPlaylist:"
     			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nmusicID = "+musicID); 
 	}
@@ -92,11 +91,10 @@ public class PlaylistRoutes extends Controller{
 	 * @param idMusic id de la music
 	 * @return true si Ok, false sinon
 	 */
-	public static Result removeMusicToPlaylist(String UUID, int idPlaylist, int musicID){ 
-		String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+	public static Result removeMusicToPlaylist(String UUID, String idPlaylist, String musicID){ 
+		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	new PlaylistService().removeMusicInPlaylist(idAccount, idPlaylist, musicID);
+    	new PlaylistService().removeMusicInPlaylist(idPlaylist, musicID);
 		return ok("removeMusicToPlaylist:"
     			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nmusicID = "+musicID); 
 	}
@@ -108,10 +106,9 @@ public class PlaylistRoutes extends Controller{
 	 * @return la Playlist, null sinon	 
 	 */
 	public static Result visualizeOnePlaylist(String UUID, String idPlaylist){
-		String idAccount = new TokenService().checkToken(UUID);
-    	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new PlaylistService().visualizePlaylist(idAccount, idPlaylist);
+    	new PlaylistService().visualizePlaylist(idPlaylist);
 		return ok("visualizeOnePlaylist:"
     			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist); 
 	}

@@ -58,5 +58,15 @@ public class PlaylistDao {
 		return PlayJongo.getCollection("Playlist").findOne("{name:#}", name).as(Playlist.class);
 	}
 
+	public Playlist findPlaylistbyNameAndIdAccount(String name, String idAccount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Playlist getPlaylist(String idPlaylist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
