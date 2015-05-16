@@ -11,7 +11,7 @@ GET     /check/:uuid			    	   			 controllers.AccountRoutes.checkToken(uuid:Str
 GET     /inscr/:login/:pass/:mail/:pseudo  			 controllers.AccountRoutes.inscription(login:String,pass:String,mail:String,pseudo:String)
 POST    /modifAcc/:uuid 			       			 controllers.AccountRoutes.modifyAccountInformations(uuid:String)
 GET     /visuaAcc/:uuid/:idAccount	    		   	 controllers.AccountRoutes.visualizeAccountInformations(uuid:String,idAccount:String)
-GET     /visuaMyAcc/:uuid	  		  	   		     controllers.AccountRoutes.visualizeAccountInformations(uuid:String)
+GET     /visuaMyAcc/:uuid	  		  	   		     controllers.AccountRoutes.visualizeMyAccountInformations(uuid:String)
 GET     /deleteAcc/:uuid			       			 controllers.AccountRoutes.deleteAccount(uuid:String)
 GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
 

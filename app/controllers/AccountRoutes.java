@@ -38,12 +38,6 @@ public class AccountRoutes extends Controller {
     			+ "\nlogin = "+login+"\npass = "+pass+"\nmail = "+mail+"\npseudo = "+pseudo);
     }
     
-    /**
-	 * connecte un utilisateur
-	 * @param login
-	 * @param mdp
-	 * @return l'id du compte
-	 */
     public static Result checkToken(String uuid){
     	new TokenService().checkToken(uuid);
     	return ok("checkToken:"
