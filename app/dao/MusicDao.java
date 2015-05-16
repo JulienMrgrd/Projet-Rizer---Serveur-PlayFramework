@@ -23,7 +23,9 @@ public class MusicDao {
 		gfsFile.setFilename(m.getName());
 		//Utiliser un ID spécifique
 		//A fini :metadata
-		gfsFile.setId(m.getFileId());
+		//gfsFile.setId(m.getFileId());
+		m.setFileId(gfsFile.getId().toString());
+		
 		gfsFile.save();
 		PlayJongo.getCollection("Music").save(m);
 		
@@ -66,8 +68,8 @@ public class MusicDao {
 	 */
 	
 	public InputStream getInputStreamMusic(String _id){
-		//Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
-		return PlayJongo.gridfs().findOne(_id).getInputStream();
+		Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
+		return PlayJongo.gridfs().findOne(musicTmp.getFileId()).getInputStream();
 	}
 
 	public void updateMusic(Music musicTmp) {
