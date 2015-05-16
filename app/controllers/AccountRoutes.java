@@ -39,6 +39,18 @@ public class AccountRoutes extends Controller {
     }
     
     /**
+	 * connecte un utilisateur
+	 * @param login
+	 * @param mdp
+	 * @return l'id du compte
+	 */
+    public static Result checkToken(String uuid){
+    	new TokenService().checkToken(uuid);
+    	return ok("checkToken:"
+    			+ "\nuuid = "+uuid);
+    }
+    
+    /**
      * Modifie en base l'Account passé en parametre(en JSon), et met ses attributs non nuls à jour en base
      * @param UUID
      * @return true si OK, false sinon
