@@ -14,11 +14,9 @@ public class AccountDao {
 	/**
 	 * Inscription d'un utilisateur (user ou artist)
 	 * @param compte : element à inserer en base
-	 * @param f : image correspondant au profile
 	 * @return
-	 * @throws IOException
 	 */
-	public  String inscription(Account compte, File f) throws IOException{
+	public String inscription(Account compte){
 		
 		if(!(new AccountDao()).checkLogin(compte.getLogin()))
 			return null;
