@@ -18,8 +18,8 @@ public class AlbumService {
 	 * @param artist
 	 * @return Album creer
 	 */
-	public Album createAlbum(String title, Artist artist){
-		Album album = new Album(null, title, new ArrayList<String>(), artist);
+	public Album createAlbum(String title, String IdArtist){
+		Album album = new Album(null, title, new ArrayList<String>(), IdArtist);
 		AlbumDao albumDao = new AlbumDao();
 		albumDao.addAlbum(album);
 		return album;
