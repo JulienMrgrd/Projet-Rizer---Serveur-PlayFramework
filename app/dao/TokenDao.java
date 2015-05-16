@@ -2,9 +2,11 @@ package dao;
 
 
 
+import java.io.File;
 import java.io.IOException;
 
 import org.joda.time.DateTime;
+
 
 
 
@@ -117,7 +119,10 @@ public class TokenDao {
 		//System.out.println(new DateTime());
 		
 		//System.out.println((new TokenDao()).checkToken("3228d9d7-5260-4699-9fbc-5a0ad79073a3"));
+		//PlayJongo.getCollection("Artiste").update("{_id:#}","g").with("{$push: {news: #}}","test");
+		//Artist t=PlayJongo.getCollection("Artiste").findOne("{_id:#}","g").as(Artist.class);
 		
+		new MusicDao().addMusic(new File("C:\\Users\\S.Sinthu\\Downloads\\mongoTest.mp3"), new Music(null, null, null, null, null, null, null, null));
 	}
 
 }
