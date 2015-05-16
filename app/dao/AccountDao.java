@@ -19,17 +19,13 @@ public class AccountDao {
 	 * @throws IOException
 	 */
 	public  String inscription(Account compte, File f) throws IOException{
-		GridFSInputFile gfsFile = PlayJongo.gridfs().createFile(f);
-		gfsFile.setFilename(compte.getPhoto());
-		gfsFile.save();
-		compte.setPhoto(gfsFile.getId().toString());
+		
 		if(!(new AccountDao()).checkLogin(compte.getLogin()))
 			return null;
 		if(compte instanceof Artist)
 			return (new ArtistDao()).inscriptionArtist((Artist)compte);
 		return (new UserDao()).inscriptionUser((User)compte);
-
-
+		
 	}
 	/**
 	 * Verifi un utilisateur possede deja ce login
@@ -40,6 +36,22 @@ public class AccountDao {
 	public boolean checkLogin(String login){
 		return (new ArtistDao()).checkLoginArtist(login) && (new UserDao()).checkLoginUser(login);
 
+	}
+	
+	public boolean addPhoto(String idCompte, File f) throws IOException{
+		Account tmp;
+		tmp =(new ArtistDao()).getArtist(idCompte);
+		if(tmp == null )
+			tmp =(new UserDao()).getUser(idCompte);
+		if(tmp==null)
+			return false;
+		GridFSInputFile gfsFile = PlayJongo.gridfs().createFile(f);
+		gfsFile.setFilename(tmp.getPhoto());
+		gfsFile.save();
+		tmp.setPhoto(gfsFile.getId().toString());
+		this.updateAccount(tmp);
+		return true;
+		
 	}
 
 	/**
