@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import models.Account;
 import models.Artist;
-import models.Playlist;
 import models.User;
 import dao.AccountDao;
 import dao.ArtistDao;
@@ -32,9 +31,10 @@ public class AccountService {
 	 */
 	public String subscribeAccountUser(String namePhoto, String login, String password, 
 			String email,String description, String pseudo, File photo) throws IOException {
-		Account account = new User(null, namePhoto, login, password, pseudo, email, description, new ArrayList<Playlist>(), 
+		AccountDao accountDao = new AccountDao();
+		Account account = new User(null, namePhoto, login, password, pseudo, email, description, new ArrayList<String>(), 
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), false, new ArrayList<String>());
-		return AccountDao.inscription(account,photo);
+		return accountDao.inscription(account,photo);
 	}
 
 
@@ -48,12 +48,14 @@ public class AccountService {
 	 * @throws IOException
 	 */
 	public String subscribeAccountArtist(String accountId, String biography, File photo) throws IOException {
-		User user = UserDao.getUser(accountId);
+		AccountDao accountDao = new AccountDao();
+		UserDao userDao = new UserDao();
+		User user = userDao.getUser(accountId);
 		Account account = new Artist(user.get_id(), user.getPhoto(), user.getLogin(), user.getPassword(), user.getPassword(),
 				user.getEmail(), user.getDescription(), user.getPlaylists(), user.getRises(), user.getFollow(), 
 				user.getHistorical(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), biography);
-		UserDao.deleteUser(accountId);
-		return AccountDao.inscription(account, photo);
+		userDao.deleteUser(accountId);
+		return accountDao.inscription(account, photo);
 	}
 
 	/**
@@ -71,11 +73,11 @@ public class AccountService {
 	 */
 	public String subscribeAccountArtist(String namePhoto, String login, String password, 
 			String email,String description, String pseudo,String biography, File photo ) throws IOException {
-
+		AccountDao accountDao = new AccountDao();
 		Account account = new Artist( null,namePhoto, login, password, pseudo, email, description, 
-				new ArrayList<Playlist>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), 
+				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), 
 				new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>(), biography);
-		return AccountDao.inscription(account, photo);
+		return accountDao.inscription(account, photo);
 	}
 
 	/**
@@ -85,7 +87,8 @@ public class AccountService {
 	 */
 	public void modifyAccount(String idAccount, Account account) {
 		User user = null;
-		user = UserDao.getUser(idAccount);
+		UserDao userDao = new UserDao();
+		user = userDao.getUser(idAccount);
 		if(user!=null){
 			if(account.get_id()!=null){
 				user.set_id(account.get_id());
@@ -120,9 +123,10 @@ public class AccountService {
 			if(account.getHistorical()!=null){
 				user.setHistorical(account.getHistorical());
 			}
-			UserDao.updateUser(user);
+			userDao.updateUser(user);
 		}else{
-			Artist artist = ArtistDao.getArtist(idAccount);
+			ArtistDao artistDao = new ArtistDao();
+			Artist artist = artistDao.getArtist(idAccount);
 			if(account.get_id()!=null){
 				artist.set_id(account.get_id());
 			}
@@ -156,7 +160,7 @@ public class AccountService {
 			if(account.getHistorical()!=null){
 				artist.setHistorical(account.getHistorical());
 			}
-			ArtistDao.updateArtist(artist);
+			artistDao.updateArtist(artist);
 		}
 	}
 
@@ -168,27 +172,13 @@ public class AccountService {
 	 */
 	public Account visualizeAccount(String idAccount) {
 		User user = null;
-		user = UserDao.getUser(idAccount);
+		UserDao userDao = new UserDao();
+		user = userDao.getUser(idAccount);
 		if(user!=null){
 			return user;
 		}else{
-			Artist artist = ArtistDao.getArtist(idAccount);
-			return artist;
-		}
-	}
-	
-	/**
-	 * Permet de voir son Account (tous les attributs seront renseignés)
-	 * @param idAccount id du Account à voir
-	 * @return User ou Artist
-	 */
-	public Account visualizeMyAccount(String idAccount) {
-		User user = null;
-		user = UserDao.getUser(idAccount);
-		if(user!=null){
-			return user;
-		}else{
-			Artist artist = ArtistDao.getArtist(idAccount);
+			ArtistDao artistDao = new ArtistDao();
+			Artist artist = artistDao.getArtist(idAccount);
 			return artist;
 		}
 	}
@@ -201,7 +191,8 @@ public class AccountService {
 	 */
 	public void deleteAccount(String idAccount) {
 		// TODO finir selon playlist
-		UserDao.deleteUser(idAccount);
+		UserDao userDao = new UserDao();
+		userDao.deleteUser(idAccount);
 	}
 
 	/**
@@ -210,12 +201,13 @@ public class AccountService {
 	 * @return true si Ok, false sinon
 	 */
 	public boolean becomeArtist(String idAccount) {
-		User user = UserDao.getUser(idAccount);
+		UserDao userDao = new UserDao();
+		User user = userDao.getUser(idAccount);
 		if(user.isfuturArtist()){
 			return false;
 		}else{
 			user.setfuturArtist(true);
-			UserDao.updateUser(user);
+			userDao.updateUser(user);
 			return true;
 		}
 	}
@@ -225,10 +217,12 @@ public class AccountService {
 	 * qui le fait)
 	 */
 	public Artist transformToArtist(String idUser) {
-		User user = UserDao.getUser(idUser);
+		UserDao userDao = new UserDao();
+		ArtistDao artistDao = new ArtistDao();
+		User user = userDao.getUser(idUser);
 		Artist artist = new Artist(user);
-		UserDao.deleteUser(idUser);
-		ArtistDao.updateArtist(artist);
+		userDao.deleteUser(idUser);
+		artistDao.updateArtist(artist);
 		return artist;
 	}
 

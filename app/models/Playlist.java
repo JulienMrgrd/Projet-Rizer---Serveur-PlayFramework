@@ -55,6 +55,11 @@ public class Playlist {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String get_id() {
+		return _id;
+	}
+
 	
 	
 }

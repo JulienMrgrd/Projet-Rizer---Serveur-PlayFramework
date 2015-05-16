@@ -1,22 +1,31 @@
 package service;
 
+import java.io.File;
+import java.io.IOException;
+
+import models.Artist;
 import models.Music;
+import models.User;
+import dao.ArtistDao;
+import dao.MusicDao;
+import dao.UserDao;
 
 public class MusicService{
 
 	public MusicService(){
-		
+
 	}
-	
+
 	/**
 	 * Ajoute une musique en base
-	 * @param idAccount l'id du compte (Artist ou FuturArtist) qui rajoute cette musique
+	 * @param file File de la music
 	 * @param music le fichier a uploader
-	 * @return vrai si l'operation s'est bien passee
+	 * @throws IOException 
 	 */
-	public boolean addMusic(String idAccount, Music music) {
-		// TODO Auto-generated method stub
-		return false;
+	public void addMusic(File file, Music music) throws IOException {
+		MusicDao musicDao = new MusicDao();
+		musicDao.addMusic(file, music);
+		
 	}
 
 	/**
@@ -25,20 +34,37 @@ public class MusicService{
 	 * @param music la musique a remplacer
 	 * @return vrai si l'operation s'est bien passee
 	 */
-	public boolean modifyInfoMusic(String idAccount, Music music) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modifyInfoMusic(String idMusic, Music music) {
+		MusicDao musicDao = new MusicDao();
+		Music musicBase = musicDao.getMusic(idMusic);
+		if(music.getName()!=null){
+			musicBase.setName(music.getName());
+		}
+		if(music.getFileId()!=null){
+			musicBase.setFileId(music.getFileId());
+		}
+		if(music.getLike()!=null){
+			musicBase.setLike(music.getLike());
+		}
+		if(music.getComment()!=null){
+			musicBase.setComment(music.getComment());
+		}
+		if(music.getTags()!=null){
+			musicBase.setTags(music.getTags());
+		}
+		if(music.getDuration()!=null){
+			musicBase.setDuration(music.getDuration());
+		}
+		musicDao.updateMusic(musicBase);
 	}
 
 	/**
 	 * Supprime la musique en base
-	 * @param idAccount l'id du compte qui supprime cette musique
 	 * @param idMusic l'id de la musique a supprimer
-	 * @return vrai si l'operation s'est bien passee
 	 */
-	public boolean deleteMusic(String idAccount, String idMusic) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteMusic(String idMusic) {
+		MusicDao musicDao = new MusicDao();
+		musicDao.deleteMusic(idMusic);
 	}
 
 	/**
@@ -48,8 +74,18 @@ public class MusicService{
 	 * @return vrai si l'operation s'est bien passee.
 	 */
 	public boolean likerMusic(String idAccount, String idMusic) {
-		// TODO Auto-generated method stub
-		return false;
+		MusicDao musicDao = new MusicDao();
+		Music music = musicDao.getMusic(idMusic);
+		if(music.getLike().size()>0){
+			for(int i = 0; i<music.getLike().size();i++){
+				if(music.getLike().get(i).equals(idAccount)){
+					return false;
+				}
+			}
+		}
+		music.getLike().add(idAccount);
+		musicDao.updateMusic(music);
+		return true;
 	}
 
 	/**
@@ -57,14 +93,25 @@ public class MusicService{
 	 * @param idAccount l'id du compte qui commente
 	 * @param idMusic l'id de la musique qui est commentee
 	 * @param comment le commentaire
-	 * @return
 	 */
-	public boolean commentMusic(String idAccount, String idMusic,
+	public void commentMusic(String idAccount, String idMusic,
 			String comment) {
-		// TODO Auto-generated method stub
-		return false;
+		User user = null;
+		UserDao userDao = new UserDao();
+		MusicDao musicDao = new MusicDao();
+		Music music = musicDao.getMusic(idMusic);
+		user = userDao.getUser(idAccount);
+		if(user!=null){
+			music.getComment().put(user.getPseudo(), comment);
+			musicDao.updateMusic(music);
+		}else{
+			ArtistDao artistDao = new ArtistDao();
+			Artist artist = artistDao.getArtist(idAccount);
+			music.getComment().put(artist.getPseudo(), comment);
+			musicDao.updateMusic(music);
+		}
 	}
-	
+
 	/**
 	 * Permet à l'utilisateur d'écouter une musique
 	 * @param idAccount l'id du compte qui commente

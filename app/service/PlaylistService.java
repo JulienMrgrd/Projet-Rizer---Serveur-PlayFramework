@@ -13,9 +13,9 @@ import dao.UserDao;
 public class PlaylistService {
 
 	public PlaylistService(){
-		
+
 	}
-	
+
 	/**
 	 * creer une playlist et l'ajoute au compte
 	 * @param idAccount
@@ -25,34 +25,39 @@ public class PlaylistService {
 	 */
 	public Playlist createPlayList(String idAccount, String name, String description) {
 		User user = null;
+		PlaylistDao playlistDao = new PlaylistDao();
+		UserDao userDao = new UserDao();
 		Playlist playlist = new Playlist(idAccount, new ArrayList<String>(), name, description);
-		PlaylistDao.addPlaylist(playlist);
-		user = UserDao.getUser(idAccount);
+		playlistDao.addPlaylist(playlist);
+		playlist = playlistDao.findPlaylistbyNameAndIdAccount(name,idAccount);
+		user = userDao.getUser(idAccount);
 		if(user!=null){
-			user.getPlaylists().add(playlist);
-			UserDao.inscriptionUser(user);
+			user.getPlaylists().add(playlist.get_id());
+			userDao.updateUser(user);
 		}else{
-			Artist artist = ArtistDao.getArtist(idAccount);
-			artist.getPlaylists().add(playlist);
-			ArtistDao.inscriptionArtist(artist);
+			ArtistDao artistDao = new ArtistDao();
+			Artist artist = artistDao.getArtist(idAccount);
+			artist.getPlaylists().add(playlist.get_id());
+			artistDao.updateArtist(artist);
 		}
 		return playlist;
 	}
-	
+
 	/**
 	 * Interroge la base pour savoir si un utilisateur a une playlist
 	 * @param idAccount id de l'utilisateur
-	 * @return idPlaylist si OK, null sinon
+	 * @return vrai si il a et false sinon
 	 */
-	public void hasAPlayList(String idAccount) {
+	public boolean hasAPlayList(String idAccount) {
+		return false;
 		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * Permet de modifier sa playlist
-	 * @param idAccount id de l'utilisateur
-	 * @param playlist L'objet Playlist contenant les nouvelles informations
-	 * @return true si Ok, false sinon
+	 * @param idPlaylist
+	 * @param name
+	 * @param description
 	 */
 	public void modifyPlaylist(String idPlaylist, String name, String description) {
 		PlaylistDao playlistDao = new PlaylistDao();
@@ -63,27 +68,24 @@ public class PlaylistService {
 		if(description!=null){
 			playlistBase.setDescription(description);
 		}
-		playlistDao.updatePlaylist(p);
+		playlistDao.updatePlaylist(playlistBase);
 	}
 
 	/**
 	 * Supprime une playlist
-	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 */
-	public void deletePlaylist(String idAccount, String idPlaylist) {
+	public void deletePlaylist(String idPlaylist) {
 		PlaylistDao playlistDao = new PlaylistDao();
 		playlistDao.deletePlaylist(idPlaylist);
 	}
 
 	/**
 	 * Ajoute une music a une playlist
-	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 * @param idMusic id de la music (préalablement uploadé sur serveur)
-
 	 */
-	public void addMusicToPlaylist(String idAccount, String idPlaylist,
+	public void addMusicToPlaylist( String idPlaylist,
 			String idMusic) {
 		PlaylistDao playlistDao = new PlaylistDao();
 		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
@@ -93,29 +95,36 @@ public class PlaylistService {
 
 	/**
 	 * Enleve une music d'une playlist
-	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 * @param idMusic id de la music
 	 * @return true si Ok, false sinon
 	 */
-//	public boolean removeMusicInPlaylist(String idAccount, String idPlaylist,
-//			String idMusic) {
-//		PlaylistDao playlistDao = new PlaylistDao();
-//		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
-//		for(int i = 0; i<playlist.getListMusics().size() && ; i++){
-//			
-//		}
-//	}
-	
+	public boolean removeMusicInPlaylist( String idPlaylist,
+			String idMusic) {
+		boolean remove = false;
+		PlaylistDao playlistDao = new PlaylistDao();
+		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
+		if(playlist.getListMusics().size()>0){
+			for(int i = 0; i<playlist.getListMusics().size() && remove!=true; i++){
+				if(playlist.getListMusics().get(i).equals(idMusic)){
+					playlist.getListMusics().remove(i);
+					playlistDao.updatePlaylist(playlist);
+					remove = true;
+				}
+			}
+		}
+		return remove;
+	}
+
 	/**
 	 * Visualise une playlist
-	 * @param idAccount id de l'utilisateur
 	 * @param idPlaylist id de la playlist
 	 * @return la Playlist, null sinon	 
 	 */
-	public Playlist visualizePlaylist(String idAccount, String idPlaylist) {
-		// TODO Auto-generated method stub
-		return null;
+	public Playlist visualizePlaylist( String idPlaylist) {
+		PlaylistDao playlistDao = new PlaylistDao();
+		Playlist playlist = playlistDao.getPlaylist(idPlaylist);
+		return playlist;
 	}
 
 }
