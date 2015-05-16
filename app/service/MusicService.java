@@ -119,10 +119,13 @@ public class MusicService{
 	 * @return InputStream de la music
 	 */
 	public InputStream listenMusic(String idMusic) {
-		InputStream music = null;
+		Music music = null;
+		InputStream musicFile;
 		MusicDao musicDao = new MusicDao();
-		music = musicDao.getInputStreamMusic(idMusic);
-		return music;	
+		music = musicDao.getMusic(idMusic);
+		String idFile = music.getFileId();
+		musicFile = musicDao.getInputStreamMusic(idFile);
+		return musicFile;	
 	}
 
 }
