@@ -2,6 +2,7 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import models.Artist;
 import models.Music;
@@ -114,13 +115,14 @@ public class MusicService{
 
 	/**
 	 * Permet à l'utilisateur d'écouter une musique
-	 * @param idAccount l'id du compte qui commente
 	 * @param idMusic l'id de la musique qui est commentee
-	 * @return
+	 * @return InputStream de la music
 	 */
-	public boolean listenMusic(String idAccount, String idMusic) {
-		// TODO Auto-generated method stub
-		return false;
+	public InputStream listenMusic(String idMusic) {
+		InputStream music = null;
+		MusicDao musicDao = new MusicDao();
+		music = musicDao.getInputStreamMusic(idMusic);
+		return music;	
 	}
 
 }

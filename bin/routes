@@ -16,7 +16,7 @@ GET     /deleteAcc/:uuid			       			 controllers.AccountRoutes.deleteAccount(uu
 GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
 
 # Playlist
-GET     /createPlist/:uuid/:name	        	     controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String)
+GET     /createPlist/:uuid/:name/:desc	        	 controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String,desc:String)
 GET     /hasAPlist/:uuid			        	     controllers.PlaylistRoutes.hasAPlaylist(uuid:String)
 GET     /modifPlist/:uuid/:idPlist/:name/:desc       controllers.PlaylistRoutes.modifyInfosOnePlaylist(uuid:String,idPlist:String,name:String,desc:String)
 GET     /deletePlist/:uuid/:idPlist  			     controllers.PlaylistRoutes.deleteOnePlaylist(uuid:String,idPlist:String)
