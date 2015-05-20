@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Artist extends Account{
@@ -28,7 +29,7 @@ public class Artist extends Account{
 	 * @param biography
 	 */
 	public Artist(String id, String login, String password, String pseudo, String email, String description, String photo, 
-			List< String > playlists,	List<String> rises, List<String> follow, List<String> historical, List<String> library,
+			List< String > playlists,	List<String> rises, List<String> follow, Hashtable<String, Integer> historical, List<String> library,
 			List<String> followers, List<String> news, String biography) {
 		
 		super(id, login, password, pseudo, email, description, photo, playlists, rises, follow, historical);

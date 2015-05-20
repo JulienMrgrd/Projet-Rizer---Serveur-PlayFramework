@@ -1,6 +1,12 @@
 package models;
 
+import java.util.Hashtable;
 import java.util.List;
+
+
+
+
+
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +24,7 @@ public abstract class Account {
     private List<String> playlists;
     private List<String> rises;
     private List<String> follow;
-    private List<String> historical;
+    private Hashtable<String, Integer> historical;
     
     
 	/**
@@ -35,7 +41,7 @@ public abstract class Account {
 	 * @param historical : Liste de music id déjà écoutée
 	 */
 	public Account(String id, String login, String password, String pseudo, String email, String description, String photo, 
-				   List< String > playlists, List<String> rises, List<String> follow, List<String> historical) {
+				   List< String > playlists, List<String> rises, List<String> follow, Hashtable<String, Integer> historical) {
 		super();
 		this._id = id;
 		this.login = login;
@@ -132,11 +138,11 @@ public abstract class Account {
 		this.follow = follow;
 	}
 
-	public List<String> getHistorical() {
+	public Hashtable<String,Integer> getHistorical() {
 		return historical;
 	}
 
-	public void setHistorical(List<String> historical) {
+	public void setHistorical(Hashtable<String, Integer> historical) {
 		this.historical = historical;
 	}
 	

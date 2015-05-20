@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Hashtable;
 import java.util.List;
 
 public class User extends Account{
@@ -24,7 +25,7 @@ public class User extends Account{
 	 * @param rizeGet : Nombre de rize obtenus
 	 */
 	public User(String id, String login, String password, String pseudo, String email, String description, String photo, 
-			List< String > playlists,	List<String> rises, List<String> follow, List<String> historical, boolean futurArtist,	List<String> rizeGet) {
+			List< String > playlists,	List<String> rises, List<String> follow, Hashtable<String, Integer> historical, boolean futurArtist,	List<String> rizeGet) {
 		
 		super(id, login, password, pseudo, email, description, photo, playlists, rises, follow, historical);
 		this.futurArtist = futurArtist;
