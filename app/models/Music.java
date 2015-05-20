@@ -45,6 +45,10 @@ public class Music {
 		this.album = album;
 	}
 	
+	public Music(){
+		super();
+	}
+	
 	public String getId() {
 		return _id;
 	}

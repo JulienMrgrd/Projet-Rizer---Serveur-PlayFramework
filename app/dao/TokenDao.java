@@ -5,12 +5,19 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 
+import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 
 
 
 
 
+
+
+
+
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSDBFile;
 
 import models.*;
 import modelsmongo.PlayJongo;
@@ -101,10 +108,10 @@ public class TokenDao {
 	public static void main(String[] args) throws IOException{
 	//	TokenDao.getNewToken("", "");
 		
-		/*String newFileName = "mkyong-java-image";
+		String newFileName = "mkyong-java-image";
 		GridFS gfsPhoto = PlayJongo.gridfs();
-		GridFSDBFile imageForOutput = gfsPhoto.findOne(newFileName);
-		System.out.println(imageForOutput);
+		GridFSDBFile imageForOutput = gfsPhoto.findOne(new ObjectId("55575995e1f81ba37adb43b8"));
+		/*System.out.println(imageForOutput);
 		I f = null;
 		imageForOutput.writeTo(f);
 		
@@ -113,7 +120,7 @@ public class TokenDao {
         JLabel label = new JLabel(new ImageIcon((Image)f));
         frame.add(label);
         frame.setVisible(true);*/
-		PlayJongo.getCollection("Token").save(new Token("ddddd"));
+		//PlayJongo.getCollection("Token").save(new Token("ddddd"));
 		//PlayJongo.getCollection("Token").remove("{ dateMaj: { $lt: # }}", new DateTime("2015-04-17T15:36:14.300+02:00").toString());
 		
 		//System.out.println(new DateTime());
@@ -122,7 +129,7 @@ public class TokenDao {
 		//PlayJongo.getCollection("Artiste").update("{_id:#}","g").with("{$push: {news: #}}","test");
 		//Artist t=PlayJongo.getCollection("Artiste").findOne("{_id:#}","g").as(Artist.class);
 		
-		new MusicDao().addMusic(new File("C:\\Users\\S.Sinthu\\Downloads\\mongoTest.mp3"), new Music(null, null, null, null, null, null, null, null));
+		new MusicDao().addMusic(new File("C:\\Users\\S.Sinthu\\Downloads\\mongoTest.mp3"), new Music("123", "test", null, null, null, null, null, null));
 	}
 
 }

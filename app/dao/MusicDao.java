@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.bson.types.ObjectId;
+
 import com.mongodb.gridfs.GridFSInputFile;
 
 import models.Music;
@@ -69,7 +71,7 @@ public class MusicDao {
 	
 	public InputStream getInputStreamMusic(String _id){
 		Music musicTmp=PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
-		return PlayJongo.gridfs().findOne(musicTmp.getFileId()).getInputStream();
+		return PlayJongo.gridfs().findOne(new ObjectId(musicTmp.getFileId())).getInputStream();
 	}
 
 	public void updateMusic(Music musicTmp) {

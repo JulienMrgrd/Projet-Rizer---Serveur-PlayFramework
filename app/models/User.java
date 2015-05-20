@@ -35,6 +35,9 @@ public class User extends Account{
 		super(null, login, password, pseudo, mail, null, null, null, null, null, null);
 	}
 	
+	public User(){
+		super();
+	}
 	public String getMusicRizeAlbum() {
 		return musicRizeAlbum;
 	}

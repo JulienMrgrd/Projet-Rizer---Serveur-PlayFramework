@@ -26,6 +26,9 @@ public class Album {
 		this.idartist = idartist;
 	}
     
+	public Album(){
+		super();
+	}
 
 	public void setId(String id) {
 		this._id = id;
