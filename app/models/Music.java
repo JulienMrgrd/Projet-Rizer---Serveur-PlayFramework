@@ -94,6 +94,13 @@ public class Music {
 	public Album getAlbum() {
 		return album;
 	}
+	@Override
+	public String toString() {
+		return "Music [_id=" + _id + ", name=" + name + ", fileId=" + fileId
+				+ ", like=" + like + ", comment=" + comment + ", tags=" + tags
+				+ ", duration=" + duration + ", album=" + album + "]";
+	}
+
 	public void setAlbum(Album album) {
 		this.album = album;
 	}

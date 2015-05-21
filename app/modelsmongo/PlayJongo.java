@@ -2,6 +2,9 @@ package modelsmongo;
 
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
@@ -60,5 +63,14 @@ public class PlayJongo {
 
     public static DB getDatabase() {
         return getInstance().jongo.getDatabase();
+    }
+    
+    public static List toArray(Iterator iter){
+    	List result=new ArrayList();
+    	while(iter.hasNext()){
+    		result.add(iter.next());
+    	}
+    	
+    	return result;
     }
 }

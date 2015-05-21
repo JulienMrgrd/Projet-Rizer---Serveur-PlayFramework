@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 import org.jongo.ResultHandler;
 
-public class MongoCursor<E> implements Iterator<E>, Iterable<E>, Closeable {
+public class MongoCursor<E> implements Iterator<E>, Iterable<E> {
 
     private final DBCursor cursor;
     private final ResultHandler<E> resultHandler;

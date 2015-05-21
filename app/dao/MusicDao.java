@@ -3,12 +3,16 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 
 import com.mongodb.gridfs.GridFSInputFile;
 
+import models.Album;
 import models.Music;
+import modelsmongo.MongoCursor;
 import modelsmongo.PlayJongo;
 
 public class MusicDao {
@@ -52,6 +56,11 @@ public class MusicDao {
 	 */
 	public Music getMusic(String _id){
 		return PlayJongo.getCollection("Music").findOne("{_id:#}", _id).as(Music.class);
+	}
+	
+	public List<Music> getMusicsContainsName(String name){
+		Iterator m= PlayJongo.getCollection("Music").find("{name:{$regex:\""+name+"\", $options: 'i' }}").as(Music.class).iterator();
+		return PlayJongo.toArray(m);
 	}
 	
 	/**

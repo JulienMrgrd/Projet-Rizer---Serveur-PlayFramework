@@ -2,7 +2,11 @@ package dao;
 
 
 
+import java.util.Iterator;
+import java.util.List;
+
 import models.Artist;
+import models.Music;
 import modelsmongo.PlayJongo;
 
 public class ArtistDao{
@@ -50,6 +54,11 @@ public class ArtistDao{
 	 */
 	public void updateArtist(Artist compte){
 		PlayJongo.getCollection("Artist").save(compte);
+	}
+	
+	public List<Music> getArtistsContainsPseudo(String pseudo){
+		Iterator m= PlayJongo.getCollection("Artist").find("{pseudo:{$regex:\""+pseudo+"\", $options: 'i' }}").as(Artist.class).iterator();
+		return PlayJongo.toArray(m);
 	}
 	
 	public static void main(String[] args){

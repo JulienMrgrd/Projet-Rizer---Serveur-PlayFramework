@@ -129,7 +129,9 @@ public class TokenDao {
 		//PlayJongo.getCollection("Artiste").update("{_id:#}","g").with("{$push: {news: #}}","test");
 		//Artist t=PlayJongo.getCollection("Artiste").findOne("{_id:#}","g").as(Artist.class);
 		
-		new MusicDao().addMusic(new File("C:\\Users\\S.Sinthu\\Downloads\\mongoTest.mp3"), new Music("123", "test", null, null, null, null, null, null));
+		//new MusicDao().addMusic(new File("C:\\Users\\S.Sinthu\\Downloads\\mongoTest.mp3"), new Music("123", "test", null, null, null, null, null, null));
+		System.out.println((new MusicDao()).getMusicsContainsName("test"));
+		//System.out.println(new AlbumDao().getAlbumsByName("test"));
 	}
 
 }

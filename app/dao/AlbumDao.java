@@ -41,9 +41,14 @@ public class AlbumDao {
 		return PlayJongo.getCollection("Album").findOne("{_id:#}", _idAlbum).as(Album.class);
 	}
 	
+	public List<Music> getAlbumsContainsName(String name){
+		Iterator m= PlayJongo.getCollection("Album").find("{name:{$regex:\""+name+"\", $options: 'i' }}").as(Album.class).iterator();
+		return PlayJongo.toArray(m);
+	}
+	
 	public List<Album> getAlbumsByName(String name){
-		MongoCursor<Album> m= (MongoCursor<Album>) PlayJongo.getCollection("Album").find("{name:#}", name).as(Album.class);
-		return m.toArray();
+		Iterator<Album> m= PlayJongo.getCollection("Album").find("{name:#}", name).as(Album.class).iterator();
+		return PlayJongo.toArray(m);
 		
 	}
 
