@@ -78,8 +78,8 @@ public class AccountRoutes extends Controller {
     	if(new TokenService().checkToken(UUID)==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	Account account = new AccountService().visualizeAccount(idAccount);
-    	return ok("visualizeAccountInformations:"
-    			+ "\nUUID = "+UUID);
+    	JsonNode jn = play.libs.Json.toJson(account);
+    	return ok(jn);
     }
     
     /**
@@ -92,8 +92,8 @@ public class AccountRoutes extends Controller {
     	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	Account account = new AccountService().visualizeMyAccount(idAccount);
-    	return ok("visualizeMyAccountInformations:"
-    			+ "\nUUID = "+UUID);
+    	JsonNode jn = play.libs.Json.toJson(account);
+    	return ok(jn);
     }
 
     /**
