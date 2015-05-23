@@ -65,7 +65,8 @@ public class PlayJongo {
         return getInstance().jongo.getDatabase();
     }
     
-    public static List toArray(Iterator iter){
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public static List toArray(Iterator iter){
     	List result=new ArrayList();
     	while(iter.hasNext()){
     		result.add(iter.next());
