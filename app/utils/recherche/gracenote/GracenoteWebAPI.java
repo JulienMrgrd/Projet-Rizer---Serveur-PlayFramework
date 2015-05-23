@@ -1,4 +1,4 @@
-package utils.recherche.api_gracenote.webapi;
+package utils.recherche.gracenote;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -224,9 +224,9 @@ public class GracenoteWebAPI
             body += "<MODE>SINGLE_BEST</MODE>";
 
             // If a search scenario, then need the text input
-            if (!artist.equals("")) { body += "<TEXT TYPE=\"ARTIST\">" + artist + "</TEXT>"; }
-            if (!track.equals(""))  { body += "<TEXT TYPE=\"TRACK_TITLE\">" + track + "</TEXT>"; }
-            if (!album.equals(""))  { body += "<TEXT TYPE=\"ALBUM_TITLE\">" + album + "</TEXT>"; }
+            if (artist!=null && !artist.equals("")) { body += "<TEXT TYPE=\"ARTIST\">" + artist + "</TEXT>"; }
+            if (artist!=null && !track.equals(""))  { body += "<TEXT TYPE=\"TRACK_TITLE\">" + track + "</TEXT>"; }
+            if (artist!=null && !album.equals(""))  { body += "<TEXT TYPE=\"ALBUM_TITLE\">" + album + "</TEXT>"; }
         }
 
         return body;
