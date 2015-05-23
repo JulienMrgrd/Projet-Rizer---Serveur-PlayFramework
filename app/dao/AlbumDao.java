@@ -1,13 +1,14 @@
 package dao;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
 
-import models.*;
-import modelsmongo.MongoCursor;
+import models.Album;
+import models.Playlist;
 import modelsmongo.PlayJongo;
 
 
-public class AlbumDao {
+public class AlbumDao extends Dao{
 	
 	/**
 	 * Ajoute un ablbum dans la collection "Album"
@@ -41,11 +42,13 @@ public class AlbumDao {
 		return PlayJongo.getCollection("Album").findOne("{_id:#}", _idAlbum).as(Album.class);
 	}
 	
-	public List<Music> getAlbumsContainsName(String name){
-		Iterator m= PlayJongo.getCollection("Album").find("{name:{$regex:\""+name+"\", $options: 'i' }}").as(Album.class).iterator();
+	@SuppressWarnings("unchecked")
+	public List<Album> getAlbumsContainsName(String title){
+		Iterator<Album> m= PlayJongo.getCollection("Album").find("{title:{$regex:\""+title+"\", $options: 'i' }}").as(Album.class).iterator();
 		return PlayJongo.toArray(m);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Album> getAlbumsByName(String name){
 		Iterator<Album> m= PlayJongo.getCollection("Album").find("{name:#}", name).as(Album.class).iterator();
 		return PlayJongo.toArray(m);

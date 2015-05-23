@@ -9,7 +9,7 @@ import com.mongodb.gridfs.GridFSInputFile;
 import models.*;
 import modelsmongo.PlayJongo;
 
-public class AccountDao {
+public class AccountDao extends Dao{
 
 	/**
 	 * Inscription d'un utilisateur (user ou artist)

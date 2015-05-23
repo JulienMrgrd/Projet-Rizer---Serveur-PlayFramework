@@ -2,29 +2,23 @@ package dao;
 
 
 
-import java.io.File;
 import java.io.IOException;
+
+import models.Account;
+import models.Artist;
+import models.Token;
+import models.User;
+import modelsmongo.PlayJongo;
 
 import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 
-
-
-
-
-
-
-
-
 import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
 
-import models.*;
-import modelsmongo.PlayJongo;
 
 
-
-public class TokenDao {
+public class TokenDao extends Dao {
 	
 	/**
 	 * Verrifie l'authentification et renvoi id du compte

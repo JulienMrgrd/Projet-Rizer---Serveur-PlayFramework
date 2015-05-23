@@ -3,7 +3,7 @@ package dao;
 import models.*;
 import modelsmongo.PlayJongo;
 
-public class PlaylistDao {
+public class PlaylistDao extends Dao {
 	
 	/**
 	 * Ajoute la playlist p a la collection

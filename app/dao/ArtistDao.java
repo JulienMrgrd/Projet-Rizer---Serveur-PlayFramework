@@ -6,10 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import models.Artist;
-import models.Music;
 import modelsmongo.PlayJongo;
 
-public class ArtistDao{
+public class ArtistDao extends Dao{
 /**
  * Inscription d'un artist
  * @param compte : object Artist à inserer en base
@@ -56,8 +55,9 @@ public class ArtistDao{
 		PlayJongo.getCollection("Artist").save(compte);
 	}
 	
-	public List<Music> getArtistsContainsPseudo(String pseudo){
-		Iterator m= PlayJongo.getCollection("Artist").find("{pseudo:{$regex:\""+pseudo+"\", $options: 'i' }}").as(Artist.class).iterator();
+	@SuppressWarnings("unchecked")
+	public List<Artist> getArtistsContainsPseudo(String pseudo){
+		Iterator<Artist> m= PlayJongo.getCollection("Artist").find("{pseudo:{$regex:\""+pseudo+"\", $options: 'i' }}").as(Artist.class).iterator();
 		return PlayJongo.toArray(m);
 	}
 	

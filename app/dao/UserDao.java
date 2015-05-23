@@ -5,7 +5,7 @@ package dao;
 import models.*;
 import modelsmongo.PlayJongo;
 
-public class UserDao {
+public class UserDao extends Dao {
 
 	public String inscriptionUser(User compte){
 		PlayJongo.getCollection("User").save(compte);
