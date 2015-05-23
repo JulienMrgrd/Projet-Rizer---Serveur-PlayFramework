@@ -17,8 +17,8 @@ public class Token {
 	private String dateMaj;
 	public static DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
-	private Token(){
-		
+	public Token() {
+		super();
 	}
 	
 	public Token(String account){

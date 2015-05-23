@@ -55,6 +55,48 @@ public class Album {
 		this.idartist = artist;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
+		result = prime * result
+				+ ((idartist == null) ? 0 : idartist.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((tracks == null) ? 0 : tracks.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Album other = (Album) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
+		if (idartist == null) {
+			if (other.idartist != null)
+				return false;
+		} else if (!idartist.equals(other.idartist))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (tracks == null) {
+			if (other.tracks != null)
+				return false;
+		} else if (!tracks.equals(other.tracks))
+			return false;
+		return true;
+	}
     
 }

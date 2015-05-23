@@ -91,5 +91,50 @@ public class Artist extends Account{
 		this.biography = biography;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((biography == null) ? 0 : biography.hashCode());
+		result = prime * result
+				+ ((followers == null) ? 0 : followers.hashCode());
+		result = prime * result + ((library == null) ? 0 : library.hashCode());
+		result = prime * result + ((news == null) ? 0 : news.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Artist other = (Artist) obj;
+		if (biography == null) {
+			if (other.biography != null)
+				return false;
+		} else if (!biography.equals(other.biography))
+			return false;
+		if (followers == null) {
+			if (other.followers != null)
+				return false;
+		} else if (!followers.equals(other.followers))
+			return false;
+		if (library == null) {
+			if (other.library != null)
+				return false;
+		} else if (!library.equals(other.library))
+			return false;
+		if (news == null) {
+			if (other.news != null)
+				return false;
+		} else if (!news.equals(other.news))
+			return false;
+		return true;
+	}
+	
     
 }
