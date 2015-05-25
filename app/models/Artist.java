@@ -113,6 +113,7 @@ public class Artist extends Account{
 		if (getClass() != obj.getClass())
 			return false;
 		Artist other = (Artist) obj;
+		if (! super.equals(obj)) return false;
 		if (biography == null) {
 			if (other.biography != null)
 				return false;

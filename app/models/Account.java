@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class Account {
@@ -144,6 +145,95 @@ public abstract class Account {
 
 	public void setHistorical(Hashtable<String, Integer> historical) {
 		this.historical = historical;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((follow == null) ? 0 : follow.hashCode());
+		result = prime * result
+				+ ((historical == null) ? 0 : historical.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
+		result = prime * result
+				+ ((playlists == null) ? 0 : playlists.hashCode());
+		result = prime * result + ((pseudo == null) ? 0 : pseudo.hashCode());
+		result = prime * result + ((rises == null) ? 0 : rises.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (follow == null) {
+			if (other.follow != null)
+				return false;
+		} else if (!follow.equals(other.follow))
+			return false;
+		if (historical == null) {
+			if (other.historical != null)
+				return false;
+		} else if (!historical.equals(other.historical))
+			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (photo == null) {
+			if (other.photo != null)
+				return false;
+		} else if (!photo.equals(other.photo))
+			return false;
+		if (playlists == null) {
+			if (other.playlists != null)
+				return false;
+		} else if (!playlists.equals(other.playlists))
+			return false;
+		if (pseudo == null) {
+			if (other.pseudo != null)
+				return false;
+		} else if (!pseudo.equals(other.pseudo))
+			return false;
+		if (rises == null) {
+			if (other.rises != null)
+				return false;
+		} else if (!rises.equals(other.rises))
+			return false;
+		return true;
 	}
 	
  

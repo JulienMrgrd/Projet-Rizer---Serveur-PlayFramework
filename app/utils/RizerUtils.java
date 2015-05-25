@@ -12,7 +12,7 @@ public class RizerUtils {
 	/**
 	 * Seuil minimum concernant la similarité de la recherche
 	 */
-	public static final int DEFAULT_SEUIL = 70;
+	public static final int DEFAULT_SEUIL = 60;
 	
 	/**
 	 * ID Gracenote

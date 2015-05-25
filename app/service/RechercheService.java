@@ -1,5 +1,6 @@
 package service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -456,22 +457,31 @@ public class RechercheService{
 	
 	public static void main(String[] args){
 		
-		Dao dao = new MusicDao();
+		testAlbum();
+		System.out.println("\n\n------------------------------");
+		testMusic();
+		System.out.println("\n\n------------------------------");
+		testArtiste();
+	}
+	
+	private static void testMusic(){
 		
+		Dao dao = new MusicDao();
+				
 //		String[] new_musiques = new String[]{"Michael Jackson","Mickel jachson","Michel Jason","Michael Jackson","Mikael Jackson"};
 //		Music tmp;
 //		for(String music : new_musiques){
 //			tmp = new Music();
 //			tmp.setName(music);
 //			try {
-//				dao.addMusic(null, tmp);
+//				((MusicDao) dao).addMusic(null, tmp);
 //			} catch (IOException e) {
 //				e.printStackTrace();
 //			}
 //		}
 		
 		List<Music> s = ((MusicDao) dao).findAll();
-		System.out.println("Musiques en base : ");
+		System.out.println("Musices en base : ");
 		for(Music music : s){
 			System.out.println("      "+music.getName());
 		}
@@ -480,6 +490,7 @@ public class RechercheService{
 		
 		String recherche = "myckaelle jackson";
 		System.out.println(new Similarite().similarity("Michael Jackson", recherche));
+		System.out.println(new Similarite().similarity("Mikael Jackson", recherche));
 		s = new RechercheService(recherche).searchMusic();
 		System.out.println("Recherche avec : "+recherche);
 		if(s!=null && !s.isEmpty()){
@@ -489,7 +500,72 @@ public class RechercheService{
 		} else {
 			System.out.println("=> Aucun résultat");
 		}
+	}
+	
+	private static void testAlbum(){
+		Dao dao = new AlbumDao();
 		
+//		String[] new_albums = new String[]{"Michael Jackson","Mickel jachson","Michel Jason","Michael Jackson","Mikael Jackson"};
+//		Album tmp;
+//		for(String music : new_albums){
+//			tmp = new Album();
+//			tmp.setTitle(music);
+//			((AlbumDao) dao).addAlbum(tmp);
+//		}
+		
+		List<Album> s = ((AlbumDao) dao).findAll();
+		System.out.println("Albums en base : ");
+		for(Album album : s){
+			System.out.println("      "+album.getTitle());
+		}
+		
+		System.out.println("========================");
+		
+		String recherche = "myckaelle jackson";
+		System.out.println(new Similarite().similarity("Michael Jackson", recherche));
+		System.out.println(new Similarite().similarity("Mikael Jackson", recherche));
+		s = new RechercheService(recherche).searchAlbum();
+		System.out.println("Recherche avec : "+recherche);
+		if(s!=null && !s.isEmpty()){
+			for(Album album : s){
+				System.out.println(album.getTitle());
+			}
+		} else {
+			System.out.println("=> Aucun résultat");
+		}
+	}
+	
+	private static void testArtiste(){
+		Dao dao = new ArtistDao();
+				
+//		String[] new_artistes = new String[]{"Michael Jackson","Mickel jachson","Michel Jason","Michael Jackson","Mikael Jackson"};
+//		Artist tmp;
+//		for(String music : new_artistes){
+//			tmp = new Artist();
+//			tmp.setPseudo(music);
+//			((ArtistDao) dao).inscriptionArtist(tmp);
+//		}
+		
+		List<Artist> s = ((ArtistDao) dao).findAll();
+		System.out.println("Artistes en base : ");
+		for(Artist artist : s){
+			System.out.println("      "+artist.getPseudo());
+		}
+		
+		System.out.println("========================");
+		
+		String recherche = "myckaelle jackson";
+		System.out.println(new Similarite().similarity("Michael Jackson", recherche));
+		System.out.println(new Similarite().similarity("Mikael Jackson", recherche));
+		s = new RechercheService(recherche).searchArtist();
+		System.out.println("Recherche avec : "+recherche);
+		if(s!=null && !s.isEmpty()){
+			for(Artist artist : s){
+				System.out.println(artist.getPseudo());
+			}
+		} else {
+			System.out.println("=> Aucun résultat");
+		}
 	}
 	
 }

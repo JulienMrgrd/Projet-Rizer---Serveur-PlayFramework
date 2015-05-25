@@ -61,6 +61,12 @@ public class ArtistDao extends Dao{
 		return PlayJongo.toArray(m);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Artist> findAll(){
+		Iterator<Artist> m= PlayJongo.getCollection("Artist").find().as(Artist.class).iterator();
+		return PlayJongo.toArray(m);
+	}
+	
 	public static void main(String[] args){
 		
 		//System.out.println(ArtistDao.foundArtist());

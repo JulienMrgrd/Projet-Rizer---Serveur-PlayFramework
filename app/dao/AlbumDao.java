@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import models.Album;
+import models.Artist;
 import models.Playlist;
 import modelsmongo.PlayJongo;
 
@@ -52,12 +53,16 @@ public class AlbumDao extends Dao{
 	public List<Album> getAlbumsByName(String name){
 		Iterator<Album> m= PlayJongo.getCollection("Album").find("{name:#}", name).as(Album.class).iterator();
 		return PlayJongo.toArray(m);
-		
 	}
 
 	public void updateAlbum(Album albumTmp) {
 		PlayJongo.getCollection("Album").save(albumTmp);
-		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Album> findAll(){
+		Iterator<Album> m= PlayJongo.getCollection("Album").find().as(Album.class).iterator();
+		return PlayJongo.toArray(m);
 	}
 
 }
