@@ -1,5 +1,8 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import models.Playlist;
 import play.mvc.Controller;
 import play.mvc.Result;
 import service.PlaylistService;
@@ -18,9 +21,12 @@ public class PlaylistRoutes extends Controller{
     	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new PlaylistService().createPlayList(idAccount, name, description);
-    	return ok("createOnePlaylist:"
-    			+ "\nUUID = "+UUID+"\nname = "+name);
+    	Playlist playlist = new PlaylistService().createPlayList(idAccount, name, description);
+    	if(playlist!=null){
+	    	JsonNode json = play.libs.Json.toJson(playlist);
+	    	return ok(json);
+    	}
+    	return unauthorized();
     }
     
     /**
@@ -32,8 +38,10 @@ public class PlaylistRoutes extends Controller{
     	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new PlaylistService().hasAPlayList(idAccount);
-    	return ok("hasAPlaylist:\nUUID = "+UUID);
+    	if(new PlaylistService().hasAPlayList(idAccount)){
+    		return ok();
+    	}
+    	return unauthorized();
     	
     }
     
@@ -49,8 +57,7 @@ public class PlaylistRoutes extends Controller{
     	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
         new PlaylistService().modifyPlaylist(idPlaylist, name, description);
-    	return ok("modifyInfosOnePlaylist:"
-    			+ "\nUUID = "+UUID+"\nname = "+name+"\ndescription = "+description);
+    	return ok();
     }
     
     /**
@@ -62,8 +69,7 @@ public class PlaylistRoutes extends Controller{
 		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
     	new PlaylistService().deletePlaylist(idPlaylist);
-		return ok("deleteOnePlaylist:"
-    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist);
+		return ok();
     }
 	
 	/**
@@ -77,8 +83,7 @@ public class PlaylistRoutes extends Controller{
 		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
 
     	new PlaylistService().addMusicToPlaylist(idPlaylist, musicID);
-		return ok("addMusicToPlaylist:"
-    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nmusicID = "+musicID); 
+		return ok(); 
 	}
 	
 	/**
@@ -91,9 +96,10 @@ public class PlaylistRoutes extends Controller{
 	public static Result removeMusicToPlaylist(String UUID, String idPlaylist, String musicID){ 
 		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-    	new PlaylistService().removeMusicInPlaylist(idPlaylist, musicID);
-		return ok("removeMusicToPlaylist:"
-    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist+"\nmusicID = "+musicID); 
+    	if(new PlaylistService().removeMusicInPlaylist(idPlaylist, musicID)){
+    		return ok();
+    	}
+    	return unauthorized();
 	}
 	
 	/**
@@ -105,9 +111,12 @@ public class PlaylistRoutes extends Controller{
 	public static Result visualizeOnePlaylist(String UUID, String idPlaylist){
 		if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new PlaylistService().visualizePlaylist(idPlaylist);
-		return ok("visualizeOnePlaylist:"
-    			+ "\nUUID = "+UUID+"\nidPlaylist = "+idPlaylist); 
+    	Playlist playlist = new PlaylistService().visualizePlaylist(idPlaylist);
+    	if(playlist!=null){
+	    	JsonNode json = play.libs.Json.toJson(playlist);
+	    	return ok(json);
+    	}
+    	return unauthorized();
 	}
 
 }

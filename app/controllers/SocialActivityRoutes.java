@@ -17,9 +17,10 @@ public class SocialActivityRoutes extends Controller{
 		String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-		new SocialActivityService().followArtist(idAccount, artistId);
-		return ok("followArtist:"
-				+ "\nUUID = "+UUID+"\nartistId = "+artistId);
+		if(new SocialActivityService().followArtist(idAccount, artistId)){
+			return ok();
+		}
+		return unauthorized();
     }
     
 	/**
@@ -31,9 +32,10 @@ public class SocialActivityRoutes extends Controller{
 		String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-		new SocialActivityService().unfollowArtist(idAccount, artistId);
-		return ok("unfollowArtist:"
-				+ "\nUUID = "+UUID+"\nartistId = "+artistId);
+		if(new SocialActivityService().unfollowArtist(idAccount, artistId)){
+			return ok();
+		}
+		return unauthorized();
     }
 
 	/**
@@ -45,9 +47,10 @@ public class SocialActivityRoutes extends Controller{
 		String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
     	
-		new SocialActivityService().rizeFuturArtist(idAccount, userId);
-		return ok("rizerFuturArtist:"
-				+ "\nUUID = "+UUID+"\nuserId = "+userId);
+		if(new SocialActivityService().rizeFuturArtist(idAccount, userId)){
+			return ok();
+		}
+		return unauthorized();
     }
 
 }
