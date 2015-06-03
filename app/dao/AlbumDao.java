@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import models.Album;
-import models.Artist;
 import models.Playlist;
 import modelsmongo.PlayJongo;
 

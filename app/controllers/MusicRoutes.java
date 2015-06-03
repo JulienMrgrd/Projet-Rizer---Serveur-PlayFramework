@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 
 import models.Music;
 import play.mvc.Controller;
@@ -32,10 +33,7 @@ public class MusicRoutes extends Controller{
 		} else {
 			return badRequest("error", "Missing file");
 		}
-		String fileName = musique.getFilename();
-		String contentType = musique.getContentType(); 
-		return ok("uploadMusic:"
-    			+ "\nUUID = "+UUID+"\nmusic = "+fileName);
+		return ok();
 	}
 
 	/**
@@ -57,11 +55,10 @@ public class MusicRoutes extends Controller{
 
         Music music = play.libs.Json.fromJson(json, Music.class);
         if(music == null) {
-             return badRequest("Not a Music object");
+             return badRequest(RizerUtils.NOT_MUSIC);
         }
 		new MusicService().modifyInfoMusic(idAccount, music);
-    	return ok("modifyInfosMusic:"
-    			+ "\nUUID = "+UUID+"\nmusic = "+music.getName());
+    	return ok();
     }
 
 	/**
@@ -74,8 +71,7 @@ public class MusicRoutes extends Controller{
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
     	new MusicService().deleteMusic(musicID);
-		return ok("deleteMusic:"
-				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
+		return ok();
     }
 	
 	/**
@@ -87,9 +83,11 @@ public class MusicRoutes extends Controller{
 		String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
-    	new MusicService().likerMusic(idAccount, musicID);
-		return ok("likeMusic:"
-				+ "\nUUID = "+UUID+"\nmusicID = "+musicID);
+    	if(new MusicService().likerMusic(idAccount, musicID)){
+    		return ok();
+    	} else {
+    		return unauthorized();
+    	}
     }
 
 	/**
@@ -102,8 +100,23 @@ public class MusicRoutes extends Controller{
     	if(idAccount==null) return unauthorized(RizerUtils.BAD_TOKEN);
 		
     	new MusicService().commentMusic(idAccount, musicID, comment);
-		return ok("commentMusic:"
-				+ "\nUUID = "+UUID+"\nmusicID = "+musicID+"\ncomment = "+comment);
+		return ok();
+    }
+	
+	/**
+	 * Envoie les informations de la music à l'utilisateur
+	 * @param UUID
+	 * @param musicID
+	 * @return
+	 */
+	public static Result displayMusic(String UUID, String musicID){ 
+    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		Music music = new MusicService().vizualizeMusic(musicID);
+		if(music!=null){
+			JsonNode jn = play.libs.Json.toJson(music);
+	    	return ok(jn);
+		}
+		else return badRequest(RizerUtils.BAD_ID_MUSIC);
     }
 	
 	/**
@@ -118,5 +131,14 @@ public class MusicRoutes extends Controller{
 		if(is!=null) return ok(is);
 		else return badRequest(RizerUtils.BAD_ID_MUSIC);
     }
-
+	
+	public static Result findAllMusics(){
+    	List<Music> musics = new MusicService().findAllMusics();
+    	if(musics!=null){
+	    	JsonNode json = play.libs.Json.toJson(musics);
+	    	return ok(json);
+    	}
+    	return ok();
+    }
+	
 }

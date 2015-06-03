@@ -34,9 +34,9 @@ public class UserDao extends Dao {
 		PlayJongo.getCollection("User").save(compte);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<User> findAllFutursArtistes(){
 		Iterator<User> i=PlayJongo.getCollection("User").find("{ futurArtist:#}", true).as(User.class).iterator();
 		return PlayJongo.toArray(i);
-		
 	}
 }

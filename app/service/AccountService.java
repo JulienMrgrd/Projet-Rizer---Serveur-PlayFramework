@@ -1,6 +1,7 @@
 package service;
 
 import java.io.IOException;
+import java.util.List;
 
 import models.Account;
 import models.Artist;
@@ -228,6 +229,16 @@ public class AccountService {
 		userDao.deleteUser(idUser);
 		artistDao.updateArtist(artist);
 		return artist;
+	}
+
+	public List<Artist> findAllArtists() {
+		ArtistDao dao = new ArtistDao();
+		return dao.findAll();
+	}
+	
+	public List<User> findAllFutursArtists() {
+		UserDao dao = new UserDao();
+		return dao.findAllFutursArtistes();
 	}
 
 }

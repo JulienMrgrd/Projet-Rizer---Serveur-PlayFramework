@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import models.Artist;
 import models.Music;
@@ -125,6 +126,22 @@ public class MusicService{
 		MusicDao musicDao = new MusicDao();
 		music = musicDao.getInputStreamMusic(idMusic);
 		return music;	
+	}
+	
+	
+	/**
+	 * Retourne la musique, sans le fichier
+	 * @param idMusic
+	 * @return
+	 */
+	public Music vizualizeMusic(String idMusic){
+		MusicDao musicDao = new MusicDao();
+		return musicDao.getMusic(idMusic);
+	}
+
+	public List<Music> findAllMusics() {
+		MusicDao dao = new MusicDao();
+		return dao.findAll();
 	}
 
 	

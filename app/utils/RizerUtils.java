@@ -1,13 +1,14 @@
 package utils;
 
 
-
 public class RizerUtils {
 	
     public static final String BAD_TOKEN = "Bad Token";
 	public static final String BAD_CONNECTION = "Bad connection";
 	public static final String BAD_INSCRIPTION = "Bad inscription";
 	public static final String BAD_ID_MUSIC = "Bad id music";
+	public static final String NOT_ACCOUNT = "Not an Account object";
+	public static final String NOT_MUSIC = "Not a Music object";
 	
 	/**
 	 * Seuil minimum concernant la similarité de la recherche

@@ -1,6 +1,10 @@
 package controllers;
 
+import java.util.List;
+
 import models.Account;
+import models.Artist;
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import service.AccountService;
@@ -63,7 +67,7 @@ public class AccountRoutes extends Controller {
 
         Account account = play.libs.Json.fromJson(json, Account.class);
         if(account == null) {
-             return badRequest("Not an Account object");
+             return badRequest(RizerUtils.NOT_ACCOUNT);
         }
     	new AccountService().modifyAccount(idAccount, account);
     	return ok();
@@ -106,8 +110,7 @@ public class AccountRoutes extends Controller {
     	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
     	new AccountService().deleteAccount(idAccount);
-    	return ok("deleteAccount:"
-    			+ "\nUUID = "+UUID);
+    	return ok();
     }
 
     /**
@@ -119,9 +122,29 @@ public class AccountRoutes extends Controller {
     	String idAccount = new TokenService().checkToken(UUID);
     	if(idAccount==null) return badRequest(RizerUtils.BAD_TOKEN);
     	
-    	new AccountService().becomeArtist(idAccount);
-    	return ok("sendDemandBecomeArtist:"
-    			+ "\nUUID = "+UUID);
+    	if(new AccountService().becomeArtist(idAccount)){
+    		return ok();
+    	} else {
+    		return unauthorized();
+    	}
+    }
+    
+    public static Result findAllArtists(){
+    	List<Artist> artistes = new AccountService().findAllArtists();
+    	if(artistes!=null){
+	    	JsonNode json = play.libs.Json.toJson(artistes);
+	    	return ok(json);
+    	}
+    	return ok();
+    }
+    
+    public static Result findAllFutursArtists(){
+    	List<User> futurs_artistes = new AccountService().findAllFutursArtists();
+    	if(futurs_artistes!=null){
+    		JsonNode json = play.libs.Json.toJson(futurs_artistes);
+    		return ok(json);
+    	}
+    	return ok();
     }
 
 }

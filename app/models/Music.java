@@ -17,8 +17,8 @@ public class Music {
     private Map<String,String> comment;//pseudo+commentaire
     private List<Tag> tags;
     private Time duration;
-    private Album album;
-    
+    private String album;
+    private String idArtist;
     
     
 	/**
@@ -29,11 +29,10 @@ public class Music {
 	 * @param comment : HashTag <Login,comment>
 	 * @param tags
 	 * @param duration : Duree de la musique
-	 * @param album 
+	 * @param album : id Album
 	 */
-	public Music(String id, String name, String file, List<String> like,
-			HashMap<String, String> comment, List<Tag> tags, Time duration,
-			Album album) {
+	public Music(String id, String name, String file, List<String> like, HashMap<String, String> comment, 
+			List<Tag> tags, Time duration, String album,String idArtist) {
 		super();
 		this._id = id;
 		this.name = name;
@@ -43,6 +42,7 @@ public class Music {
 		this.tags = tags;
 		this.duration = duration;
 		this.album = album;
+		this.idArtist=idArtist;
 	}
 	
 	public Music(){
@@ -91,8 +91,17 @@ public class Music {
 	public void setDuration(Time duration) {
 		this.duration = duration;
 	}
-	public Album getAlbum() {
+	public String getAlbum() {
 		return album;
+	}
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+	public String getIdArtist() {
+		return idArtist;
+	}
+	public void setIdArtist(String idArtist) {
+		this.idArtist = idArtist;
 	}
 	@Override
 	public String toString() {
@@ -101,9 +110,6 @@ public class Music {
 				+ ", duration=" + duration + ", album=" + album + "]";
 	}
 
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
     
 	@Override
 	public int hashCode() {
