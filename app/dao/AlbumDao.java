@@ -33,7 +33,6 @@ public class AlbumDao extends Dao{
 		for(String id : albumTmp.getTracks()){
 			(new MusicDao()).deleteMusic(id);
 		}
-		PlayJongo.getCollection("Album").remove("{ _id:#}", _id);
 		
 		
 		
