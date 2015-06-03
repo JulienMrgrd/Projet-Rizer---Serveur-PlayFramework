@@ -2,6 +2,9 @@ package dao;
 
 
 
+import java.util.List;
+import java.util.Iterator;
+
 import models.*;
 import modelsmongo.PlayJongo;
 
@@ -29,5 +32,11 @@ public class UserDao extends Dao {
 	
 	public void updateUser(User compte){
 		PlayJongo.getCollection("User").save(compte);
+	}
+	
+	public List<User> findAllFutursArtistes(){
+		Iterator<User> i=PlayJongo.getCollection("User").find("{ futurArtist:#}", true).as(User.class).iterator();
+		return PlayJongo.toArray(i);
+		
 	}
 }
