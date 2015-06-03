@@ -46,7 +46,7 @@ public class PlaylistDao extends Dao {
 	 * @param _id
 	 */
 	public void deletePlaylist(String _id){
-		PlayJongo.getCollection("Playlist").remove(_id);
+		PlayJongo.getCollection("Playlist").remove("{ _id:#}", _id);
 	}
 	
 	/**
