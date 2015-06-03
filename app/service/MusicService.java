@@ -3,6 +3,7 @@ package service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import models.Artist;
 import models.Music;
@@ -77,15 +78,16 @@ public class MusicService{
 	public boolean likerMusic(String idAccount, String idMusic) {
 		MusicDao musicDao = new MusicDao();
 		Music music = musicDao.getMusic(idMusic);
-		if(music.getLike().size()>0){
-			for(int i = 0; i<music.getLike().size();i++){
-				if(music.getLike().get(i).equals(idAccount)){
-					return false;
-				}
-			}
+		if(music==null)
+			return false;
+		if(music.getLike()==null){
+			music.setLike(new ArrayList<String>());
+		}else{
+			if(music.getLike().contains(idAccount))
+				return false;
 		}
-		music.getLike().add(idAccount);
-		musicDao.updateMusic(music);
+		
+		musicDao.addLike(idAccount, idMusic);
 		return true;
 	}
 
