@@ -88,7 +88,7 @@ public class MusicService{
 				return false;
 		}
 		
-		musicDao.addLike(idAccount, idMusic);
+		musicDao.addLike(idMusic, idAccount);
 		return true;
 	}
 
