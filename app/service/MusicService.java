@@ -143,6 +143,12 @@ public class MusicService{
 		MusicDao dao = new MusicDao();
 		return dao.findAll();
 	}
+	
+	public Music infoMusic(String idMusic) {
+		MusicDao musicDao = new MusicDao();
+		Music music = musicDao.getMusic(idMusic);
+		return music;
+	}
 
 	
 }

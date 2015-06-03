@@ -141,4 +141,12 @@ public class MusicRoutes extends Controller{
     	return ok();
     }
 	
+	public static Result infoMusic(String UUID, String musicID){ 
+    	if(new TokenService().checkToken(UUID)==null) return unauthorized(RizerUtils.BAD_TOKEN);
+		Music tmp = new MusicService().infoMusic(musicID);
+		JsonNode send = play.libs.Json.toJson(tmp);
+		if(tmp!=null) return ok(send);
+		else return badRequest(RizerUtils.BAD_ID_MUSIC);
+    }
+	
 }

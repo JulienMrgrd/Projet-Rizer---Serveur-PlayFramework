@@ -14,6 +14,8 @@ GET     /visuaAcc/:uuid/:idAccount	    		   	 controllers.AccountRoutes.visualiz
 GET     /visuaMyAcc/:uuid	  		  	   		     controllers.AccountRoutes.visualizeMyAccountInformations(uuid:String)
 GET     /deleteAcc/:uuid			       			 controllers.AccountRoutes.deleteAccount(uuid:String)
 GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
+GET     /findAllArtists   				 		  	 controllers.AccountRoutes.findAllArtists()
+GET     /findAllFutursArtists    					 controllers.AccountRoutes.findAllFutursArtists()
 
 # Playlist
 GET     /createPlist/:uuid/:name/:desc	        	 controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String,desc:String)
@@ -30,7 +32,10 @@ POST 	/modifyInfosMusic/:uuid						 controllers.MusicRoutes.modifyInfosMusic(uui
 GET		/deleteMusic/:uuid/:musicId					 controllers.MusicRoutes.deleteMusic(uuid:String,musicId:String)
 GET		/likeMusic/:uuid/:musicId					 controllers.MusicRoutes.likeMusic(uuid:String,musicId:String)
 GET		/commentMusic/:uuid/:musicId/:comment		 controllers.MusicRoutes.commentMusic(uuid:String,musicId:String,comment:String)
-POST	/listenMusic/:uuid/:musicId					 controllers.MusicRoutes.listenMusic(uuid:String,musicId:String)
+GET		/displayMusic/:uuid/:musicId			     controllers.MusicRoutes.displayMusic(uuid:String,musicId:String)
+GET		/listenMusic/:uuid/:musicId					 controllers.MusicRoutes.listenMusic(uuid:String,musicId:String)
+GET     /findAllMusics   				   	 	     controllers.MusicRoutes.findAllMusics()
+GET 	/infoMusic/:uuid/:musicId					 controllers.MusicRoutes.infoMusic(uuid:String,musicId:String)
 
 # SocialActivity
 GET		/followArtist/:uuid/:artistId				 controllers.SocialActivityRoutes.followArtist(uuid:String,artistId:String)

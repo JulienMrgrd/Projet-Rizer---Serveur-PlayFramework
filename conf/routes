@@ -35,6 +35,7 @@ GET		/commentMusic/:uuid/:musicId/:comment		 controllers.MusicRoutes.commentMusi
 GET		/displayMusic/:uuid/:musicId			     controllers.MusicRoutes.displayMusic(uuid:String,musicId:String)
 GET		/listenMusic/:uuid/:musicId					 controllers.MusicRoutes.listenMusic(uuid:String,musicId:String)
 GET     /findAllMusics   				   	 	     controllers.MusicRoutes.findAllMusics()
+GET 	/infoMusic/:uuid/:musicId					 controllers.MusicRoutes.infoMusic(uuid:String,musicId:String)
 
 # SocialActivity
 GET		/followArtist/:uuid/:artistId				 controllers.SocialActivityRoutes.followArtist(uuid:String,artistId:String)
