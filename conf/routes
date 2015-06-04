@@ -16,7 +16,6 @@ GET     /deleteAcc/:uuid			       			 controllers.AccountRoutes.deleteAccount(uu
 GET     /becomeArt/:uuid   				   			 controllers.AccountRoutes.sendDemandBecomeArtist(uuid:String)
 GET     /findAllArtists   				 		  	 controllers.AccountRoutes.findAllArtists()
 GET     /findAllFutursArtists    					 controllers.AccountRoutes.findAllFutursArtists()
-GET     /rechercheArtists/:name    					 controllers.AccountRoutes.rechercheArtists(name:String)
 
 # Playlist
 GET     /createPlist/:uuid/:name/:desc	        	 controllers.PlaylistRoutes.createOnePlaylist(uuid:String,name:String,desc:String)
