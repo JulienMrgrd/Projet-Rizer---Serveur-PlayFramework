@@ -8,6 +8,7 @@ import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import service.AccountService;
+import service.RechercheService;
 import service.TokenService;
 import utils.RizerUtils;
 
@@ -142,6 +143,15 @@ public class AccountRoutes extends Controller {
     	List<User> futurs_artistes = new AccountService().findAllFutursArtists();
     	if(futurs_artistes!=null){
     		JsonNode json = play.libs.Json.toJson(futurs_artistes);
+    		return ok(json);
+    	}
+    	return ok();
+    }
+    
+    public static Result rechercheArtists(String search){
+    	List<Artist> artistes = new RechercheService(search).searchArtist();
+    	if(artistes!=null){
+    		JsonNode json = play.libs.Json.toJson(artistes);
     		return ok(json);
     	}
     	return ok();
