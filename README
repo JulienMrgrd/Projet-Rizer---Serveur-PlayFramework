@@ -15,7 +15,3 @@ PROTOCOLE :
 6-Choisir le projet "play-java"
 
 7-Ecplise reconnaît automatiquement que c'est un projet java et Git
-
-PAR CONTRE LE GITIGNORE PEUT DECONNER ALORS 
-VERIFIER BIEN QUE VOUS PUSHER DES ELEMENTS 
-DE CODE ET PAS DES FICHIERS DE LOG OU CONFIG
